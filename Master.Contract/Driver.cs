@@ -96,7 +96,7 @@ namespace Master.Contract
         public string DriverName { get; set; }
         public string MobileNo { get; set; }
         public string VehicleNo { get; set; }
-        public string Status { get; set; }
+        public bool Status { get; set; }
         //public string Status { get; set; }
 
     }
