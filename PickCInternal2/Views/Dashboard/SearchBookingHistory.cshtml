@@ -9,8 +9,8 @@
         <link href="~/Css/jquery.dataTables.min.css" rel="stylesheet" />
     }
 <section class="content">
-    @*@using (Html.BeginForm("SearchBookingsHistory", "Dashboard", FormMethod.Post, new { id = "frmSearchBookingHistory", name = "frmSearchBookingHistory" }))
-    {*@
+    @using (Html.BeginForm("SearchBookingsHistory", "Dashboard", FormMethod.Post, new { id = "frmSearchBookingHistory", name = "frmSearchBookingHistory" }))
+    {
         <div class="row">
             <div class="col-md-12">
                 @{ Html.RenderPartial("DashboardMenuList"); }
@@ -80,7 +80,7 @@
         </tbody>
 
     </table>
-           @*}*@
+           }
 </section>
 @section secscripts{
     <script src="@Url.Content("~/Scripts/jquery.validate.js")"></script>
