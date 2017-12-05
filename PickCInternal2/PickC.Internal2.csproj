@@ -46,10 +46,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Antlr3.Runtime">
-      <HintPath>..\PickC.Internal\bin\Antlr3.Runtime.dll</HintPath>
+      <HintPath>C:\dlls\Antlr3.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Master.BusinessFactory">
-      <HintPath>..\PickC.Internal\bin\Master.BusinessFactory.dll</HintPath>
+      <HintPath>..\..\..\..\Bhushan PickC\PickC\Master.BusinessFactory\bin\Debug\Master.BusinessFactory.dll</HintPath>
     </Reference>
     <Reference Include="MCPG.CCA.Util">
       <HintPath>C:\dlls\MCPG.CCA.Util.dll</HintPath>
@@ -96,7 +96,7 @@
       <HintPath>C:\dlls\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data">
-      <HintPath>C:\dlls\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
+      <HintPath>..\..\..\..\Bhushan PickC\PickC\Operation.DataFactory\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.ServiceLocation">
       <HintPath>C:\dlls\Microsoft.Practices.ServiceLocation.dll</HintPath>
@@ -108,7 +108,7 @@
       <HintPath>C:\dlls\Microsoft.Practices.Unity.Interception.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
-      <HintPath>..\PickC.Internal\bin\Newtonsoft.Json.dll</HintPath>
+      <HintPath>C:\dlls\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="RestSharp">
       <HintPath>C:\dlls\RestSharp.dll</HintPath>
