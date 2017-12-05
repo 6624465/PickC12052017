@@ -92,7 +92,7 @@ namespace Master.Contract
 
     public class DriverAttachmentListStatus
     {
-        public string DriverId { get; set; }
+        public string DriverID { get; set; }
         public string DriverName { get; set; }
         public string MobileNo { get; set; }
         public string VehicleNo { get; set; }
