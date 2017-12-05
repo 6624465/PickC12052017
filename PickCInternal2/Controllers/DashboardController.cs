@@ -58,29 +58,29 @@ namespace PickC.Internal2.Controllers
 
         public async Task<ActionResult> GetDriversList()
         {
-            //var status = "ALL";
-            //var driverList = await new DriverService(AUTHTOKEN, p_mobileNo).GetDriverBySearch(status);
-            //var tripMonitor = await GetTripMonitorData();
+            var status = "ALL";
+            var driverList = await new DriverService(AUTHTOKEN, p_mobileNo).GetDriverBySearch(status);
+            var tripMonitor = await GetTripMonitorData();
 
-            //var driverMonitorVm = new DriverMonitorVm()
-            //{
-            //    driverList = driverList,
-            //    tripMonitorVmList = tripMonitor
-            //};
+            var driverMonitorVm = new DriverMonitorVm()
+            {
+                driverList = driverList,
+                tripMonitorVmList = tripMonitor
+            };
 
-            //return View(driverMonitorVm);
-            return View();
+            return View(driverMonitorVm);
+            //return View();
         }
 
-        //[HttpGet]
-        //public async Task<ActionResult> CurrentBookings(BookingDTO search)
-        //{
-        //    var currentbookings = await new SearchService(AUTHTOKEN, p_mobileNo).SearchCurrentBookingAsync(search);
-        //    var bookingSearchVM = new BookingSearchDTO();
-        //    bookingSearchVM.booking = currentbookings;
+        [HttpPost]
+        public async Task<ActionResult> CurrentBookings(BookingDTO search)
+        {
+            var currentbookings = await new SearchService(AUTHTOKEN, p_mobileNo).SearchCurrentBookingAsync(search);
+            var bookingSearchVM = new BookingSearchDTO();
+            bookingSearchVM.booking = currentbookings;
 
-        //    return View("CurrentBookings", bookingSearchVM);
-        //}
+            return View("SearchBookingHistory", bookingSearchVM);
+        }
         [HttpGet]
         public async Task<ActionResult> CurrentBookings()
         {
