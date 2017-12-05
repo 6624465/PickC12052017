@@ -28,7 +28,7 @@ namespace PickC.Internal2.Controllers
         public async Task<ActionResult> Add()
         {
 
-            //   ViewData["Operators"] = (await new OperatorService(AUTHTOKEN, p_mobileNo).GetOperatorList()).Select(x => new { Value = x.OperatorID, Text = x.OperatorName }).ToList();
+              ViewBag.Operators = (await new OperatorService(AUTHTOKEN, p_mobileNo).GetOperatorList()).Select(x => new { Value = x.OperatorID, Text = x.OperatorName }).ToList();
             var driverVm = new DriverVm
             {
                 driverLookupDTO = await new DriverService(AUTHTOKEN, p_mobileNo).LookUpDataAsync(),
