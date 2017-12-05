@@ -14,6 +14,7 @@ namespace PickC.Internal2.Controllers
 {
     [WebAuthFilter]
     [PickCEx]
+
     public class DashboardController : BaseController
     {
         [HttpGet]
