@@ -331,30 +331,30 @@ new { @class = "form-control" })
                                                                         </tr>
                                                                     </thead>
                                                                     <tbody id="trBodyVehicle">
-                                                                        @if (Model.OPerator.OperatorVehicleList != null)
+                                                                        @if (Model.OPerator.OperatorVehicle != null)
                                                                         {
-                                                                            for (var i = 0; i < Model.OPerator.OperatorVehicleList.Count; i++)
+                                                                            for (var i = 0; i < Model.OPerator.OperatorVehicle.Count; i++)
                                                                             {
                                                                                 <tr id="trRow_Vehicle_@i" class="trRowCss">
                                                                                     <td>
-                                                                                        <span id="operatorVehicle_VehicleRegistrationNo_span_@i">@Model.OPerator.OperatorVehicleList[i].VehicleRegistrationNo</span>
-                                                                                        @Html.HiddenFor(x => Model.OPerator.OperatorVehicleList[i].VehicleRegistrationNo, new { @class = "vehicleNoCss" })
+                                                                                        <span id="operatorVehicle_VehicleRegistrationNo_span_@i">@Model.OPerator.OperatorVehicle[i].VehicleRegistrationNo</span>
+                                                                                        @Html.HiddenFor(x => Model.OPerator.OperatorVehicle[i].VehicleRegistrationNo, new { @class = "vehicleNoCss" })
                                                                                     </td>
                                                                                     <td>
-                                                                                        <span id="operatorVehicle_VehicleType_span_@i">@Model.OPerator.OperatorVehicleList[i].VehicleType</span>
-                                                                                        @Html.HiddenFor(x => Model.OPerator.OperatorVehicleList[i].VehicleType)
+                                                                                        <span id="operatorVehicle_VehicleType_span_@i">@Model.OPerator.OperatorVehicle[i].VehicleType</span>
+                                                                                        @Html.HiddenFor(x => Model.OPerator.OperatorVehicle[i].VehicleType)
                                                                                     </td>
                                                                                     <td>
-                                                                                        <span id="operatorVehicle_VehicleCategory_span_@i">@Model.OPerator.OperatorVehicleList[i].VehicleCategory</span>
-                                                                                        @Html.HiddenFor(x => Model.OPerator.OperatorVehicleList[i].VehicleCategory)
+                                                                                        <span id="operatorVehicle_VehicleCategory_span_@i">@Model.OPerator.OperatorVehicle[i].VehicleCategory</span>
+                                                                                        @Html.HiddenFor(x => Model.OPerator.OperatorVehicle[i].VehicleCategory)
                                                                                     </td>
                                                                                     <td>
-                                                                                        <span id="operatorVehicle_Model_span_@i">@Model.OPerator.OperatorVehicleList[i].Model</span>
-                                                                                        @Html.HiddenFor(x => Model.OPerator.OperatorVehicleList[i].Model)
+                                                                                        <span id="operatorVehicle_Model_span_@i">@Model.OPerator.OperatorVehicle[i].Model</span>
+                                                                                        @Html.HiddenFor(x => Model.OPerator.OperatorVehicle[i].Model)
                                                                                     </td>
                                                                                     <td>
-                                                                                        <span id="operatorVehicle_Tonnage_span_@i">@Model.OPerator.OperatorVehicleList[i].Tonnage</span>
-                                                                                        @Html.HiddenFor(x => Model.OPerator.OperatorVehicleList[i].Tonnage)
+                                                                                        <span id="operatorVehicle_Tonnage_span_@i">@Model.OPerator.OperatorVehicle[i].Tonnage</span>
+                                                                                        @Html.HiddenFor(x => Model.OPerator.OperatorVehicle[i].Tonnage)
                                                                                     </td>
                                                                                     <td>
                                                                                         <a class="hand" onclick="EditOperatorVehicle('@i')">Edit</a>&nbsp;|&nbsp;

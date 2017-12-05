@@ -59,7 +59,7 @@ namespace Master.Contract
         public List<BankDetails> BankDetails { get; set; }
 
         public List<OperatorDriverList> OperatorDriverList { get; set; }
-        public List<OperatorVehicle> OperatorVehicleList { get; set; }
+        public List<OperatorVehicle> OperatorVehicle { get; set; }
 
         public List<OperatorAttachment> operatorAttachment { get; set; }
         //public List<OperatorVehicle> OperatorVehicleList { get; set; }
