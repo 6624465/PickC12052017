@@ -32,15 +32,15 @@
                                 <div class="form-group">
                                     <label>Operator Number</label>
                                     @*  <input type="text" id="txt-Operator-Number" class="form-control" />*@
-                                    @Html.TextBoxFor(x => x.driver.OperatorID, new { @class = "form-control", placeholder = "Operator ID", id = "txt-Operator-Number" })
+                                    @Html.DropDownListFor(x => x.driver.OperatorID,new SelectList(ViewBag.Operators,"Value","Text"),"Select Operator", new { @class = "form-control", id = "txt-Operator-Number" })
 
 
 
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            @*<div class="col-md-4">
                                 <button type="button" class="btn btn-primary" style="margin-top: 25px;" onclick="Check();">Valid</button>
-                            </div>
+                            </div>*@
                         </div>
                     </div>
                 </div>
@@ -386,7 +386,8 @@
                 $('#frmDriverAdd').submit();
             }
         }
-        function Check() {
+        $('#txt-Operator-Number').change(function () {
+            debugger
             var operatorId = $('#txt-Operator-Number').val();
             if (operatorId != '' && operatorId != undefined) {
 
@@ -396,7 +397,7 @@
                     contentType: 'application/json',
                     success: function (data) {
                         if (data == 1) {
-                            alert("Valid!");
+                            //  alert("Valid!");
                             $("#DriverInfo").css("display", "block");
                             $("#IdentificationInfo").css("display", "block");
                             $("#PersonalInfo").css("display", "block")
@@ -405,17 +406,18 @@
                             $("#buttons").css("display", "block");
                             $("#txt-Operator-Number").prop("readonly", true);
                         }
-                        if (data = 0) {
-                            alert("NotValid!");
-                            $('#txt-Operator-Number').val('');
-                        }
+                        //if (data = 0) {
+                        //    alert("NotValid!");
+                        //    $('#txt-Operator-Number').val('');
+                        //}
                     },
                     error: function (err) {
 
                     }
                 });
             }
+        });
 
-        }
+        
     </script>
 }
