@@ -1,0 +1,64 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+
+using System.Threading.Tasks;
+
+using Master.Contract;
+using PickC.Services;
+using PickC.Services.DTO;
+using PickC.Internal2.ViewModals;
+
+namespace PickC.Internal2.Controllers
+{
+    [WebAuthFilter]
+    [PickCEx]
+    public class DriverController : BaseController
+    {
+        [HttpGet]
+        public async Task<ActionResult> Driver()
+        {
+            var driverList = await new DriverService(AUTHTOKEN, p_mobileNo).DriverDetailListAsync();
+            return View(driverList);
+        }
+
+        [HttpGet]
+        public async Task<ActionResult> Add()
+        {
+
+            //   ViewData["Operators"] = (await new OperatorService(AUTHTOKEN, p_mobileNo).GetOperatorList()).Select(x => new { Value = x.OperatorID, Text = x.OperatorName }).ToList();
+            var driverVm = new DriverVm
+            {
+                driverLookupDTO = await new DriverService(AUTHTOKEN, p_mobileNo).LookUpDataAsync(),
+                driver = new Driver()
+            };
+
+            return View(driverVm);
+        }
+        [HttpGet]
+        public async Task<ActionResult> Edit(string driverID)
+        {
+            Task<Driver> taskDriver = new DriverService(AUTHTOKEN, p_mobileNo).DriverInfoAsync(driverID);
+            Task<DriverLookupDTO> taskDriverLookupDTO = new DriverService(AUTHTOKEN, p_mobileNo).LookUpDataAsync();
+
+            await Task.WhenAll(taskDriver, taskDriverLookupDTO);
+
+            var driverVm = new DriverVm
+            {
+                driverLookupDTO = await taskDriverLookupDTO,
+                driver = await taskDriver
+            };
+
+            return View(driverVm);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> SaveDriver(Driver driver)
+        {
+            var result = await new DriverService(AUTHTOKEN, p_mobileNo).SaveDriverAsync(driver);
+            return RedirectToAction("Driver", "Driver");
+        }
+    }
+}

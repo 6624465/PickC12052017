@@ -1,0 +1,118 @@
+﻿@using PickC.Internal2.HtmlHelpers
+@model PickC.Services.DTO.PendingAmountDTO
+@{
+    ViewBag.Title = "PendingAmount";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    @*WebGrid grid =
+    new WebGrid(Model.pendingAmount, rowsPerPage: 10, selectionFieldName: "selectedRow", ajaxUpdateContainerId: "grid");
+}*@
+    }
+@section seccss{
+    <link href="@Url.Content("~/Css/bootstrap-datetimepicker.css")" rel="stylesheet" />
+}
+<section class="content">
+@using (Html.BeginForm("PaymentsHistory", "Dashboard", FormMethod.Post, new { id = "FrmPaymentsHistory", name = "FrmPaymentsHistory" }))
+            {
+    <div class="row">
+        <div class="col-md-12">
+            @{ Html.RenderPartial("DashboardMenuList"); }
+            <div id = "myTabContent" class="tab-content">
+            <div id = "tab2" class="tab-pane fade in active">
+                <div class="row" style="margin:10px 0 0 10px;">
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label>Date From</label>
+                                <div class="input-group dtCss">
+                                    @Html.TextBoxFor(x => x.dates.DateFrom, new { @class = "form-control" })
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-default"><i class="fa fa-calendar" aria-hidden="true"></i></button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label>Date From</label>
+                                <div class="input-group dtCss">
+                                    @Html.TextBoxFor(x => x.dates.DateTo, new { @class = "form-control" })
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-default"><i class="fa fa-calendar" aria-hidden="true"></i></button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    <div class="col-md-2">
+                        <button type="submit" id="btnSearch" class="btn btn-primary" style="margin-top: 25px;"><i class="fa fa-search"></i> Search</button>
+                    </div>
+                </div>
+                    @*<div class="col-md-1">
+                        <label class="control-label pull-right">To Date</label>
+                    </div>
+                    <div class="col-md-2">
+                        @Html.TextBoxFor(x => x.dates.DateTo, new { @class = "form-control",placeholder="To Date" })
+                    </div>*@
+                   
+                </div>
+                </div>
+            </div>
+            @*<div class="box-body">
+                @if (Model != null)
+                {
+                    <div class="row">
+
+                        <div class="col-md-12">
+                            @grid.Table(
+            tableStyle: "table table-hover",
+            columns: grid.Columns(
+                 @*grid.Column(format: @<text>@Html.ActionLink((string)item.DriverID,"ActionName","Controllername", new { id = item.id }, null)</text>","Driver ID"),*@
+            @*grid.Column("DriverName", "Driver Name"),
+                grid.Column("VehicleNo", "Vehicle No"),
+                    grid.Column("VehicleType", "Vehicle Type"),
+                 grid.Column("TripFrom", "Trip From"),
+                 grid.Column("TripTo", "Trip To"),
+                 grid.Column("PendingAmount", "Pending Amount"),
+                grid.column(format: @<text>@Html.ActionLink((string)item.InvoiceNo,"ActionName","Controllername", new { id = item.id }, null)</text>","Invoice No")
+                ),
+             htmlAttributes: new { id = "grid" })
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="pull-right">@grid.PagerList(mode: WebGridPagerModes.All, paginationStyle: "pagination pagination-sm")</div>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div>
+                        <label>No Data found...</label>
+                    </div>
+                }
+            </div>*@
+            </div>
+        
+    }
+</section>
+@section secscripts{
+    <script src="@Url.Content("~/Scripts/jquery.validate.js")"></script>
+<script src="@Url.Content("~/Scripts/moment-with-locales.js")"></script>
+<script src="@Url.Content("~/Scripts/bootstrap-datetimepicker.js")"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('#pendingAmount').parent().addClass('active');
+        });
+        $('.dtCss').datetimepicker({
+            icons: {
+                time: 'fa fa-clock-o',
+                date: 'fa fa-calendar',
+                up: 'fa fa-arrow-up',
+                down: 'fa fa-arrow-down',
+                previous: 'fa fa-arrow-left',
+                next: 'fa fa-arrow-right'
+            },
+            format: 'DD/MM/YYYY'
+        });
+    </script>
+}
+

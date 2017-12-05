@@ -1,0 +1,166 @@
+﻿@model PickC.Services.DTO.BookingHistoryDTO
+@using PickC.Internal2.HtmlHelpers
+@{
+    ViewBag.Title = "BookingHistory";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{
+    ViewBag.Title = "BookingHistory";
+    //Model.Datefrom = DateTime.Now;
+    //Model.DateTo = DateTime.Now;
+    WebGrid grid = new WebGrid(Model.booking, rowsPerPage: 10, canPage: true, selectionFieldName: "selectedRow", ajaxUpdateContainerId: "ajaxGrid");
+
+}
+@section seccss{
+    <link href="@Url.Content("~/Css/bootstrap-datetimepicker.css")" rel="stylesheet" />
+}
+<section class="content">
+    @using (Html.BeginForm("BookingsHistory", "Dashboard", FormMethod.Post, new { id = "frmBookingHistory", name = "frmBookingHistory" }))
+    {
+        <div class="row">
+            <div class="col-md-12">
+                @{ Html.RenderPartial("DashboardMenuList"); }
+            </div>
+        </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="tab-main-content">
+                        </div>
+                    </div>
+                </div>
+
+                <div id="myTabContent" class="tab-content">
+                    <div id="tab2" class="tab-pane fade in active">
+                        <div class="row" style="margin:10px 0 0 10px;">
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label>Date From</label>
+                                    <div class="input-group dtCss">
+                                        @Html.TextBoxFor(x => x.bookings.Datefrom, new {id="datefrom", @class = "form-control" })
+                                        <span class="input-group-btn">
+                                            <button type="button" class="btn btn-default"><i class="fa fa-calendar" aria-hidden="true"></i></button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label>Date To</label>
+                                    <div class="input-group dtCss">
+                                        @Html.TextBoxFor(x => x.bookings.DateTo, new { @class = "form-control" })
+                                        <span class="input-group-btn">
+                                            <button type="button" class="btn btn-default"><i class="fa fa-calendar" aria-hidden="true"></i></button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            @*<div class="col-md-2">
+                                    @Html.TextBoxFor(x =>x.BookingNo, new { @class = "form-control" })
+                                </div>
+                                 <div class="col-md-2">
+                                    @Html.TextBoxFor(x =>x.CustomerMobile, new { @class = "form-control"  })
+                                </div>*@
+                            <div class="col-md-2">
+                                <button type="submit" id="btnSearch" class="btn btn-primary" style="margin-top:25px;"><i class="fa fa-search"></i>Search </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="box-body" id="ajaxGrid">
+                    @if (Model.booking.Count != 0)
+                    {
+                        <div class="row">
+
+                            <div class="col-md-12">
+                                @grid.Table(
+                                    tableStyle: "table table-hover",
+                                    columns: grid.Columns(
+                                        @*grid.Column(format: @<text>@Html.ActionLink((string)item.BookingNo,"ActionName","Controllername", new { id = item.id }, null)</text>","Booking No"),*@
+                                                grid.Column("BookingNo", "Booking No"),
+                                                grid.Column("CustomerName", "Customer Name"),
+                                                grid.Column("CustomerID", "Customer Mobile"),
+                                                grid.Column("VehicleNo", "Vehicle No"),
+                                                grid.Column("DriverName", " Driver Name"),
+                                                grid.Column("InvoiceAmount", "Invoice Amount")
+                             //grid.Column("LocationTo", "Trip To")
+                             //grid.Column("InvoiceAmount", "Invoice Amount")
+                             ),
+                          htmlAttributes: new { id = "grid" })
+                            </div>
+                        </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="pull-right">@grid.PagerList(mode: WebGridPagerModes.All, paginationStyle: "pagination pagination-sm")</div>
+                                </div>
+                            </div>
+
+                    }
+                    else
+                    {
+                        <div>
+                            <label>No Data found...</label>
+                        </div>
+                    }
+
+                </div>
+                    }
+</section>
+@section secscripts{
+    <script src="@Url.Content("~/Scripts/jquery.validate.js")"></script>
+    <script src="@Url.Content("~/Scripts/moment-with-locales.js")"></script>
+    <script src="@Url.Content("~/Scripts/bootstrap-datetimepicker.js")"></script>
+
+
+    <script type="text/javascript">
+        $(function () {
+            $('#bookingHistory').parent().addClass('active');
+            $('.pagination ul li a').attr('href', '#');
+
+            //$('.dtCss').datetimepicker({
+            //    format: 'mm/dd/yy'
+            //});
+
+
+            $('.dtCss').datetimepicker({
+                icons: {
+                    time: 'fa fa-clock-o',
+                    date: 'fa fa-calendar',
+                    up: 'fa fa-arrow-up',
+                    down: 'fa fa-arrow-down',
+                    previous: 'fa fa-arrow-left',
+                    next: 'fa fa-arrow-right'
+                },
+                format: 'DD/MM/YYYY'
+            });
+
+            //$('#Datefrom,#DateTo').datetimepicker({
+            //    icons: {
+            //        time: 'fa fa-clock-o',
+            //        date: 'fa fa-calendar',
+            //        up: 'fa fa-arrow-up',
+            //        down: 'fa fa-arrow-down'
+            //    },
+            //    format: 'DD/MM/YYYY'
+            //});
+            //$('#DateTo,#Datefrom').datepicker();
+            //$('#Datefrom').datepicker();
+            $('#frmBookingHistory').validate({
+                rules: {
+                'bookings.DateTo': {
+                        required: true
+                    },
+                    'bookings.Datefrom': {
+                        required: true
+                    }
+                }
+            });
+
+        });
+
+        function HistorySearch() {
+            $('#frmBookingHistory').validate();
+            $('#frmBookingHistory').submit();
+        }
+    </script>
+}
