@@ -107,15 +107,6 @@
     <Reference Include="Microsoft.Practices.Unity.Interception">
       <HintPath>C:\dlls\Microsoft.Practices.Unity.Interception.dll</HintPath>
     </Reference>
-    <Reference Include="NetTms.Mvc">
-      <HintPath>C:\dlls\NetTms.Mvc.dll</HintPath>
-    </Reference>
-    <Reference Include="NetTms.Objects">
-      <HintPath>C:\dlls\NetTms.Objects.dll</HintPath>
-    </Reference>
-    <Reference Include="NetTms.Services">
-      <HintPath>C:\dlls\NetTms.Services.dll</HintPath>
-    </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\PickC.Internal\bin\Newtonsoft.Json.dll</HintPath>
     </Reference>
