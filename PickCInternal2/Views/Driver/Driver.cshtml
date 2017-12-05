@@ -24,11 +24,11 @@
 
                         <div class="box-tools">
                             <div class="input-group input-group-sm" style="width: 150px;">
-                                <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
+                                @*<input type="text" name="table_search" class="form-control pull-right" placeholder="Search">*@
 
                                 <div class="input-group-btn">
-                                    <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>&nbsp;&nbsp;
-                                    <button type="button" class="btn btn-default" onclick="location.href = '@Url.Content("~/Driver/Add")'"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                                    @*<button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>&nbsp;&nbsp;*@
+                                    <button type="button" class="btn btn-default pull-right" onclick="location.href = '@Url.Content("~/Driver/Add")'"><i class="fa fa-plus" aria-hidden="true"></i></button>
                                 </div>
                             </div>
                         </div>
@@ -44,7 +44,7 @@
              grid.Column("DriverID", "ID"),
              grid.Column("DriverName", "Name"),
              //grid.Column("VehicleNo", "VehicleNo"),
-             grid.Column("DriverID", "#Action", format: @<text><a href="@Url.Content("~/driver/edit?driverID=" + item.DriverID)">@item.DriverName</a></text>)
+             grid.Column("DriverID", "#Action", format: @<text><a href="@Url.Content("~/driver/edit?driverID=" + item.DriverID)"><i class="fa fa-pencil "aria-hidden="true"></i></a></text>)
          ),
          htmlAttributes: new { id = "grid" })
                                 </div>
