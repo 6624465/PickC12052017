@@ -343,12 +343,12 @@
     <Content Include="Views\Operator\Operator.cshtml" />
     <Content Include="Scripts\angular.min.js.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Views\Operator\OperatorDetails.cshtml" />
     <Content Include="Views\Dashboard\GetDriversList.cshtml" />
     <Content Include="Views\Shared\_Sidebar.cshtml" />
     <Content Include="Views\Dashboard\SearchBookingHistory.cshtml" />
     <Content Include="Views\Driver\Edit.cshtml" />
     <Content Include="Views\Driver\Add.cshtml" />
+    <Content Include="Views\Operator\OperatorDetails.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -17,7 +17,7 @@ namespace Master.DataFactory
         /// <summary>
         /// [Master].[Customer]
         /// </summary>
-
+        public const string SEARCHCUSTOMER = "[Master].[usp_SearchCustomers]";
         public const string SELECTCUSTOMER = "[Master].[usp_CustomerSelect]";
         public const string LISTCUSTOMER = "[Master].[usp_CustomerList]";
         public const string SAVECUSTOMER = "[Master].[usp_CustomerSave]";

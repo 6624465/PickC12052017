@@ -31,7 +31,7 @@ namespace Master.DataFactory
         }
         public List<Operator> GetList()
         {
-            return db.ExecuteSprocAccessor(DBRoutine.LISTDRIVER, MapBuilder<Operator>.BuildAllProperties()).ToList();
+            return db.ExecuteSprocAccessor(DBRoutine.LISTOPERATOR, MapBuilder<Operator>.BuildAllProperties()).ToList();
         }
         public bool Save<T>(T item, DbTransaction parentTransaction) where T : IContract
         {
