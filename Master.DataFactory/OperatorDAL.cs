@@ -103,9 +103,9 @@ namespace Master.DataFactory
                         });
                     }
 
-                    if (operatorItem.OperatorVehicleList != null && operatorItem.OperatorVehicleList.Count > 0)
+                    if (operatorItem.OperatorVehicle != null && operatorItem.OperatorVehicle.Count > 0)
                     {
-                        operatorItem.OperatorVehicleList.ForEach(x =>
+                        operatorItem.OperatorVehicle.ForEach(x =>
                         {
                             x.OperatorVehicleID = operatorItem.OperatorID;
                             result = new OperatorVehicleDAL().Save(x, transaction) == true ? 1 : 0;
@@ -242,7 +242,7 @@ namespace Master.DataFactory
 
             operatorItem.AddressList = new AddressDAL().GetList(operatorItem.OperatorID);
             operatorItem.OperatorDriverList = new OperatorDriverDAL().GetSelectList(operatorItem.OperatorID);
-            operatorItem.OperatorVehicleList = new OperatorVehicleDAL().GetOperatorVehicleListById(operatorItem.OperatorID);
+            operatorItem.OperatorVehicle = new OperatorVehicleDAL().GetOperatorVehicleListById(operatorItem.OperatorID);
             operatorItem.BankDetails = new BankDetailsDAL().GetList(operatorItem.OperatorID);
             return operatorItem;
         }
@@ -256,7 +256,7 @@ namespace Master.DataFactory
 
             operatorItem.AddressList = new AddressDAL().GetList(operatorItem.OperatorID);
             operatorItem.OperatorDriverList = new OperatorDriverDAL().GetSelectList(operatorItem.OperatorID);
-            operatorItem.OperatorVehicleList = new OperatorVehicleDAL().GetOperatorVehicleListById(OperatorID);
+            operatorItem.OperatorVehicle = new OperatorVehicleDAL().GetOperatorVehicleListById(OperatorID);
             operatorItem.BankDetails = new BankDetailsDAL().GetList(operatorItem.OperatorID);
 
             return operatorItem;
