@@ -153,10 +153,10 @@ namespace PickC.Internal2.Controllers
         }
         public async Task<JsonResult> GetDriverBySearch(string status)
         {
-            //var driverList = await new DriverService(AUTHTOKEN, p_mobileNo).GetDriverBySearch(status);
+            var driverList = await new DriverService(AUTHTOKEN, p_mobileNo).GetDriverBySearch(status);
 
-            //return Json(driverList, JsonRequestBehavior.AllowGet);
-            return Json(new { }, JsonRequestBehavior.AllowGet);
+            return Json(driverList, JsonRequestBehavior.AllowGet);
+            //return Json(new { }, JsonRequestBehavior.AllowGet);
         }
 
         public async Task<JsonResult> GetDriverDetails(string id)

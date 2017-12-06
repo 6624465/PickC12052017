@@ -24,7 +24,6 @@
                 <div id="myTabContent" class="tab-content">
                     <div class="tab-pane fade in active" id="home">
                         <div class="row map-container">
-
                             <div class="col-md-3">
                                 <div class="search-map">
                                     @*<input type="text" id="txtDriverName" placeholder="search by name" class="form-control" />*@
@@ -35,7 +34,6 @@
                                     </select>
                                 </div>
                                 <div class="dr-list" id="driverList">
-
                                     <ul class="listofvhl">
                                         @foreach (var item in Model.driverList)
                                         {
@@ -213,7 +211,7 @@
             $('#ddlSearchByStatus').on("change", function () {
                 debugger;
                 $.ajax({
-                    url: '@Url.Content("~/Internal/Dashboard/GetDriverBySearch")',
+                    url: '@Url.Content("~/Dashboard/GetDriverBySearch")',
                     method: 'POST',
                     contentType: 'application/json',
                     dataType: 'json',
@@ -221,13 +219,14 @@
                     success: function (data) {
 
                         $('#driverList').val();
-                        var html = '';
+                        var html = '';   
                         $.each(data, function (key, val) {
                             html += '<ul class="listofvhl">'
                             html += '<li onclick="getDriverDetails(this)" id=' + val.DriverID + '><img src="@Url.Content( "~/images/icon.png")" class="img-circle" alt="driver" height="20" style="float:left;">';
                             html += '<div style="float:left;padding-left:10px;">';
                             html += '<span style="display:block"> ' + val.DriverName + '</span>';
-                            html += '<span style="display:block"> ' + val.VehicleNo + ' </span> </div>';
+                            html += '<span style="display:block"> ' + val.VehicleNo + '</span>';
+                            html += '<span style="display:block"> ' + val.MobileNo + ' </span> </div>';
                             html += '<div class="clearfix"></div>';
                             html += '<span class="active-dr">';
                             if (val.Status) {

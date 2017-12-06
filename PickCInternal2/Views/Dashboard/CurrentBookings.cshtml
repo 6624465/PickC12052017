@@ -3,6 +3,16 @@
     ViewBag.Title = "CurrentBookings";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@section seccss{
+    <style type="text/css">
+        #map {
+            height: 530px;
+            width: 100%;
+            margin: 0px;
+            padding: 0px;
+        }
+    </style>
+}
 
 <section class="content">
     @using (Html.BeginForm("CurrentBookings", "Dashboard", FormMethod.Post, new { id = "frmCurrentBookings" }))
@@ -21,6 +31,7 @@
         </div>
             <div id="myTabContent" class="tab-content">
                 <div class="tab-pane fade in active" id="home">
+                    <div class="row map-container">
                         <div class="col-md-3">
                             <div class="search-map">
                                 <select id="ddlSearchCustomerByStatus" class="form-control">
@@ -36,13 +47,13 @@
                                     {
                                         <li>
                                             @*<img src="~/images/user_male2-512.png" alt="customer" height="25" style="float:left;" />*@
-                                           <div style="float:left;padding-left:10px;">
+                                            <div style="float:left;padding-left:10px;">
                                                 <span style="display:block">@item.CustomerName</span>
                                                 <span style="display:block"> @item.ReceiverMobileNo</span>
                                                 <span style="display:block"> @item.BookingNo</span>
                                             </div>
                                             <div class="clearfix"></div>
-                                          <span class="active-dr">
+                                            <span class="active-dr">
                                                 @if (item.Status == 1)
                                                 {
                                                     <i class="fa fa-circle text-danger"></i>
@@ -60,9 +71,11 @@
                                     }
                                 </ul>
                             </div>
-                            <div class="col-md-9">
-                                <div id="map" style="border: 1px solid rgba(255,255,255,0.15);"></div>
-                            </div>
+                          
+                        </div>
+                        <div class="col-md-9">
+                            <div id="map" style="border: 1px solid rgba(255,255,255,0.15);"></div>
+                        </div> 
                         </div>
                     </div>
                 </div>
