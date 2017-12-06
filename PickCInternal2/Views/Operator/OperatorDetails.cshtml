@@ -927,13 +927,18 @@ new { @class = "form-control" })
                         }
                     });
                 }
-                function ModelChanged(el) {
-                    var tonnage = el.value;
+        function ModelChanged(el) {
+            debugger;
+            var tonnage = el.value;
+        
+                $('#operatorVehicle_Model option').val(tonnage);
+          
                     $.ajax({
                         url: '@Url.Content("~/Operator/GetTonnage?tonnage=")' + tonnage,
                         method: 'get',
                         contentType: 'application/json',
                         success: function (data) {
+                            debugger;
                             $.each(data, function (i, item) {
                                 $('#operatorVehicle_Tonnage').val(item.Text);
                             });

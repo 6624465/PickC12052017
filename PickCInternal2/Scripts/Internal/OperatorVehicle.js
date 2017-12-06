@@ -30,7 +30,12 @@ function EditOperatorVehicle(index) {
     $('#operatorVehicle_VehicleCategory').val($('#' + baseID + 'VehicleCategory').val());
     var selectedCategory = {};
     selectedCategory.value = $('#' + baseID + 'VehicleCategory').val();
-    onChangeVehicleCategory(selectedCategory)
+    onChangeVehicleCategory(selectedCategory);
+    var el = {};
+    el.value = $('#' + baseID + 'Model').val();
+    ModelChanged(el);
+     $('#operatorVehicle_Model').val($('#' + baseID + 'Model').val());
+   
     $('#operatorVehicle_Tonnage').val($('#' + baseID + 'Tonnage').val());
     //$('#operatorVehicle_VehicleType option').filter(function () {
     //    return this.text == $('#' + baseID + 'VehicleType').val();
