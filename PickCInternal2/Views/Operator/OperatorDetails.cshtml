@@ -757,21 +757,21 @@ new { @class = "form-control" })
                             $(this).remove();
                         }
                     });
-                    var vehicles = $('.vehicleNoCss');
-                    var newVehicleArr = new Array();
+                    //var vehicles = $('.vehicleNoCss');
+                    //var newVehicleArr = new Array();
 
-                    if (vehicles.length > 0) {
-                        $.each(vehicles, function (index, item) {
-                            //OPerator_OperatorVehicle_-1__VehicleRegistrationNo
-                            var vehicle = $('#OPerator_OperatorVehicle_' + index + '__VehicleRegistrationNo').val();
-                            newVehicleArr.push(vehicle);
-                        });
-                    }
-                    $.each(newVehicleArr, function (key, value) {
-                        $('#operatorDriverList_VehicleNo')
-                             .append($('<option class="new">', { value: value })
-                             .text(value));
-                    });
+                    //if (vehicles.length > 0) {
+                    //    $.each(vehicles, function (index, item) {
+                    //        //OPerator_OperatorVehicle_-1__VehicleRegistrationNo
+                    //        var vehicle = $('#OPerator_OperatorVehicle_' + index + '__VehicleRegistrationNo').val();
+                    //        newVehicleArr.push(vehicle);
+                    //    });
+                    //}
+                    //$.each(newVehicleArr, function (key, value) {
+                    //    $('#operatorDriverList_VehicleNo')
+                    //         .append($('<option class="new">', { value: value })
+                    //         .text(value));
+                    //});
 
 
                 }
@@ -911,6 +911,7 @@ new { @class = "form-control" })
                         method: 'get',
                         contentType: 'application/json',
                         success: function (data) {
+                            debugger
                             $('#operatorVehicle_Model').removeAttr("disabled");
                             $("#operatorVehicle_Model").html(""); // clear before appending new list
                             $("<option value='-1'>Select item</option>").appendTo("#operatorVehicle_Model");
