@@ -78,7 +78,6 @@ namespace PickC.Internal2.Controllers
             var currentbookings = await new SearchService(AUTHTOKEN, p_mobileNo).SearchCurrentBookingAsync(search);
             var bookingSearchVM = new BookingSearchDTO();
             bookingSearchVM.booking = currentbookings;
-
             return View("SearchBookingHistory", bookingSearchVM);
         }
         [HttpGet]
@@ -87,6 +86,8 @@ namespace PickC.Internal2.Controllers
             var currentbookings = await new SearchService(AUTHTOKEN, p_mobileNo).BookingListAsync();
             var bookingSearchVM = new BookingSearchDTO();
             bookingSearchVM.booking = currentbookings;
+            var tripMonitor = await GetTripMonitorData();
+            ViewBag.trips = tripMonitor;
             return View(bookingSearchVM);
         }
         public async Task<JsonResult> GetCustomerBySearch(int? status)
@@ -152,10 +153,10 @@ namespace PickC.Internal2.Controllers
         }
         public async Task<JsonResult> GetDriverBySearch(string status)
         {
-            //var driverList = await new DriverService(AUTHTOKEN, p_mobileNo).GetDriverBySearch(status);
+            var driverList = await new DriverService(AUTHTOKEN, p_mobileNo).GetDriverBySearch(status);
 
-            //return Json(driverList, JsonRequestBehavior.AllowGet);
-            return Json(new { }, JsonRequestBehavior.AllowGet);
+            return Json(driverList, JsonRequestBehavior.AllowGet);
+            //return Json(new { }, JsonRequestBehavior.AllowGet);
         }
 
         public async Task<JsonResult> GetDriverDetails(string id)

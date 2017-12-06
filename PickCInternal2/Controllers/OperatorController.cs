@@ -181,8 +181,9 @@ namespace PickCInternal2.Controllers
         }
         [HttpGet]
         public async Task<JsonResult> GetCategoryModel(int categoryValue)
-        {
-            var model = (await new OperatorVehicleService(AUTHTOKEN, p_mobileNo).GetOperatorModelList()).Where(x => x.VehicleGroup == categoryValue).Select(m => new { Value = m.Model, Text = m.Model }).ToList();
+         {
+            var model1 = (await new OperatorVehicleService(AUTHTOKEN, p_mobileNo).GetOperatorModelList());
+            var model=model1.Where(x => x.VehicleGroup == categoryValue).Select(m => new { Value = m.Model, Text = m.Model }).ToList();
             return Json(model, JsonRequestBehavior.AllowGet);
         }
         [HttpGet]
