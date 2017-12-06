@@ -44,7 +44,7 @@
              grid.Column("DriverID", "ID"),
              grid.Column("DriverName", "Name"),
              //grid.Column("VehicleNo", "VehicleNo"),
-             grid.Column("DriverID", "#Action", format: @<text><a href="@Url.Content("~/driver/edit?driverID=" + item.DriverID)"><i class="fa fa-pencil "aria-hidden="true"></i></a></text>)
+             grid.Column("DriverID", "#Edit", format: @<text><a href="@Url.Content("~/driver/edit?driverID=" + item.DriverID)"><i class="fa fa-pencil "aria-hidden="true"></i></a></text>)
          ),
          htmlAttributes: new { id = "grid" })
                                 </div>
