@@ -221,12 +221,13 @@
                         $('#driverList').val();
                         var html = '';   
                         $.each(data, function (key, val) {
+                            var vehicleno = val.VehicleNo == null ? '' : val.VehicleNo;
                             html += '<ul class="listofvhl">'
                             html += '<li onclick="getDriverDetails(this)" id=' + val.DriverID + '><img src="@Url.Content( "~/images/icon.png")" class="img-circle" alt="driver" height="20" style="float:left;">';
                             html += '<div style="float:left;padding-left:10px;">';
                             html += '<span style="display:block"> ' + val.DriverName + '</span>';
-                            html += '<span style="display:block"> ' + val.VehicleNo + '</span>';
-                            html += '<span style="display:block"> ' + val.MobileNo + ' </span> </div>';
+                            html += '<span style="display:block"> ' + vehicleno + '</span>';
+                            html += '<span style="display:block"> ' + val.MobileNo +' </span> </div>';
                             html += '<div class="clearfix"></div>';
                             html += '<span class="active-dr">';
                             if (val.Status) {
