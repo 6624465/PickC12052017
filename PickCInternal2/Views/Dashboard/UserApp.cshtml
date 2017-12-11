@@ -1,55 +1,18 @@
-﻿@using PickC.Internal2.HtmlHelpers
+﻿@model  Master.Contract.UserData
+
 @{
     ViewBag.Title = "UserApp";
     Layout = "~/Views/Shared/_Layout.cshtml";
     //WebGrid grid =
     // new WebGrid(Model.booking, rowsPerPage: 10, selectionFieldName: "selectedRow", ajaxUpdateContainerId: "grid");
 }
+@section seccss{
+     <link href="@Url.Content("~/Css/bootstrap-datetimepicker.css")" rel="stylesheet" />
+    }
 @*<section>*@
 <section class="content">
     <div class="row">
         <div class="col-md-12">
-            @*<ul id="myTab" class="nav nav-tabs">
-                    <li>
-                        <a href="#tab1" data-toggle="tab" onclick="redirect();">
-                            <img class="fa fa-user-o" aria-hidden="true" style="width:12px;">
-                            Drivers Status
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#ios" data-toggle="tab" onclick="bookingsredirect();">Current Bookings</a>
-                    </li>
-                    <li>
-                        <a href="#tab3" data-toggle="tab" onclick="History();">
-                            Booking History
-                        </a>
-                    </li>
-                    <li class="active">
-                        <a href="#tab4" data-toggle="tab">
-                            User App
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#tab5" data-toggle="tab" onclick="paymenthistory();">
-                            Payment History
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#tab6" data-toggle="tab" onclick="pendingamount();">
-                            Pending Amount
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#tab7" data-toggle="tab" onclick="driverlist();">
-                            Driver List
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#tab8" data-toggle="tab" onclick="driverdetails();">
-                            Driver Details
-                        </a>
-                    </li>
-                </ul>*@
             @{ Html.RenderPartial("DashboardMenuList"); }
         </div>
     </div>
@@ -104,6 +67,38 @@
                         </div>
                         <!-- /.info-box -->
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12" style="margin:10px 0 0 10px;">
+            <div class="row">
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label>Date From</label>
+                        <div class="input-group dtCss">
+                            @Html.TextBoxFor(x => x.dateFrom, new { id = "datefrom", @class = "form-control" })
+                            <span class="input-group-btn">
+                                <button type="button" class="btn btn-default"><i class="fa fa-calendar" aria-hidden="true"></i></button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label>Date To</label>
+                        <div class="input-group dtCss">
+                            @Html.TextBoxFor(x => x.dateto, new { id = "dateto", @class = "form-control" })
+                            <span class="input-group-btn">
+                                <button type="button" class="btn btn-default"><i class="fa fa-calendar" aria-hidden="true"></i></button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-2">
+                    <button type="submit" id="btnSearch" class="btn btn-primary" style="margin-top:25px;"><i class="fa fa-search"></i>Search </button>
                 </div>
             </div>
         </div>
@@ -308,9 +303,22 @@
         </section>*@
     @section secscripts{
         <script src="@Url.Content("~/Scripts/jquery.validate.js")"></script>
+        <script src="@Url.Content("~/Scripts/moment-with-locales.js")"></script>
+        <script src="@Url.Content("~/Scripts/bootstrap-datetimepicker.js")"></script>
         <script type="text/javascript">
             $(function () {
                 $('#userApp').parent().addClass('active');
+            });
+            $('.dtCss').datetimepicker({
+                icons: {
+                    time: 'fa fa-clock-o',
+                    date: 'fa fa-calendar',
+                    up: 'fa fa-arrow-up',
+                    down: 'fa fa-arrow-down',
+                    previous: 'fa fa-arrow-left',
+                    next: 'fa fa-arrow-right'
+                },
+                format: 'DD/MM/YYYY'
             });
         </script>
     }
