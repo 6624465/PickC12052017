@@ -194,7 +194,7 @@
                                     <tr>
                                         <th>Address 1</th>
                                         <th>Address 2</th>
-                                        <th>#Edit</th>
+                                        <th>#Action</th>
                                     </tr>
                                 </thead>
                                 @if (Model.driver.AddressList.Count != 0)
@@ -233,6 +233,83 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box">
+                    <div class="box-header">
+                        <h3 class="box-title">Device Details</h3>
+                    </div>
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                        <label>Mobile Make</label>
+                                        <select name="Mobiles" class="form-control">
+                                            <option value="select">Select Mobile</option>
+                                            <option value="samsung">Samsung</option>
+                                            <option value="iphone">IPhone</option>
+                                            <option value="htc">HTC</option>
+                                            <option value="nokia">Nokia</option>
+                                        </select>
+                                    
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Model No</label>                                  
+                                    <select name="SamsungModels" class="form-control" onchange="">
+                                        <option value="select">Select Model No</option>
+                                        <option value="samsung">G7-105</option>
+                                        <option value="samsung">SM-32C</option>
+                                        <option value="samsung">Grand-101</option>
+                                        <option value="samsung">MN-62B</option>
+                                    </select>
+                                    @*<select name="iphoneModels" class="form-control" onchange="">
+                                        <option value="select">Select Model No</option>
+                                        <option value="iphone">5S 16GB</option>
+                                        <option value="iphone">6S Plus 32GB</option>
+                                        <option value="iphone">7S 16GB</option>
+                                        <option value="iphone">7S Plus 64GB</option>
+                                    </select>*@
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Date of Issue</label>
+                                    <div class="input-group dtCss">
+                                        @Html.TextBoxFor(x => x.devicedetails.Dateofissue,
+                                         new
+                                         {
+                                             @class = "form-control",
+                                             placeholder = "Date Of Issue"
+                                         })
+                                        <span class="input-group-btn">
+                                            <button type="button" class="btn btn-default"><i class="fa fa-calendar" aria-hidden="true"></i></button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Date of Return</label>
+                                    <div class="input-group dtCss">
+                                        @Html.TextBoxFor(x => x.devicedetails.Dateofreturn,
+                                         new
+                                         {
+                                             @class = "form-control",
+                                             placeholder = "Date Of Return"
+                                         })
+                                        <span class="input-group-btn">
+                                            <button type="button" class="btn btn-default"><i class="fa fa-calendar" aria-hidden="true"></i></button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+     </div>
         <div class="row">
             <div class="col-md-12">
                 <div class="box">
@@ -354,9 +431,22 @@
                     },
                     'driver.LicenseNo': {
                         required: true
+                    },
+                    'devicedetails.Dateofissue': {
+                        required:true
+                    },
+                    'devicedetails.Dateofreturn': {
+                        required:true
                     }
                 }
             });
+     
+            $("#SamsungModels").change(function () {
+                debugger;
+                    var selectedText = $(this).find("option:selected").text();
+                    var selectedValue = $(this).val();
+                });
+           
             $('.dtCss').datetimepicker({
                 format: 'DD/MM/YY'
             });

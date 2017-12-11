@@ -6,6 +6,11 @@
     // new WebGrid(Model.booking, rowsPerPage: 10, selectionFieldName: "selectedRow", ajaxUpdateContainerId: "grid");
 }
 @*<section>*@
+}
+@section seccss{
+    <link href="@Url.Content("~/Css/bootstrap-datetimepicker.css")" rel="stylesheet" />
+    <link href="~/Css/jquery.dataTables.min.css" rel="stylesheet" />
+}
 <section class="content">
     <div class="row">
         <div class="col-md-12">
@@ -306,12 +311,87 @@
                 </div>
             </div>
         </section>*@
+
+<div id="myTabContent" class="tab-content">
+    <div id="tab2" class="tab-pane fade in active">
+        <div class="row" style="margin:10px 0 0 10px;">
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label>Date From</label>
+                    <div class="input-group dtCss">
+                        @*@Html.TextBoxFor(x => x.bookings.Datefrom, new { @id = "startDate", @class = "form-control" })*@
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default"><i class="fa fa-calendar" aria-hidden="true"></i></button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label>Date To</label>
+                    <div class="input-group dtCss">
+                        @*@Html.TextBoxFor(x => x.bookings.DateTo, new { @class = "form-control", })*@
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default"><i class="fa fa-calendar" aria-hidden="true"></i></button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+
+            @*<div class="col-md-2">
+                    @Html.TextBoxFor(x =>x.BookingNo, new { @class = "form-control" })
+                </div>
+                 <div class="col-md-2">
+                    @Html.TextBoxFor(x =>x.CustomerMobile, new { @class = "form-control"  })
+                </div>*@
+            <div class="col-md-2">
+                <button type="submit" id="btnSearch" class="btn btn-primary" style="margin-top:25px;"><i class="fa fa-search"></i>Search </button>
+            </div>
+        </div>
+    </div>
+</div>
     @section secscripts{
         <script src="@Url.Content("~/Scripts/jquery.validate.js")"></script>
         <script type="text/javascript">
             $(function () {
                 $('#userApp').parent().addClass('active');
             });
+
+            //$('#frmBookingHistory').validate({
+            //    rules: {
+            //        'bookings.DateTo': {
+            //            required: true
+            //        },
+            //        'bookings.Datefrom': {
+            //            required: true
+            //        }
+            //    }
+            //});
+            //$(function () {
+            //    debugger;
+            //    //   $("#startDate").html(monthStartDay);
+            //});
+
+            //});
+            $('.dtCss').datetimepicker({
+                icons: {
+                    time: 'fa fa-clock-o',
+                    date: 'fa fa-calendar',
+                    up: 'fa fa-arrow-up',
+                    down: 'fa fa-arrow-down',
+                    previous: 'fa fa-arrow-left',
+                    next: 'fa fa-arrow-right'
+                },
+                format: 'DD/MM/YYYY'
+                //  Datefrom: monthStartDay
+            });
+
+            function HistorySearch() {
+                $('#frmBookingHistory').validate();
+                $('#frmBookingHistory').submit();
+            }
+
         </script>
     }
 
