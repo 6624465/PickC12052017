@@ -244,7 +244,7 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                         <label>Mobile Make</label>
-                                        <select name="Mobiles" class="form-control">
+                                        <select name="Mobiles" class="form-control" onchange="">
                                             <option value="select">Select Mobile</option>
                                             <option value="samsung">Samsung</option>
                                             <option value="iphone">IPhone</option>
@@ -257,7 +257,7 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Model No</label>                                  
-                                    <select name="SamsungModels" class="form-control" onchange="">
+                                    <select id="SamsungModels" class="form-control">
                                         <option value="select">Select Model No</option>
                                         <option value="samsung">G7-105</option>
                                         <option value="samsung">SM-32C</option>
@@ -441,17 +441,17 @@
                 }
             });
      
-            $("#SamsungModels").change(function () {
-                debugger;
-                    var selectedText = $(this).find("option:selected").text();
-                    var selectedValue = $(this).val();
-                });
+            
            
             $('.dtCss').datetimepicker({
                 format: 'DD/MM/YY'
             });
         });
-
+        $('#SamsungModels').change(function () {
+            debugger;
+            var selectedText = $(this).find("option:selected").text();
+            var selectedValue = $(this).val();
+        });
         function btnSave() {
             if ($('#frmDriverAdd').valid()) {
                 $('#frmDriverAdd').submit();
