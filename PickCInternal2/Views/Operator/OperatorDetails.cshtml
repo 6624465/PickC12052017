@@ -542,6 +542,54 @@ new { @class = "form-control" })
                             <label>Vehicle Attached No</label>
                             @Html.DropDownList("operatorDriverList_VehicleNo", new SelectList(ViewBag.VehicleNo, "Value", "Text"), "Select Category", new { @class = "form-control input-sm" })
                         </div>
+                    </div><br />
+                    <div class="row">
+                        <div class="col-md-2">
+                            <label>Driver Photo</label>
+                            </div>
+                        <div class="col-md-3">
+                            <input type="file" id="driverphoto" name="driverphoto" value="" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <label>License No</label>
+                        </div>
+                        <div class="col-md-3">
+                            <input type="file" id="licenseno" name="licenseno" value="" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <label>PAN</label>
+                        </div>
+                        <div class="col-md-3">
+                            <input type="file" id="pan" name="pan" value="" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <label>AADHAR</label>
+                        </div>
+                        <div class="col-md-3">
+                            <input type="file" id="aadhar" name="aadhar" value="" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <label>Address Proof</label>
+                       </div>
+                        <div class="col-md-3">
+                            <input type="file" id="addressproof" name="addressproof" value="" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <label>Others</label>
+                        </div>
+                        <div class="col-md-3">
+                            <input type="file" id="others" name="others" value="" multiple="multiple"/>
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
@@ -591,6 +639,38 @@ new { @class = "form-control" })
                         <div class="col-md-6">
                             <label>Tonnage</label>
                             <input class="form-control" id="operatorVehicle_Tonnage" name="operatorVehicle_Tonnage" type="text" value="" readonly="readonly" />
+                        </div>
+                    </div><br />
+                    <div class="row">
+                        <div class="col-md-2">
+                            <label>Registration (RC)</label>
+                        </div>
+                        <div class="col-md-3">
+                            <input type="file" id="registration" name="registration" value="" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <label>Insurance Document</label>
+                        </div>
+                        <div class="col-md-3">
+                            <input type="file" id="Insurance" name="Insurance" value="" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <label>Pollution Check Document</label>
+                        </div>
+                        <div class="col-md-3">
+                            <input type="file" id="pollutioncheck" name="pollutioncheck" value="" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <label>Others</label>
+                       </div>
+                        <div class="col-md-3">
+                            <input type="file" id="others" name="others" value="" multiple="multiple"/>
                         </div>
                     </div>
                     <div class="modal-footer">

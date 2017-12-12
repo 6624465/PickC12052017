@@ -6,7 +6,7 @@
 }
 
 @section seccss{
-    <link href="@Url.Content("~/Css/bootstrap-datetimepicker.css")" rel="stylesheet" />
+     <link href="@Url.Content("~/Css/bootstrap-datetimepicker.css")" rel="stylesheet" />
     <link href="~/Css/jquery.dataTables.min.css" rel="stylesheet" />
 }
 <section class="content">
@@ -75,55 +75,55 @@
         <div class="col-md-12" style="margin:10px 0 0 10px;">
             @using (Html.BeginForm("SearchTotalTrips", "Dashboard", FormMethod.Post, new { id = "frmuser", name = "frmuser" }))
             {
-                <div class="row">
-                    <div class="col-md-2">
-                        <div class="form-group">
-                            <label>Date From</label>
-                            <div class="input-group dtCss">
-                                @Html.TextBoxFor(x => x.dateFrom, new { id = "datefrom", @class = "form-control" })
-                                <span class="input-group-btn">
-                                    <button type="button" class="btn btn-default"><i class="fa fa-calendar" aria-hidden="true"></i></button>
-                                </span>
-                            </div>
+            <div class="row">
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label>Date From</label>
+                        <div class="input-group dtCss">
+                            @Html.TextBoxFor(x => x.dateFrom, new { id = "datefrom", @class = "form-control" })
+                            <span class="input-group-btn">
+                                <button type="button" class="btn btn-default"><i class="fa fa-calendar" aria-hidden="true"></i></button>
+                            </span>
                         </div>
-                    </div>
-                    <div class="col-md-2">
-                        <div class="form-group">
-                            <label>Date To</label>
-                            <div class="input-group dtCss">
-                                @Html.TextBoxFor(x => x.dateto, new { id = "dateto", @class = "form-control" })
-                                <span class="input-group-btn">
-                                    <button type="button" class="btn btn-default"><i class="fa fa-calendar" aria-hidden="true"></i></button>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-2">
-                        <button type="submit" id="btnSearch" class="btn btn-primary" style="margin-top:25px;"><i class="fa fa-search"></i>Search </button>
                     </div>
                 </div>
-            }
-        </div>
-    </div>
-    <div class="row">
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label>Date To</label>
+                        <div class="input-group dtCss">
+                            @Html.TextBoxFor(x => x.dateto, new { id = "dateto", @class = "form-control" })
+                            <span class="input-group-btn">
+                                <button type="button" class="btn btn-default"><i class="fa fa-calendar" aria-hidden="true"></i></button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-2">
+                    <button type="submit" id="btnSearch" class="btn btn-primary" style="margin-top:25px;"><i class="fa fa-search"></i>Search </button>
+                </div>
+            </div>
+                    }
+                        </div>
+                </div>
+                        <div class="row">
         <div id="chartcontainer" style="width:350px;margin-left:50px;"></div>
-    </div>
+                </div>
 </section>
 
 
-@section secscripts{
-    <script src="@Url.Content("~/Scripts/jquery.validate.js")"></script>
-    <script src="@Url.Content("~/Scripts/moment-with-locales.js")"></script>
-    <script src="@Url.Content("~/Scripts/bootstrap-datetimepicker.js")"></script>
+    @section secscripts{
+        <script src="@Url.Content("~/Scripts/jquery.validate.js")"></script>
+        <script src="@Url.Content("~/Scripts/moment-with-locales.js")"></script>
+        <script src="@Url.Content("~/Scripts/bootstrap-datetimepicker.js")"></script>
     @*<script src="@Url.Content("~/Scripts/highcharts.js")"></script>
     <script src="@Url.Content("~/Scripts/highcharts-more.js")"></script>
     <script src="@Url.Content("~/Scripts/exporting.js")"></script>*@
 
-    <script type="text/javascript">
-        $(function () {
-            $('#userApp').parent().addClass('active');
-        });
+        <script type="text/javascript">
+            $(function () {
+                $('#userApp').parent().addClass('active');
+            });
         $(document).ready(function () {
             $('#frmuser').validate({
                 rules: {
@@ -136,42 +136,19 @@
                    }
             });
         });
-        $('.dtCss').datetimepicker({
-            icons: {
-                time: 'fa fa-clock-o',
-                date: 'fa fa-calendar',
-                up: 'fa fa-arrow-up',
-                down: 'fa fa-arrow-down',
-                previous: 'fa fa-arrow-left',
-                next: 'fa fa-arrow-right'
-            },
-            format: 'DD/MM/YYYY'
-        });
-        var chart = Highcharts.chart('container', {
-
-            title: {
-                text: 'Chart.update'
-            },
-
-            subtitle: {
-                text: 'Plain'
-            },
-
-            xAxis: {
-                categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-            },
-
-            series: [{
-                type: 'column',
-                colorByPoint: true,
-                data: [29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4],
-                showInLegend: false
-            }]
-
-        });
-
-    </script>
-}
+            $('.dtCss').datetimepicker({
+                icons: {
+                    time: 'fa fa-clock-o',
+                    date: 'fa fa-calendar',
+                    up: 'fa fa-arrow-up',
+                    down: 'fa fa-arrow-down',
+                    previous: 'fa fa-arrow-left',
+                    next: 'fa fa-arrow-right'
+                },
+                format: 'DD/MM/YYYY'
+            });
+        </script>
+    }
 
 
 
