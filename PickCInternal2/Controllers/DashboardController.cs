@@ -10,6 +10,7 @@ using PickC.Services.DTO;
 using Operation.Contract;
 using Operation.BusinessFactory;
 
+
 namespace PickC.Internal2.Controllers
 {
     [WebAuthFilter]
@@ -40,7 +41,7 @@ namespace PickC.Internal2.Controllers
                 for (var i = 0; i < tripMonitorList.Count; i++)
                 {
                     var tripMonitor = new TripMonitorVm();
-                    tripMonitor.address = new Address
+                    tripMonitor.address = new ViewModals.Address
                     {
                         address = "",
                         lat = tripMonitorList[i].Latitude,
@@ -132,9 +133,21 @@ namespace PickC.Internal2.Controllers
             return View("SearchBookingHistory", bookingSearchVM);
         }
         [HttpGet]
-        public ActionResult UserApp()
+        public async Task<ActionResult> UserApp()
         {
+            ViewBag.totalBookings = await new UserService(AUTHTOKEN, p_mobileNo).GetBookingsCount();
+            ViewBag.totalRegistered = await new UserService(AUTHTOKEN, p_mobileNo).GetRegisteredCount();
             return View("UserApp");
+        }
+        [HttpPost]
+        public async Task<ActionResult> SearchTotalTrips(UserData userdata)
+        {
+            ViewBag.totalBookings = await new UserService(AUTHTOKEN, p_mobileNo).GetBookingsCount();
+            ViewBag.totalRegistered = await new UserService(AUTHTOKEN, p_mobileNo).GetRegisteredCount();
+            var UserList = await new UserService(AUTHTOKEN, p_mobileNo).searchBookingTripsAsync(userdata);
+            var userData = new UserData();
+            userData.userBookingList = UserList;
+            return View("UserAppBooking", userData);
         }
         [HttpGet]
         public ActionResult PaymentHistory()

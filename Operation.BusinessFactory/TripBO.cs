@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Operation.Contract;
 using Operation.DataFactory;
+using Master.Contract;
 
 namespace Operation.BusinessFactory
 {
@@ -53,6 +54,19 @@ namespace Operation.BusinessFactory
         {
             return tripDAL.TripUpdateTravelledDistance(tripID, distanceTravelled);
         }
-
+        //TOTALTRIPS
+        public List<UserBookingList> GetTotalTripsList(UserData userdata)
+        {
+            return tripDAL.GetTotalTrips(userdata);
+        }
+        public Int64 GetBookingsCount()
+        {
+            return tripDAL.GetCount();
+        }
+        public Int64 GetRegisteredCount()
+        {
+            return tripDAL.GetRegisteredCount();
+        }
+        
     }
 }

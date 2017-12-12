@@ -36,6 +36,23 @@ namespace PickCApi.Areas.Operation.Controllers
                 return InternalServerError(ex);
             }
         }
+        [HttpPost]
+        [Route("totalTrips")]
+        public IHttpActionResult TotalTripList(UserData data)
+        {
+            try
+            {
+                var tripList = new TripBO().GetTotalTripsList(data);
+                if (tripList != null)
+                    return Ok(tripList);
+                else
+                    return NotFound();
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
+        }
 
         [HttpPost]
         [Route("start")]
@@ -188,5 +205,33 @@ namespace PickCApi.Areas.Operation.Controllers
                 return InternalServerError(ex);
             }
         }
+        [HttpGet]
+        [Route("BookingCount")]
+        public IHttpActionResult BookingCount()
+        {
+            try {
+                var count = new TripBO().GetBookingsCount();
+                return Ok(count);
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
+        }
+        [HttpGet]
+        [Route("RegisteredCount")]
+        public IHttpActionResult RegisteredCount()
+        {
+            try
+            {
+                var count = new TripBO().GetRegisteredCount();
+                return Ok(count);
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
+        }
+        
     }
 }

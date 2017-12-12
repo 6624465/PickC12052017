@@ -267,7 +267,10 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\demo.js" />
+    <Content Include="Scripts\exporting.js" />
     <Content Include="Scripts\fastclick.js" />
+    <Content Include="Scripts\highcharts-more.js" />
+    <Content Include="Scripts\highcharts.js" />
     <Content Include="Scripts\icheck.min.js" />
     <Content Include="Scripts\Internal\OperatorBankDetails.js" />
     <Content Include="Scripts\Internal\DriverAddress.js" />
@@ -350,6 +353,7 @@
     <Content Include="Views\Driver\Edit.cshtml" />
     <Content Include="Views\Driver\Add.cshtml" />
     <Content Include="Views\Operator\OperatorDetails.cshtml" />
+    <Content Include="Views\Dashboard\UserAppBooking.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

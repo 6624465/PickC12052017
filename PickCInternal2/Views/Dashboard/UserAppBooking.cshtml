@@ -3,6 +3,22 @@
 @{
     ViewBag.Title = "UserApp";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    //WebGrid grid =
+    // new WebGrid(Model.booking, rowsPerPage: 10, selectionFieldName: "selectedRow", ajaxUpdateContainerId: "grid");
+    var MonthName = string.Empty;
+    var MonthNo = string.Empty;
+    if (Model.userBookingList != null)
+    {
+        for (var i = 0; i < Model.userBookingList.Count; i++)
+        {
+            MonthName += "'" + Model.userBookingList[i].MonthView + "'" + ",";
+            MonthNo += Model.userBookingList[i].totaltrips + ",";
+        }
+        MonthName = MonthName.TrimEnd(',');
+        MonthNo = MonthNo.TrimEnd(',');
+    }
+
+
 }
 
 @section seccss{
@@ -25,7 +41,7 @@
                             <span class="info-box-icon bg-aqua"><i class="ion ion-ios-gear-outline"></i></span>
                             <div class="info-box-content">
                                 <span class="info-box-text">User App Downloads</span>
-                                <span class="info-box-number"><small></small></span>
+                                <span class="info-box-number">90<small>%</small></span>
                             </div>
                             <!-- /.info-box-content -->
                         </div>
@@ -60,7 +76,7 @@
 
                             <div class="info-box-content">
                                 <span class="info-box-text">Cancellations</span>
-                                <span class="info-box-number"></span>
+                                <span class="info-box-number">2,000</span>
                             </div>
                             <!-- /.info-box-content -->
                         </div>
@@ -107,7 +123,7 @@
         </div>
     </div>
     <div class="row">
-        <div id="chartcontainer" style="width:350px;margin-left:50px;"></div>
+        <div id="chartcontainer" style="width:350px;"></div>
     </div>
 </section>
 
@@ -116,25 +132,13 @@
     <script src="@Url.Content("~/Scripts/jquery.validate.js")"></script>
     <script src="@Url.Content("~/Scripts/moment-with-locales.js")"></script>
     <script src="@Url.Content("~/Scripts/bootstrap-datetimepicker.js")"></script>
-    @*<script src="@Url.Content("~/Scripts/highcharts.js")"></script>
+    <script src="@Url.Content("~/Scripts/highcharts.js")"></script>
     <script src="@Url.Content("~/Scripts/highcharts-more.js")"></script>
-    <script src="@Url.Content("~/Scripts/exporting.js")"></script>*@
+    <script src="@Url.Content("~/Scripts/exporting.js")"></script>
 
     <script type="text/javascript">
         $(function () {
             $('#userApp').parent().addClass('active');
-        });
-        $(document).ready(function () {
-            $('#frmuser').validate({
-                rules: {
-                    'dateFrom': {
-                        required:true
-                    },
-                    'dateto':{
-                        required:true
-                            }
-                   }
-            });
         });
         $('.dtCss').datetimepicker({
             icons: {
@@ -147,31 +151,37 @@
             },
             format: 'DD/MM/YYYY'
         });
-        var chart = Highcharts.chart('container', {
+        //function getTripList() {
+
+        //}
+        var chart = Highcharts.chart('chartcontainer', {
 
             title: {
-                text: 'Chart.update'
+                text: 'Total Trips'
             },
 
             subtitle: {
-                text: 'Plain'
+                text: ''
             },
 
             xAxis: {
-                categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+                categories: [@Html.Raw(MonthName)]
             },
 
             series: [{
                 type: 'column',
                 colorByPoint: true,
-                data: [29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4],
+                data: [@Html.Raw(MonthNo)],
                 showInLegend: false
             }]
 
         });
 
+
     </script>
 }
+
+
 
 
 

@@ -77,6 +77,7 @@
     <Compile Include="SearchService.cs" />
     <Compile Include="Service.cs" />
     <Compile Include="TripMonitorService.cs" />
+    <Compile Include="UserService.cs" />
     <Compile Include="VehicleGroupService.cs" />
     <Compile Include="VehicleTypeService.cs" />
   </ItemGroup>

@@ -15,6 +15,7 @@ namespace Operation.DataFactory
         /// </summary>
 
         public const string SELECTTRIP = "[Operation].[usp_TripSelect]";
+        public const string  TOTALTRIPS = "[Operation].[usp_userTotaltripsList]";
         public const string LISTTRIP = "[Operation].[usp_TripList]";
         public const string SAVETRIP = "[Operation].[usp_TripSave]";
         public const string DELETETRIP = "[Operation].[usp_TripDelete]";
@@ -23,6 +24,9 @@ namespace Operation.DataFactory
         public const string DRIVERCURRENTTRIP = "[Operation].[usp_DriverCurrentTrip]";
         public const string TRIPUPDATETRAVELLEDDISTANCE = "[Operation].[usp_UpdateTripTravelledDistance]";
 
+
+        public const string BOOKINGCOUNT = "[Operation].[usp_TotalBooking]";/* shruthi*/
+        public const string REGISTERDBUTNOTBOOKEDCOUNT = "[Operation].[usp_CustomerLoginCount]";
 
         /// <summary>
         /// [Operation].[Invoice]

@@ -89,7 +89,6 @@
     <Compile Include="TripEstimateForCustomer.cs" />
     <Compile Include="TripInvoice.cs" />
     <Compile Include="TruckList.cs" />
-    <Compile Include="UserData.cs" />
     <Compile Include="VehicleCategory.cs" />
     <Compile Include="VehicleConfig.cs" />
   </ItemGroup>

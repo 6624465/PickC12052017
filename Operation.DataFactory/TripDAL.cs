@@ -81,11 +81,11 @@ namespace Operation.DataFactory
                 db.AddInParameter(savecommand, "BookingNo", System.Data.DbType.String, trip.BookingNo);
 
                 db.AddOutParameter(savecommand, "NewOrderNo", System.Data.DbType.String, 50);
-                
+
                 //trip.TripID = 
                 result = db.ExecuteNonQuery(savecommand, transaction);
 
-                if(result > 0)
+                if (result > 0)
                     trip.TripID = savecommand.Parameters["@NewOrderNo"].Value.ToString();
 
                 if (currentTransaction == null)
@@ -109,9 +109,9 @@ namespace Operation.DataFactory
 
         }
 
-        public bool EndTrip(TripEndDTO tripEndDTO,decimal distance)
+        public bool EndTrip(TripEndDTO tripEndDTO, decimal distance)
         {
-            var result = 0;            
+            var result = 0;
 
             if (currentTransaction == null)
             {
@@ -126,14 +126,14 @@ namespace Operation.DataFactory
 
                 var savecommand = db.GetStoredProcCommand(DBRoutine.TRIPEND);
                 db.AddInParameter(savecommand, "TokenNo", System.Data.DbType.String, tripEndDTO.Token);
-                db.AddInParameter(savecommand, "TripID", System.Data.DbType.String, tripEndDTO.TripID);                
-                db.AddInParameter(savecommand, "DriverID", System.Data.DbType.String, tripEndDTO.DriverID);                
+                db.AddInParameter(savecommand, "TripID", System.Data.DbType.String, tripEndDTO.TripID);
+                db.AddInParameter(savecommand, "DriverID", System.Data.DbType.String, tripEndDTO.DriverID);
                 db.AddInParameter(savecommand, "EndTime", System.Data.DbType.DateTime, tripEndDTO.EndTime);
                 db.AddInParameter(savecommand, "TripEndLat", System.Data.DbType.Decimal, tripEndDTO.TripEndLat);
                 db.AddInParameter(savecommand, "TripEndLong", System.Data.DbType.Decimal, tripEndDTO.TripEndLong);
                 db.AddInParameter(savecommand, "DistanceTravelled", System.Data.DbType.Decimal, 0.00M);
                 db.AddInParameter(savecommand, "Distance", System.Data.DbType.Decimal, distance);
-                result = db.ExecuteNonQuery(savecommand, transaction);                
+                result = db.ExecuteNonQuery(savecommand, transaction);
 
                 if (currentTransaction == null)
                     transaction.Commit();
@@ -244,7 +244,7 @@ namespace Operation.DataFactory
                 var udpatecommand = db.GetStoredProcCommand(DBRoutine.TRIPUPDATETRAVELLEDDISTANCE);
                 db.AddInParameter(udpatecommand, "TripID", System.Data.DbType.String, tripID);
                 db.AddInParameter(udpatecommand, "DistanceTravelled", System.Data.DbType.Decimal, distanceTravelled);
-                
+
 
                 result = db.ExecuteNonQuery(udpatecommand, transaction);
 
@@ -271,5 +271,23 @@ namespace Operation.DataFactory
 
         #endregion
 
+        public List<UserBookingList> GetTotalTrips(UserData data)
+        {
+            return db.ExecuteSprocAccessor(DBRoutine.TOTALTRIPS, MapBuilder<UserBookingList>.BuildAllProperties(), data.dateFrom, data.dateto).ToList();
+        }
+
+        public Int64 GetCount()
+        {
+            var command = db.GetStoredProcCommand(DBRoutine.BOOKINGCOUNT);
+            var recordCount = Convert.ToInt64(db.ExecuteScalar(command));
+            return recordCount;
+
+        }
+        public Int64 GetRegisteredCount()
+        {
+            var command = db.GetStoredProcCommand(DBRoutine.REGISTERDBUTNOTBOOKEDCOUNT);
+            var recordCount = Convert.ToInt64(db.ExecuteScalar(command));
+            return recordCount;
+        }
     }
 }

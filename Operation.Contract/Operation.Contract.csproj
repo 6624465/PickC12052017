@@ -58,6 +58,7 @@
     <Compile Include="Trip.cs" />
     <Compile Include="TripMonitor.cs" />
     <Compile Include="UpdateDriverCurrentLocation.cs" />
+    <Compile Include="UserData.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Master.Contract\Master.Contract.csproj">
