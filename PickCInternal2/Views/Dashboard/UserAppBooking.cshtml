@@ -7,7 +7,7 @@
     // new WebGrid(Model.booking, rowsPerPage: 10, selectionFieldName: "selectedRow", ajaxUpdateContainerId: "grid");
     var MonthName = string.Empty;
     var MonthNo = string.Empty;
-    if (Model.userBookingList != null)
+    if (Model.userBookingList != null  )
     {
         for (var i = 0; i < Model.userBookingList.Count; i++)
         {
@@ -123,7 +123,7 @@
         </div>
     </div>
     <div class="row">
-        <div id="chartcontainer" style="width:350px;"></div>
+        <div id="chartcontainer" style="width:350px;margin-left:7 0px;"></div>
     </div>
 </section>
 
@@ -153,29 +153,47 @@
         });
         //function getTripList() {
 
-        //}
-        var chart = Highcharts.chart('chartcontainer', {
-
-            title: {
-                text: 'Total Trips'
-            },
-
-            subtitle: {
-                text: ''
-            },
-
-            xAxis: {
-                categories: [@Html.Raw(MonthName)]
-            },
-
-            series: [{
-                type: 'column',
-                colorByPoint: true,
-                data: [@Html.Raw(MonthNo)],
-                showInLegend: false
-            }]
-
+        $(document).ready(function () {
+            $('#frmuser').validate({
+                rules: {
+                    'dateFrom': {
+                        required: true
+                    },
+                    'dateto': {
+                        required: true
+                    }
+                }
+            });
         });
+        //$('#dateto').blur(function () {
+        //    var datefrom = $('#datefrom').val();
+        //    var dateto = $('#dateto').val();
+        //    if(datefrom>dateto)
+
+        //});
+            var chart = Highcharts.chart('chartcontainer', {
+
+                title: {
+                    text: 'Total Trips'
+                },
+
+                subtitle: {
+                    text: ''
+                },
+
+                xAxis: {
+                    categories: [@Html.Raw(MonthName)]
+                },
+
+                series: [{
+                    type: 'column',
+                    colorByPoint: true,
+                    data: [@Html.Raw(MonthNo)],
+                    showInLegend: false
+                }]
+
+            });
+        
 
 
     </script>

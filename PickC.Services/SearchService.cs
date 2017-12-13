@@ -77,17 +77,17 @@ namespace PickC.Services
                 return ServiceResponse<List<Booking>>(client.Execute<List<Booking>>(request));
             });
         }
-        //public async Task<List<BookingHistory>> SearchBookingHistoryAsync(BookingHistoryDTO bookingDTO)
-        //{
-        //    IRestClient client = new RestClient(ApiBaseUrl);
-        //    var request = p_request;
-        //    request.Method = Method.POST;
-        //    request.Resource = "operation/search/bookingHistory";
-        //    request.AddJsonBody(bookingDTO);
+        public async Task<List<BookingHistory>> SearchBookingHistoryAsync(BookingHistoryDTO bookingDTO)
+        {
+            IRestClient client = new RestClient(ApiBaseUrl);
+            var request = p_request;
+            request.Method = Method.POST;
+            request.Resource = "operation/search/bookingHistory";
+            request.AddJsonBody(bookingDTO);
 
-        //    return ServiceResponse(
-        //        await client.ExecuteTaskAsync<List<BookingHistory>>(request));
-        //}
+            return ServiceResponse(
+                await client.ExecuteTaskAsync<List<BookingHistory>>(request));
+        }
         public async Task<List<Booking>> SearchBookingAsync(BookingSearchsDTO bookingDTO)
         {
             IRestClient client = new RestClient(ApiBaseUrl);

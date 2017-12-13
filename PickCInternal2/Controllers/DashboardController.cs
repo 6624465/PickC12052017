@@ -122,7 +122,7 @@ namespace PickC.Internal2.Controllers
             var bookingHistory = await new SearchService(AUTHTOKEN, p_mobileNo).SearchBookingAsync(search.bookings);
             var bookingSearchVM = new BookingHistoryDTO();
             bookingSearchVM.booking = bookingHistory;
-            return View("SearchBookingHistory", bookingSearchVM);
+            return View("BookingHistory", bookingSearchVM);
         }
         [HttpPost]
         public async Task<ActionResult> SearchBookingsHistory(BookingHistoryDTO search)
@@ -130,7 +130,7 @@ namespace PickC.Internal2.Controllers
             var bookingHistory = await new SearchService(AUTHTOKEN, p_mobileNo).SearchBookingAsync(search.bookings);
             var bookingSearchVM = new BookingHistoryDTO();
             bookingSearchVM.booking = bookingHistory;
-            return View("SearchBookingHistory", bookingSearchVM);
+            return View("BookingHistory", bookingSearchVM);
         }
         [HttpGet]
         public async Task<ActionResult> UserApp()

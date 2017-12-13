@@ -111,14 +111,14 @@ namespace PickC.Internal.Areas.Internal.Controllers
             bookingSearchVM.bookingHistory = bookingHistory;
             return View("BookingHistory", bookingSearchVM);
         }
-        [HttpPost]
-        public async Task<ActionResult> BookingsHistory(BookingHistoryDTO search)
-        {
-            var bookingHistory = await new SearchService(AUTHTOKEN, p_mobileNo).SearchBookingHistoryAsync(search);
-            var bookingSearchVM = new BookingHistoryDTO();
-            bookingSearchVM.bookingHistory = bookingHistory;
-            return View("BookingHistory", bookingSearchVM);
-        }
+        //[HttpPost]
+        //public async Task<ActionResult> BookingsHistory(BookingHistoryDTO search)
+        //{
+        //    var bookingHistory = await new SearchService(AUTHTOKEN, p_mobileNo).SearchBookingHistoryAsync(search);
+        //    var bookingSearchVM = new BookingHistoryDTO();
+        //    bookingSearchVM.bookingHistory = bookingHistory;
+        //    return View("BookingHistory", bookingSearchVM);
+        //}
         [HttpGet]
         public ActionResult UserApp()
         {
