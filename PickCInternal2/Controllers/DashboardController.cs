@@ -137,18 +137,34 @@ namespace PickC.Internal2.Controllers
         {
             ViewBag.totalBookings = await new UserService(AUTHTOKEN, p_mobileNo).GetBookingsCount();
             ViewBag.totalRegistered = await new UserService(AUTHTOKEN, p_mobileNo).GetRegisteredCount();
-            return View("UserApp");
+            //var CustomerList = await new UserService(AUTHTOKEN, p_mobileNo).GetRegisteredButNotBookedList();
+            var userData = new UserData();
+            userData.dateFrom = DateTime.Now;
+            userData.dateto = DateTime.Now;
+            return View("UserApp", userData);
         }
+        //[HttpGet]
+        //public async Task<ActionResult> TotalTrips()
+        //{
+        //    return View("UserAppBooking");
+        //}
         [HttpPost]
         public async Task<ActionResult> SearchTotalTrips(UserData userdata)
+
         {
             ViewBag.totalBookings = await new UserService(AUTHTOKEN, p_mobileNo).GetBookingsCount();
             ViewBag.totalRegistered = await new UserService(AUTHTOKEN, p_mobileNo).GetRegisteredCount();
             var UserList = await new UserService(AUTHTOKEN, p_mobileNo).searchBookingTripsAsync(userdata);
+          //  var CustomerList = await new UserService(AUTHTOKEN, p_mobileNo).GetRegisteredButNotBookedList();
             var userData = new UserData();
             userData.userBookingList = UserList;
-            return View("UserAppBooking", userData);
+           // userdata.customerStatusList = CustomerList;
+            return View("UserApp", userData);
         }
+        //public async Task<ActionResult> getRegisteredList()
+        //{
+        //    return View("UserRegister");
+        //}
         [HttpGet]
         public ActionResult PaymentHistory()
         {

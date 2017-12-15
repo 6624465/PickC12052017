@@ -44,6 +44,7 @@
     <Compile Include="BookingHistoryDetails.cs" />
     <Compile Include="BookingHistoryList.cs" />
     <Compile Include="CustomerLogin.cs" />
+    <Compile Include="CustomerStatus.cs" />
     <Compile Include="DriverActivity.cs" />
     <Compile Include="DriverLatLong.cs" />
     <Compile Include="DriverMonitorInCustomer.cs" />

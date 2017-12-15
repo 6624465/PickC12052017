@@ -48,6 +48,11 @@ namespace PickCApi
             MOBILENO,
             TYPE
         }
+        public static string MESSAGESENT = "Message Sent to Driver";
+        public static string ACCEPTREQUEST = "Accepted request by driver";
+        public static string REJECTREQUEST = "Rejected request by driver";
+
+
     }
 
     

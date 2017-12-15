@@ -3,11 +3,23 @@
 @{
     ViewBag.Title = "UserApp";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var MonthName = string.Empty;
+    var MonthNo = string.Empty;
+    if (Model.userBookingList != null)
+    {
+        for (var i = 0; i < Model.userBookingList.Count; i++)
+        {
+            MonthName += "'" + Model.userBookingList[i].MonthView + "'" + ",";
+            MonthNo += Model.userBookingList[i].totaltrips + ",";
+        }
+        MonthName = MonthName.TrimEnd(',');
+        MonthNo = MonthNo.TrimEnd(',');
+    }
 }
 
 @section seccss{
      <link href="@Url.Content("~/Css/bootstrap-datetimepicker.css")" rel="stylesheet" />
-    <link href="~/Css/jquery.dataTables.min.css" rel="stylesheet" />
+     <link href="~/Css/jquery.dataTables.min.css" rel="stylesheet" />
 }
 <section class="content">
     <div class="row">
@@ -16,62 +28,12 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-12">
-            <div class="tab-main-content">
-
-                <div class="row">
-                    <div class="col-md-3 col-sm-6 col-xs-12">
-                        <div class="info-box">
-                            <span class="info-box-icon bg-aqua"><i class="ion ion-ios-gear-outline"></i></span>
-                            <div class="info-box-content">
-                                <span class="info-box-text">User App Downloads</span>
-                                <span class="info-box-number"><small></small></span>
-                            </div>
-                            <!-- /.info-box-content -->
-                        </div>
-                        <!-- /.info-box -->
-                    </div>
-                    <div class="col-md-3 col-sm-6 col-xs-12">
-                        <div class="info-box">
-                            <span class="info-box-icon bg-red"><i class="fa fa-google-plus"></i></span>
-                            <div class="info-box-content">
-                                <span class="info-box-text">Total Trips</span>
-                                <span class="info-box-number">@ViewBag.totalBookings </span>
-                            </div>
-                            <!-- /.info-box-content -->
-                        </div>
-                        <!-- /.info-box -->
-                    </div>
-                    <div class="col-md-3 col-sm-6 col-xs-12">
-                        <div class="info-box">
-                            <span class="info-box-icon bg-green"><i class="ion ion-ios-cart-outline"></i></span>
-
-                            <div class="info-box-content">
-                                <span class="info-box-text">Registered But Not Booked</span>
-                                <span class="info-box-number">@ViewBag.totalRegistered</span>
-                            </div>
-                            <!-- /.info-box-content -->
-                        </div>
-                        <!-- /.info-box -->
-                    </div>
-                    <div class="col-md-3 col-sm-6 col-xs-12">
-                        <div class="info-box">
-                            <span class="info-box-icon bg-yellow"><i class="ion ion-ios-people-outline"></i></span>
-
-                            <div class="info-box-content">
-                                <span class="info-box-text">Cancellations</span>
-                                <span class="info-box-number"></span>
-                            </div>
-                            <!-- /.info-box-content -->
-                        </div>
-                        <!-- /.info-box -->
-                    </div>
-                </div>
-            </div>
-        </div>
+     <div class="col-md-12">
+         @{ Html.RenderPartial("UserApps"); }
+     </div>
     </div>
 
-    <div class="row">
+    <div class="row" id="SearchTrips">
         <div class="col-md-12" style="margin:10px 0 0 10px;">
             @using (Html.BeginForm("SearchTotalTrips", "Dashboard", FormMethod.Post, new { id = "frmuser", name = "frmuser" }))
             {
@@ -80,7 +42,7 @@
                     <div class="form-group">
                         <label>Date From</label>
                         <div class="input-group dtCss">
-                            @Html.TextBoxFor(x => x.dateFrom, new { id = "datefrom", @class = "form-control" })
+                            @Html.TextBoxFor(x => x.dateFrom,new { id = "datefrom", @class = "form-control" })
                             <span class="input-group-btn">
                                 <button type="button" class="btn btn-default"><i class="fa fa-calendar" aria-hidden="true"></i></button>
                             </span>
@@ -105,37 +67,26 @@
                     </div>
                     }
                 </div>
+       
             </div>
-                        <div class="row">
+    <div class="row">
         <div id="chartcontainer" style="width:350px;margin-left:50px;"></div>
-                            </div>
+    </div>
 </section>
-
-
     @section secscripts{
         <script src="@Url.Content("~/Scripts/jquery.validate.js")"></script>
         <script src="@Url.Content("~/Scripts/moment-with-locales.js")"></script>
         <script src="@Url.Content("~/Scripts/bootstrap-datetimepicker.js")"></script>
-    @*<script src="@Url.Content("~/Scripts/highcharts.js")"></script>
-    <script src="@Url.Content("~/Scripts/highcharts-more.js")"></script>
-    <script src="@Url.Content("~/Scripts/exporting.js")"></script>*@
+        <script src="@Url.Content("~/Scripts/highcharts.js")"></script>
+        <script src="@Url.Content("~/Scripts/highcharts-more.js")"></script>
+        <script src="@Url.Content("~/Scripts/exporting.js")"></script>
 
+  
         <script type="text/javascript">
             $(function () {
                 $('#userApp').parent().addClass('active');
             });
-        $(document).ready(function () {
-            $('#frmuser').validate({
-                rules: {
-                    'dateFrom': {
-                        required:true
-                    },
-                    'dateto':{
-                        required:true
-                            }
-                   }
-            });
-        });
+
             $('.dtCss').datetimepicker({
                 icons: {
                     time: 'fa fa-clock-o',
@@ -145,8 +96,42 @@
                     previous: 'fa fa-arrow-left',
                     next: 'fa fa-arrow-right'
                 },
-                format: 'MM/DD/YYYY'
+                format: 'DD/MM/YYYY'
             });
+
+            $(document).ready(function () {
+                $('#frmuser').validate({
+                    rules: {
+                        'dateFrom': {
+                            required: true
+                        },
+                        'dateto': {
+                            required: true
+                        }
+                    }
+                });
+            });
+
+            debugger
+            var chart = Highcharts.chart('chartcontainer', {
+                title: {
+                    text: 'Total Trips'
+                },
+                subtitle: {
+                    text: ''
+                },
+                xAxis: {
+                    categories: [@Html.Raw(MonthName)]
+                },
+                series: [{
+                    type: 'column',
+                    colorByPoint: true,
+                    data: [@Html.Raw(MonthNo)],
+                    showInLegend: false
+                }]
+
+            });
+        
         </script>
     }
 

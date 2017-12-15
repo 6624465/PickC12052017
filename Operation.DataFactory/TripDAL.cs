@@ -289,5 +289,9 @@ namespace Operation.DataFactory
             var recordCount = Convert.ToInt64(db.ExecuteScalar(command));
             return recordCount;
         }
+        public List<CustomerStatus> GetCustomerStatusList()
+        {
+            return db.ExecuteSprocAccessor(DBRoutine.REGISTEREDBUTNOTBOOKEDLIST, MapBuilder<CustomerStatus>.BuildAllProperties()).ToList();
+        }
     }
 }

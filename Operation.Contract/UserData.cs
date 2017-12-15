@@ -11,16 +11,13 @@ namespace Operation.Contract
         public DateTime dateFrom { get; set; }
         public DateTime dateto { get; set; }
         public List<UserBookingList> userBookingList { get; set; }
-        public BookingCount bookingCount { get; set; }
+        public List<CustomerStatus> customerStatusList { get; set; }
     }
     public class UserBookingList
     {
         public string MonthView { get; set; }
         public Int16 totaltrips { get; set; }
     }
-    public class BookingCount
-    {
-        public Int64 totalBookingCount { get; set; }
-    }
+    
 
 }

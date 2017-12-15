@@ -66,6 +66,7 @@
     <Compile Include="OperatorAttachment.cs" />
     <Compile Include="OperatorBankDetails.cs" />
     <Compile Include="OperatorDriver.cs" />
+    <Compile Include="OperatorDriverData.cs" />
     <Compile Include="OperatorDriverList.cs" />
     <Compile Include="OperatorDriversAmountList.cs" />
     <Compile Include="OperatorDriverTruckAttachment.cs" />
