@@ -143,11 +143,26 @@ namespace PickC.Internal2.Controllers
             userData.dateto = DateTime.Now;
             return View("UserApp", userData);
         }
-        //[HttpGet]
-        //public async Task<ActionResult> TotalTrips()
-        //{
-        //    return View("UserAppBooking");
-        //}
+        [HttpGet]
+        public  ActionResult RegisteredList()
+        {
+            var userData = new UserData();
+            DateTime dateTime = DateTime.Now;
+            userData.dateFrom = new DateTime(dateTime.Year, dateTime.Month, 1);
+            userData.dateto = DateTime.Now;
+            return View("RegisteredList", userData);
+        }
+        [HttpPost]
+        public async Task<ActionResult> RegisteredList(UserData user)
+        {
+            var CustomerList = await new UserService(AUTHTOKEN, p_mobileNo).GetRegisteredButNotBookedList();
+            var userData = new UserData();
+            userData.customerStatusList = new List<CustomerStatus>();
+            userData.customerStatusList = CustomerList;
+            userData.dateFrom = DateTime.Now;
+            userData.dateto = DateTime.Now;
+            return View("RegisteredList", userData);
+        }
         [HttpPost]
         public async Task<ActionResult> SearchTotalTrips(UserData userdata)
 
@@ -155,7 +170,7 @@ namespace PickC.Internal2.Controllers
             ViewBag.totalBookings = await new UserService(AUTHTOKEN, p_mobileNo).GetBookingsCount();
             ViewBag.totalRegistered = await new UserService(AUTHTOKEN, p_mobileNo).GetRegisteredCount();
             var UserList = await new UserService(AUTHTOKEN, p_mobileNo).searchBookingTripsAsync(userdata);
-          //  var CustomerList = await new UserService(AUTHTOKEN, p_mobileNo).GetRegisteredButNotBookedList();
+            //var CustomerList = await new UserService(AUTHTOKEN, p_mobileNo).GetRegisteredButNotBookedList();
             var userData = new UserData();
             userData.userBookingList = UserList;
            // userdata.customerStatusList = CustomerList;

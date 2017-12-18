@@ -45,7 +45,7 @@ namespace PickC.Services
         }
         public async Task<List<CustomerStatus>> GetRegisteredButNotBookedList()
         {
-            IRestClient client = new RestClient();
+            IRestClient client = new RestClient(ApiBaseUrl);
             var request = p_request;
             request.Method = Method.GET;
             request.Resource = "operation/trip/CustomerStatus";

@@ -357,6 +357,7 @@
     <Content Include="Views\Dashboard\UserAppBooking.cshtml" />
     <Content Include="Views\Dashboard\UserRegister.cshtml" />
     <Content Include="Views\Shared\UserApps.cshtml" />
+    <Content Include="Views\Dashboard\RegisteredList.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

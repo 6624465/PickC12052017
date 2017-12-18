@@ -49,7 +49,7 @@
                     </div>
                 </div>
             </div>
-@section secscripts{
+
 <script src="@Url.Content("~/Scripts/jquery.validate.js")"></script>
 
     <script type="text/javascript">
@@ -57,15 +57,16 @@
                 $('#userApp').parent().addClass('active');
             });
             function getTotalTrips() {
-                debugger
+                debugger;
                 window.location = "@Url.Content("~/Dashboard/UserApp")";
             }
             function getRegisteredList() {
-                window.location = '@Url.Content("~/Dashboard/getRegisteredList")';
+                debugger;
+                window.location = "@Url.Content("~/Dashboard/RegisteredList")";
             }
     
     </script>
-}
+
 
 
 

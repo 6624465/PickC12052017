@@ -32,46 +32,48 @@ namespace PickCApi.Areas.Operation.Controllers
                 return InternalServerError(ex);
             }
         }
-        //[HttpPost]
-        //[Route("UpdateDriverCurrentLocation")]
-        //public IHttpActionResult UpdateCurrentDriverLocation(AccuracyRate acc)
-        //{
-        //    try
-        //    {
-                
-        //        var updateDriverCurrentLocation = new UpdateDriverCurrentLocationSample
-        //        {
-        //            DriverID = HeaderValueByKey("DRIVERID"),
-        //            CurrentLatitude = Convert.ToDecimal(HeaderValueByKey("LATITUDE")),
-        //            CurrentLongitude = Convert.ToDecimal(HeaderValueByKey("LONGITUDE")),
-        //            IsLogIn = true,
-        //            IsOnDuty = true,
-        //            Accuracy=acc.accuracy,
-        //            Bearing = acc.bearing
-        //        };
-        //        var result = new DriverActivityBO().UpdateCurrentDriverLocation(updateDriverCurrentLocation);
-        //        if (result)
-        //            return Ok(new { Status = UTILITY.SUCCESSMESSAGE });
-        //        else
-        //            return Ok(new { Status = UTILITY.FAILEDMESSAGE });
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return InternalServerError(ex);
-        //    }
-        //}
+        [HttpPost]
+        [Route("UpdateDriverCurrentLocation")]
+        [ApiAuthFilter]
+        public IHttpActionResult UpdateCurrentDriverLocation(AccuracyRate acc)
+        {
+            try
+            {
 
-        //[HttpGet]
-        //[Route("DriverLatestFiveLatlong")]
-      
-        //public IHttpActionResult DriverLatestFiveLatlong()
-        //{
-        //    var DriverID = HeaderValueByKey("DRIVERID");
-        //    var AUTH_TOKEN = HeaderValueByKey("AUTH_TOKEN");
-        //    var latlongs = new DriverActivityBO().GetFiveLatLongsforDriver(DriverID, AUTH_TOKEN).TrimEnd('|');
-        //    var result = GetLatLongsValues(latlongs);
-        //    return Ok(new { result });
-        //}
+                var updateDriverCurrentLocation = new UpdateDriverCurrentLocation
+                {
+                    DriverID = HeaderValueByKey("DRIVERID"),
+                    AUTH_TOKEN = HeaderValueByKey("AUTH_TOKEN"),
+                    CurrentLatitude = Convert.ToDecimal(HeaderValueByKey("LATITUDE")),
+                    CurrentLongitude = Convert.ToDecimal(HeaderValueByKey("LONGITUDE")),
+                    IsLogIn = true,
+                    IsOnDuty = true,
+                    Accuracy = acc.accuracy,
+                    Bearing = acc.bearing
+                };
+                var result = new DriverActivityBO().UpdateCurrentDriverLocation(updateDriverCurrentLocation);
+                if (result)
+                    return Ok(new { Status = UTILITY.SUCCESSMESSAGE });
+                else
+                    return Ok(new { Status = UTILITY.FAILEDMESSAGE });
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
+        }
+
+        [HttpGet]
+        [Route("driverlatestfivelatlong")]
+
+        public IHttpActionResult driverlatestfivelatlong()
+        {
+            var driverid = HeaderValueByKey("DRIVERID");
+            var auth_token = HeaderValueByKey("AUTH_TOKEN");
+            var latlongs = new DriverActivityBO().GetFiveLatLongsforDriver(driverid, auth_token).TrimEnd('|');
+            var result = GetLatLongsValues(latlongs);
+            return Ok(new { result });
+        }
         [HttpGet]
         [Route("DriverNotification")]
         public IHttpActionResult DriverNotification()
