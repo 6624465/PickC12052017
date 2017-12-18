@@ -18,6 +18,7 @@ namespace PickC.Internal2.Controllers
     public class DriverController : BaseController
     {
         [HttpGet]
+
         public async Task<ActionResult> Driver()
         {
             var driverList = await new DriverService(AUTHTOKEN, p_mobileNo).DriverDetailListAsync();
