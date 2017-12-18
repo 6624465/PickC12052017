@@ -125,9 +125,9 @@
                             <thead>
                                 <tr>
                                     <th><a href="">Invoice No.</a></th>
-                                    <th><a href="">INVOICE Date</a></th>
+                                    <th><a href="">Invoice Date</a></th>
                                     <th><a href="">Invoice Amount</a></th>
-                                    <th><a href="">GST</a></th>
+                                    <th><a href="">Gst</a></th>
                                     <th><a href="">Total Amount</a></th>
                                 </tr>
                             </thead>
@@ -149,9 +149,9 @@
                                 <thead>
                                     <tr>
                                         <th><a href="">Invoice No.</a></th>
-                                        <th><a href="">INVOICE Date</a></th>
+                                        <th><a href="">Invoice Date</a></th>
                                         <th><a href="">Invoice Amount</a></th>
-                                        <th><a href="">GST</a></th>
+                                        <th><a href="">Gst</a></th>
                                         <th><a href="">Total Amount</a></th>
                                     </tr>
                                 </thead>
@@ -262,15 +262,15 @@
   });
 
   $(document).ready(function () {
-      debugger;
+ 
       function close_accordion_section() {
-          debugger;
+       
           $('.accordion .accordion-section-title').removeClass('active');
           $('.accordion .accordion-section-content').slideUp(300).removeClass('open');
       }
 
       $('.accordion-section-title').click(function (e) {
-          debugger;
+     
           // Grab current anchor value
           var currentAttrValue = $(this).attr('href');
 
@@ -318,8 +318,8 @@
     color:yellow;
 }
 
-.accordion-section-title.active, .accordion-section-title:hover {
-    background:#FFFF00;
+.accordion-section-title:active, .accordion-section-title:hover,.accordion-section-title:focus {
+        background-color: rgb(236, 236, 58);
     text-decoration:none;
 }
 

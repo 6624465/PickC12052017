@@ -268,7 +268,7 @@ namespace Master.DataFactory
         {
             var item = ((Driver)lookupItem);
 
-            var driverItem = db.ExecuteSprocAccessor(DBRoutine.SELECTDRIVERS,
+            var driverItem = db.ExecuteSprocAccessor(DBRoutine.SELECTDRIVER,
                                                     MapBuilder<Driver>
                                                     .MapAllProperties()
                                                     .DoNotMap(x => x.Nationality).Build(),

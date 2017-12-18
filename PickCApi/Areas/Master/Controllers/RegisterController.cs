@@ -300,12 +300,12 @@ namespace PickCApi.Areas.Master.Controllers
 
         [HttpPost]
         [Route("forgotpassword")]
-        public IHttpActionResult Forgotpassword(ForgotPasswordDTO dto)
+        public IHttpActionResult Forgotpassword(ForgotPasswordDTO forgot)
         {
-            var customer = new CustomerBO().GetCustomer(new Customer { MobileNo = dto.MobileNo });
-            if (customer != null && customer.OTP == dto.OTP)
+            var customer = new CustomerBO().GetCustomer(new Customer { MobileNo = forgot.MobileNo });
+            if (customer != null && customer.OTP == forgot.OTP)
             {
-                customer.Password = dto.NewPassword;
+                customer.Password = forgot.NewPassword;
                 new CustomerBO().SaveCustomer(customer);
 
                 return Ok("Password updated...!");

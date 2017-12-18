@@ -166,6 +166,8 @@ namespace Operation.DataFactory
                 db.AddInParameter(savecommand, "CurrentLongitude", System.Data.DbType.String, updateDriverCurrentLocation.CurrentLongitude);
                 db.AddInParameter(savecommand, "IsLogIn", System.Data.DbType.Boolean, updateDriverCurrentLocation.IsLogIn);
                 db.AddInParameter(savecommand, "IsOnDuty", System.Data.DbType.Boolean, updateDriverCurrentLocation.IsOnDuty);
+                db.AddInParameter(savecommand, "Accuracy", System.Data.DbType.Decimal, updateDriverCurrentLocation.Accuracy);
+                db.AddInParameter(savecommand, "Bearing", System.Data.DbType.Decimal, updateDriverCurrentLocation.Bearing);
 
                 result = db.ExecuteNonQuery(savecommand, transaction);
 

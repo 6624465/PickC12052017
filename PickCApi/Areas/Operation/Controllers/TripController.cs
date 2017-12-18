@@ -232,6 +232,24 @@ namespace PickCApi.Areas.Operation.Controllers
                 return InternalServerError(ex);
             }
         }
-        
+        [HttpGet]
+        [Route("CustomerStatus")]
+        public IHttpActionResult CustomerStatus()
+        {
+            try
+            {
+                var result = new TripBO().GetCustomerStatusList();
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
+           
+           
+
+        }
+
+
     }
 }

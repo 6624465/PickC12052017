@@ -43,5 +43,15 @@ namespace PickC.Services
             request.Resource = "operation/trip/RegisteredCount";
             return ServiceResponse(await client.ExecuteTaskAsync<Int64>(request));
         }
+        public async Task<List<CustomerStatus>> GetRegisteredButNotBookedList()
+        {
+            IRestClient client = new RestClient();
+            var request = p_request;
+            request.Method = Method.GET;
+            request.Resource = "operation/trip/CustomerStatus";
+            return ServiceResponse(await client.ExecuteTaskAsync<List<CustomerStatus>>(request));
+
+
+        }
     }
 }

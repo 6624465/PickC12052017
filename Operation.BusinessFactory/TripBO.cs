@@ -67,6 +67,11 @@ namespace Operation.BusinessFactory
         {
             return tripDAL.GetRegisteredCount();
         }
-        
+        public List<CustomerStatus> GetCustomerStatusList()
+        {
+            return tripDAL.GetCustomerStatusList();
+        }
+
+
     }
 }

@@ -25,4 +25,5 @@ namespace Master.Contract
 
         public string OTP { get; set; }
     }
+
 }
