@@ -14,11 +14,11 @@ namespace PickC.Internal2.ViewModals
         public DriverLookupDTO driverLookupDTO { get; set; }
       //  public DeviceDetails devicedetails { get; set; }
     }
-    public class DeviceDetails
-    {
-        public string Mobilemake { get; set; }
-        public string Modelno { get; set; }
-        public DateTime Dateofissue { get; set; }
-        public DateTime Dateofreturn { get; set; }
-    }
+    //public class DeviceDetails
+    //{
+    //    public string Mobilemake { get; set; }
+    //    public string Modelno { get; set; }
+    //    public DateTime Dateofissue { get; set; }
+    //    public DateTime Dateofreturn { get; set; }
+    //}
 }
