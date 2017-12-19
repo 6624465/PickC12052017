@@ -20,6 +20,7 @@ namespace PickCApi.Areas.Operation.Controllers
     {
         [HttpGet]
         [Route("CustomerNotification")]
+        [ApiAuthFilter]
         public IHttpActionResult CustomerNotification()
         {
             try
