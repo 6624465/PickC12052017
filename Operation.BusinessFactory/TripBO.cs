@@ -71,7 +71,13 @@ namespace Operation.BusinessFactory
         {
             return tripDAL.GetCustomerStatusList();
         }
-
-
+        public List<CustomerCancellation> getCancelledList()
+        {
+            return tripDAL.getCancelledListByCustomer();
+        }
+        public List<DriverCancellation> getCancelledListByDriver()
+        {
+            return tripDAL.getCancelledListByDriver();
+        }
     }
 }

@@ -293,5 +293,13 @@ namespace Operation.DataFactory
         {
             return db.ExecuteSprocAccessor(DBRoutine.REGISTEREDBUTNOTBOOKEDLIST, MapBuilder<CustomerStatus>.BuildAllProperties()).ToList();
         }
+        public List<CustomerCancellation> getCancelledListByCustomer()
+        {
+            return db.ExecuteSprocAccessor(DBRoutine.BOOKINGCANCELLEDBYCUSTOMER, MapBuilder<CustomerCancellation>.BuildAllProperties()).ToList();
+        }
+        public List<DriverCancellation> getCancelledListByDriver()
+        {
+            return db.ExecuteSprocAccessor(DBRoutine.BOOKINGCANCELLEDBYDRIVERLIST, MapBuilder<DriverCancellation>.BuildAllProperties()).ToList();
+        }
     }
 }

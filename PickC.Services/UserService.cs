@@ -51,6 +51,23 @@ namespace PickC.Services
             request.Resource = "operation/trip/CustomerStatus";
             return ServiceResponse(await client.ExecuteTaskAsync<List<CustomerStatus>>(request));
 
+        }
+        public async Task<List<CustomerCancellation>> getCancelledList()
+        {
+            IRestClient client = new RestClient(ApiBaseUrl);
+            var request = p_request;
+            request.Method = Method.GET;
+            request.Resource = "operation/trip/CancelledListByCustomer";
+            return ServiceResponse(await client.ExecuteTaskAsync<List<CustomerCancellation>>(request));
+
+        }
+        public async Task<List<DriverCancellation>> getCancelledListDriver()
+        {
+            IRestClient client = new RestClient(ApiBaseUrl);
+            var request = p_request;
+            request.Method = Method.GET;
+            request.Resource = "operation/trip/CancelledListByDriver";
+            return ServiceResponse(await client.ExecuteTaskAsync<List<DriverCancellation>>(request));
 
         }
     }
