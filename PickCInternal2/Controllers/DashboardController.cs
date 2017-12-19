@@ -103,7 +103,6 @@ namespace PickC.Internal2.Controllers
             var currentbooking = await new SearchService(AUTHTOKEN, p_mobileNo).SearchBookingByDateAsync(booking);
             var bookingSearchVM = new BookingSearchDTO();
             bookingSearchVM.booking = currentbooking;
-
             return View("CurrentBookings", bookingSearchVM);
 
         }
@@ -113,6 +112,7 @@ namespace PickC.Internal2.Controllers
             var bookingHistory1 = await new SearchService(AUTHTOKEN, p_mobileNo).BookingListAsync();
             var bookingSearchVM = new BookingHistoryDTO();
             bookingSearchVM.booking = bookingHistory1;
+
             //bookingSearchVM.bookingHistory = bookingHistory;
             return View("BookingHistory", bookingSearchVM);
         }
@@ -176,6 +176,13 @@ namespace PickC.Internal2.Controllers
            // userdata.customerStatusList = CustomerList;
             return View("UserApp", userData);
         }
+        
+        [HttpGet]
+        public ActionResult UserAppCancellation()
+        {
+            return View("UserApp");
+        }
+
         //public async Task<ActionResult> getRegisteredList()
         //{
         //    return View("UserRegister");
