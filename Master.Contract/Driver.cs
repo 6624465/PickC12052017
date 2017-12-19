@@ -87,6 +87,11 @@ namespace Master.Contract
 
         public string Nationality { get; set; }
         public string OperatorID { get; set; }
+        public string MobileMake { get; set; }
+        public string ModelNo { get; set; }
+        public DateTime DateOfIssue { get; set; }
+        public DateTime DateOfReturn { get; set; }
+
         public List<BankDetails> BankDetails { get; set; }
     }
 
