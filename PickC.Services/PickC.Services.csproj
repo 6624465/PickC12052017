@@ -73,6 +73,7 @@
     <Compile Include="OperatorDriverService.cs" />
     <Compile Include="OperatorService.cs" />
     <Compile Include="OperatorVehicleService.cs" />
+    <Compile Include="PaymentService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RateCardService.cs" />
     <Compile Include="SearchService.cs" />

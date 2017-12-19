@@ -25,5 +25,9 @@ namespace Operation.BusinessFactory
         public List<DriverPayments> GetPayments(string driverID) {
             return summaryDAL.GetPayments(driverID);
         }
+        public PaymentHistory PaymentDetails(DateTime datefrom,DateTime dateto)
+        {
+            return summaryDAL.getPaymentDetails(datefrom, dateto);
+        }
     }
 }

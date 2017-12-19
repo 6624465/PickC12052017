@@ -186,6 +186,13 @@ namespace PickC.Internal2.Controllers
         {
             return View("PaymentHistory");
         }
+        [HttpPost]
+        public async Task<ActionResult> PaymentHistory(PaymentHistory payment)
+        {
+            var data = await new PaymentService(AUTHTOKEN, p_mobileNo).PaymentHistoryDetails(payment.paymentsearch);
+
+            return View("PaymentHistory");
+        }
         [HttpGet]
         public ActionResult PendingAmount()
         {

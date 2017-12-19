@@ -155,6 +155,11 @@ namespace Operation.DataFactory
         /// [Operation].[Trip]
         /// </summary>
         public const string DRIVERLATESTFIVELATLONGS = "[Operation].[usp_GetDriverFiveLatLong]";
+        public const string TOTALAMOUNTRECEIVEDFROMCUSTOMER = "[Operation].[usp_TotalAmountReceivedFromCustomer]";
+        public const string PICKCCOMMISSION = "[Operation].[usp_PickCCommission]";
+        public const string DRIVERCOMMISSION= "[Operation].[usp_DriverCommission]";
+
+
 
 
     }

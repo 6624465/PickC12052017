@@ -6,6 +6,7 @@ using System.Data.Common;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PickC.Services.DTO;
 
 namespace Operation.DataFactory
 {
@@ -28,6 +29,17 @@ namespace Operation.DataFactory
         public List<DriverPayments> GetPayments(string DriverID)
         {
             return db.ExecuteSprocAccessor(DBRoutine.DRIVERPAYMENTS,MapBuilder<DriverPayments>.BuildAllProperties(), DriverID).ToList();
+        }
+        public PaymentHistory getPaymentDetails(DateTime datefrom,DateTime dateto)
+        {
+            var payment = new PaymentHistory();
+            payment.customerdetails = new List<CustomerDetails>();
+            payment.pickCCommissiondetails = new List<pickCCommissionDetails>();
+            payment.driverCommissiondetails = new List<DriverCommissionDetails>();
+            payment.customerdetails = db.ExecuteSprocAccessor(DBRoutine.TOTALAMOUNTRECEIVEDFROMCUSTOMER, MapBuilder<CustomerDetails>.BuildAllProperties(), datefrom,dateto).ToList();
+            payment.pickCCommissiondetails = db.ExecuteSprocAccessor(DBRoutine.PICKCCOMMISSION, MapBuilder<pickCCommissionDetails>.BuildAllProperties(),datefrom,dateto).ToList();
+            payment.driverCommissiondetails  = db.ExecuteSprocAccessor(DBRoutine.DRIVERCOMMISSION, MapBuilder<DriverCommissionDetails>.BuildAllProperties(),datefrom, dateto).ToList();
+            return payment;
         }
     }
 }

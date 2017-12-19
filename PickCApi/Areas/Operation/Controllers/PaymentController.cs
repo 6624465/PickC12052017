@@ -7,6 +7,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Configuration;
+using PickC.Services.DTO;
 
 using Operation.BusinessFactory;
 
@@ -105,6 +106,20 @@ namespace PickCApi.Areas.Operation.Controllers
                 Console.Write("Exception occured while connection." + exception);
             }
             return message;
+        }
+        [HttpPost]
+        [Route("PaymentHistoryDetails")]
+        public IHttpActionResult getPaymentdetails(Paymentsearch search)
+        {
+            try
+            {
+                var result = new SummaryBO().PaymentDetails(search.datefrom,search.dateto);
+                    return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
         }
     }
 
