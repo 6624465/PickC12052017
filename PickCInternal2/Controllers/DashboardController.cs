@@ -178,10 +178,23 @@ namespace PickC.Internal2.Controllers
         }
         
         [HttpGet]
-        public ActionResult UserAppCancellation()
+        public async  Task<ActionResult> UserAppCancellation()
         {
-            return View("UserAppCancellation");
+            Cancellation result = new Cancellation();
+            //result.customerCancellation = new List<CustomerCancellation>();
+            //result.driverCancellation = new List<DriverCancellation>();
+            result.customerCancellation = await new UserService(AUTHTOKEN, p_mobileNo).getCancelledList();
+            result.driverCancellation   =  await new UserService(AUTHTOKEN, p_mobileNo).getCancelledListDriver();
+            return View("UserAppCancellation",result);
         }
+        //[HttpPost]
+        //public ActionResult UserAppCancellation(Cancellation cancellist)
+        //{
+        //    Cancellation result = new Cancellation();
+        //    result.customerCancellation = new List<CustomerCancellation>();
+        //    result.driverCancellation = new List<DriverCancellation>();
+        //    return View("UserAppCancellation", result);
+        //}
 
         //public async Task<ActionResult> getRegisteredList()
         //{

@@ -43,6 +43,7 @@
     <Compile Include="BookingHistory.cs" />
     <Compile Include="BookingHistoryDetails.cs" />
     <Compile Include="BookingHistoryList.cs" />
+    <Compile Include="Cancellation.cs" />
     <Compile Include="CustomerLogin.cs" />
     <Compile Include="CustomerStatus.cs" />
     <Compile Include="DriverActivity.cs" />

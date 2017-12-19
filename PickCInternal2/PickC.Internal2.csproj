@@ -354,8 +354,6 @@
     <Content Include="Views\Driver\Edit.cshtml" />
     <Content Include="Views\Driver\Add.cshtml" />
     <Content Include="Views\Operator\OperatorDetails.cshtml" />
-    <Content Include="Views\Dashboard\UserAppBooking.cshtml" />
-    <Content Include="Views\Dashboard\UserRegister.cshtml" />
     <Content Include="Views\Shared\UserApps.cshtml" />
     <Content Include="Views\Dashboard\RegisteredList.cshtml" />
     <Content Include="Views\Dashboard\UserAppCancellation.cshtml" />

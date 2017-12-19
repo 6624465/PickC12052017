@@ -245,9 +245,34 @@ namespace PickCApi.Areas.Operation.Controllers
             {
                 return InternalServerError(ex);
             }
-           
-           
-
+        }
+        [HttpGet]
+        [Route("CancelledListByCustomer")]
+        public IHttpActionResult getCancellationList()
+        {
+            try
+            {
+                var result = new TripBO().getCancelledList();
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
+        }
+        [HttpGet]
+        [Route("CancelledListByDriver")]
+        public IHttpActionResult getCancellationListByDriver()
+        {
+            try
+            {
+                var result = new TripBO().getCancelledListByDriver();
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
         }
 
 
