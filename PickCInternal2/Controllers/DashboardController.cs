@@ -180,7 +180,7 @@ namespace PickC.Internal2.Controllers
         [HttpGet]
         public ActionResult UserAppCancellation()
         {
-            return View("UserApp");
+            return View("UserAppCancellation");
         }
 
         //public async Task<ActionResult> getRegisteredList()
