@@ -113,6 +113,7 @@ namespace PickC.Internal2.Controllers
             var bookingHistory1 = await new SearchService(AUTHTOKEN, p_mobileNo).BookingListAsync();
             var bookingSearchVM = new BookingHistoryDTO();
             bookingSearchVM.booking = bookingHistory1;
+
             //bookingSearchVM.bookingHistory = bookingHistory;
             return View("BookingHistory", bookingSearchVM);
         }
