@@ -12,7 +12,7 @@ namespace PickC.Internal2.ViewModals
     {
         public Driver driver { get; set; }
         public DriverLookupDTO driverLookupDTO { get; set; }
-        public DeviceDetails devicedetails { get; set; }
+      //  public DeviceDetails devicedetails { get; set; }
     }
     public class DeviceDetails
     {

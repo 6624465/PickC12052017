@@ -62,16 +62,33 @@
             <div class="box-body">
                 <div class="row">
                     <div class="col-md-12">
-                        <table class="table table-hover table-bordered">
+                        <table  id="Accordian_customerDetails" class="table table-hover table-bordered">
                             <thead>
                                 <tr>
-                                    <th><a href="">Invoice No.</a></th>
+                                    <th>Invoice No.</th>
+                                    <th>Invoice Date</th>
+                                    <th>Invoice Amount</th>
+                                    <th>GST</th>
+                                    <th>Total Amount</th>
+                                    @*<th><a href="">Invoice No.</a></th>
                                     <th><a href="">Invoice Date</a></th>
                                     <th><a href="">Invoice Amount</a></th>
                                     <th><a href="">Gst</a></th>
-                                    <th><a href="">Total Amount</a></th>
+                                    <th><a href="">Total Amount</a></th>*@
                                 </tr>
                             </thead>
+                            <tbody>
+                                @foreach(var item in Model.customerdetails)
+                                {
+                                    <tr>
+                                        <td>@Html.DisplayFor(i => item.InvoiceNo)</td>
+                                        <td>@Html.DisplayFor(i => item.InvoiceDate)</td>
+                                        <td>@Html.DisplayFor(i => item.InvoiceAmount)</td>
+                                        <td>@Html.DisplayFor(i => item.GST)</td>
+                                        <td>@Html.DisplayFor(i => item.TotalAmount)</td>
+                                    </tr>
+                                }
+                            </tbody>
                         </table>
                     </div>
                 </div>
@@ -86,16 +103,28 @@
                   <div class="box-body">
                     <div class="row">
                         <div class="col-md-12">
-                            <table class="table table-hover table-bordered">
+                            <table  id="Accordian_pickcCommision" class="table table-hover table-bordered">
                                 <thead>
                                     <tr>
-                                        <th><a href="">Invoice No.</a></th>
-                                        <th><a href="">Invoice Date</a></th>
-                                        <th><a href="">Invoice Amount</a></th>
-                                        <th><a href="">Gst</a></th>
-                                        <th><a href="">Total Amount</a></th>
+                                        <th>Invoice No.</th>
+                                        <th>Invoice Date</th>
+                                        <th>Invoice Amount</th>
+                                        <th>GST</th>
+                                        <th>PickC Commission</th>
                                     </tr>
                                 </thead>
+                                <tbody>
+                                    @foreach (var item in Model.pickCCommissiondetails)
+                                    {
+                                    <tr>
+                                        <td>@Html.DisplayFor(i=>item.InvoiceNo)</td>
+                                        <td>@Html.DisplayFor(i => item.InvoiceDate)</td>
+                                        <td>@Html.DisplayFor(i => item.InvoiceAmount)</td>
+                                        <td>@Html.DisplayFor(i => item.GST)</td>
+                                        <td>@Html.DisplayFor(i => item.PickcCommision)</td>
+                                    </tr>
+                                    }
+                                </tbody>
                             </table>
                         </div>
                     </div>
@@ -110,15 +139,26 @@
                     <div class="box-body">
                         <div class="row">
                             <div class="col-md-12">
-                                <table class="table table-hover table-bordered">
+                                <table  id="Accordian_DriverCommision" class="table table-hover table-bordered">
                                     <thead>
                                         <tr>
-                                            <th><a href="">Driver Name </a></th>
-                                            <th><a href="">Vehicle No</a></th>
-                                            <th><a href="">Trip ID </a></th>
-                                            <th><a href="">Driver Commission</a></th>
+                                            <th>Driver Name</th>
+                                            <th>Vehicle No.</th>
+                                            <th>TripID</th>
+                                            <th>Driver Commission</th>
                                         </tr>
                                     </thead>
+                                    <tbody>
+                                        @foreach (var item in Model.driverCommissiondetails)
+                                        {
+                                        <tr>
+                                            <td>@Html.DisplayFor(i=>item.DriverName)</td>
+                                            <td>@Html.DisplayFor(i => item.VehicleNo)</td>
+                                            <td>@Html.DisplayFor(i => item.TripId)</td>
+                                            <td>@Html.DisplayFor(i => item.driverCommission)</td>
+                                        </tr>
+                                        }
+                                    </tbody>
                                 </table>
                             </div>
                         </div>
@@ -133,7 +173,7 @@
                     <div class="box-body">
                         <div class="row">
                             <div class="col-md-12">
-                                <table class="table table-hover table-bordered">
+                                <table  id="Accordian_DriverCommision" class="table table-hover table-bordered">
                                     <thead>
                                         <tr>
                                             <th><a href="">Driver Name </a></th>
@@ -155,9 +195,9 @@
     <script src="@Url.Content("~/Scripts/jquery.validate.js")"></script>
     <script src="@Url.Content("~/Scripts/moment-with-locales.js")"></script>
     <script src="@Url.Content("~/Scripts/bootstrap-datetimepicker.js")"></script>
-    <script src="~/Scripts/jquery.dataTables.min.js"></script>
-    
-<script src="@Url.Content("~/Scripts/jquery-ui.js")"></script>
+    <script src="@Url.Content("~/Scripts/jquery.dataTables.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/jquery-ui.js")"></script>
+
     <script type="text/javascript">
         $(function () {
             $('#paymentHistory').parent().addClass('active');
@@ -176,17 +216,6 @@
             //  Datefrom: monthStartDay
         });
 
-        //$('#Datefrom,#DateTo').datetimepicker({
-        //    icons: {
-        //        time: 'fa fa-clock-o',
-        //        date: 'fa fa-calendar',
-        //        up: 'fa fa-arrow-up',
-        //        down: 'fa fa-arrow-down'
-        //    },
-        //    format: 'DD/MM/YYYY'
-        //});
-        //$('#DateTo,#Datefrom').datepicker();
-        //$('#Datefrom').datepicker();
         $('#frmBookingHistory').validate({
             rules: {
                 'paymentsearch.datefrom': {
@@ -199,18 +228,22 @@
         });
 
         $(document).ready(function () {
-    $('#accordion').accordion();
-  });
+            $('#accordion').accordion();
+            $('#Accordian_customerDetails').dataTable();
+            $('#Accordian_pickcCommision').dataTable();
+            $('#Accordian_DriverCommision').dataTable();
+            
+        });
 
-  $(document).ready(function () {
+        $(document).ready(function () {
  
-      function close_accordion_section() {
+         function close_accordion_section() {
        
           $('.accordion .accordion-section-title').removeClass('active');
           $('.accordion .accordion-section-content').slideUp(300).removeClass('open');
-      }
+        }
 
-      $('.accordion-section-title').click(function (e) {
+        $('.accordion-section-title').click(function (e) {
      
           // Grab current anchor value
           var currentAttrValue = $(this).attr('href');

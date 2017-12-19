@@ -34,7 +34,7 @@ namespace PickC.Services.DTO
         public DateTime InvoiceDate { get; set; }
         public decimal InvoiceAmount { get; set; }
         public decimal GST { get; set; }
-        public decimal TotalAmount { get; set; }
+        public decimal PickcCommision { get; set; }
 
     }
     public class CustomerDetails

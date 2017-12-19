@@ -183,14 +183,21 @@ namespace PickC.Internal2.Controllers
         [HttpGet]
         public ActionResult PaymentHistory()
         {
-            return View("PaymentHistory");
+            PaymentHistory data = new PaymentHistory();
+            data.paymentsearch = new Paymentsearch();
+            data.customerdetails = new List<CustomerDetails>();
+            data.driverCommissiondetails = new List<DriverCommissionDetails>();
+            data.pickCCommissiondetails = new List<pickCCommissionDetails>();
+            data.paymentsearch.datefrom = DateTime.Now;
+            data.paymentsearch.dateto = DateTime.Now;
+            return View("PaymentHistory", data);
         }
         [HttpPost]
         public async Task<ActionResult> PaymentHistory(PaymentHistory payment)
         {
             var data = await new PaymentService(AUTHTOKEN, p_mobileNo).PaymentHistoryDetails(payment.paymentsearch);
 
-            return View("PaymentHistory");
+            return View("PaymentHistory",data);
         }
         [HttpGet]
         public ActionResult PendingAmount()
