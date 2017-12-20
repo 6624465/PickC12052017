@@ -13,7 +13,7 @@ namespace Master.Contract
         public string DriverLicenseNo { get; set; }
         public string DriverMobileNo { get; set; }
         public string VehicleattachedNo { get; set; }
-        public Int16 VehicleType { get; set; }
+        public string VehicleType { get; set; }
         public string VehicleGroup { get; set; }
         public DateTime CreatedOn { get; set; }
     }

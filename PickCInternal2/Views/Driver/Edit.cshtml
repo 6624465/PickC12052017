@@ -1,6 +1,8 @@
 ﻿@model PickC.Internal2.ViewModals.DriverVm
 @{
     ViewBag.Title = "Edit";
+    //Model.driver.DateofIssue = DateTime.Now;
+    //Model.driver.DateofReturn = DateTime.Now;
 }
 @section seccss{
     <link href="@Url.Content("~/Css/bootstrap-datetimepicker.css")" rel="stylesheet" />
@@ -254,7 +256,7 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Model No</label>
-                                    @Html.TextBoxFor(x => x.driver.MobileNo, new
+                                    @Html.TextBoxFor(x => x.driver.ModelNo, new
                                {
                                    @class ="form-control",
                                    placeholder ="Model No"
@@ -265,10 +267,11 @@
                                 <div class="form-group">
                                     <label>Date of Issue</label>
                                     <div class="input-group dtCss">
-                                        @Html.TextBoxFor(x => x.driver.DateofIssue,new
+                                        @Html.TextBoxFor(x => x.driver.DateofIssue,
+                                         new
                                          {
                                              @class = "form-control",
-                                             placeholder = "Date Of Issue"
+                                             placeholder = "Date Of Birth"
                                          })
                                         <span class="input-group-btn">
                                             <button type="button" class="btn btn-default"><i class="fa fa-calendar" aria-hidden="true"></i></button>
@@ -280,10 +283,11 @@
                                 <div class="form-group">
                                     <label>Date of Return</label>
                                     <div class="input-group dtCss">
-                                        @Html.TextBoxFor(x => x.driver.DateofReturn,new
+                                        @Html.TextBoxFor(x => x.driver.DateofReturn,
+                                         new
                                          {
                                              @class = "form-control",
-                                             placeholder = "Date Of Return"
+                                             placeholder = "Date Of Birth"
                                          })
                                         <span class="input-group-btn">
                                             <button type="button" class="btn btn-default"><i class="fa fa-calendar" aria-hidden="true"></i></button>
@@ -418,30 +422,39 @@
                     'driver.LicenseNo': {
                         required: true
                     },
-                    'devicedetails.Mobilemake':{
+                    'driver.MobileMake': {
                         required:true
                     },
-                    'devicedetails.Modelno':{
+                    'driver.ModelNo': {
                         required:true
                     },
-                    'devicedetails.Dateofissue': {
+                    'driver.DateofIssue': {
                         required:true
                     },
-                    'devicedetails.Dateofreturn': {
+                    'driver.DateofReturn': {
                         required:true
                     }
                 }
             });
            
             $('.dtCss').datetimepicker({
-                format: 'DD/MM/YY'
+                icons: {
+                    time: 'fa fa-clock-o',
+                    date: 'fa fa-calendar',
+                    up: 'fa fa-arrow-up',
+                    down: 'fa fa-arrow-down',
+                    previous: 'fa fa-arrow-left',
+                    next: 'fa fa-arrow-right'
+                },
+                format: 'DD/MM/YYYY'
             });
+
         });
-        $('#SamsungModels').change(function () {
-            debugger;
-            var selectedText = $(this).find("option:selected").text();
-            var selectedValue = $(this).val();
-        });
+        //$('#SamsungModels').change(function () {
+        //    debugger;
+        //    var selectedText = $(this).find("option:selected").text();
+        //    var selectedValue = $(this).val();
+        //});
         function btnSave() {
             if ($('#frmDriverAdd').valid()) {
                 $('#frmDriverAdd').submit();
