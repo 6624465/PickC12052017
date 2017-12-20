@@ -16,6 +16,6 @@ namespace Master.Contract
 
         public string VehicleNo { get; set; }
 
-        public Int16 VehicleType { get; set; }
+        public string VehicleType { get; set; }
     }
 }
