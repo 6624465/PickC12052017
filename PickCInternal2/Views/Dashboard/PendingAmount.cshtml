@@ -1,5 +1,5 @@
-﻿@*@using PickC.Internal2.HtmlHelpers
-@model PickC.Services.DTO.PendingAmountDTO*@
+﻿
+@model Operation.Contract.PendingCommission
 @{
     ViewBag.Title = "PendingAmount";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -78,6 +78,7 @@
                                             <table id="Accordian_drivercommission" class="table table-hover table-bordered">
                                                 <thead>
                                                     <tr>
+                                                        <th>Driver Id</th>
                                                         <th>Driver Name</th>
                                                         <th>Vehicle No.</th>
                                                         <th>Booking No.</th>
@@ -87,18 +88,23 @@
                                                         <th>Commission Amount</th>
                                                     </tr>
                                                 </thead>
-                                                @*<tbody>
-                                                    @foreach(var item in Model.driverCommissiontoPickC)
+                                                <tbody>
+                                                    @foreach (var item in Model.driverPendingCommision)
                                                     {
-                                                        <tr>@Html.DisplayFor(i=>item.DriverName)</tr>
-                                                        <tr>@Html.DisplayFor(i =>item.VehicleNo)</tr>
-                                                        <tr>@Html.DisplayFor(i =>item.BookingNo)</tr>
-                                                        <tr>@Html.DisplayFor(i =>item.BookingDate)</tr>
-                                                        <tr>@Html.DisplayFor(i =>item.TripAmount)</tr>
-                                                        <tr>@Html.DisplayFor(i =>item.PaymentType)</tr>
-                                                        <tr>@Html.DisplayFor(i => item.CommissionAmount)</tr>
+                                                    <tr>
+                                                   
+                                                        <td>@Html.DisplayFor(i => item.DriverId)</td>
+                                                        <td>@Html.DisplayFor(i => item.DriverName)</td>
+                                                        <td>@Html.DisplayFor(i => item.VehicleNo)</td>
+                                                        <td>@Html.DisplayFor(i => item.BookingNo)</td>
+                                                        <td>@Html.DisplayFor(i => item.BookingDate)</td>
+                                                        <td>@Html.DisplayFor(i => item.TripAmount)</td>
+                                                        <td>@Html.DisplayFor(i => item.PaymentType)</td>
+                                                        <td>@Html.DisplayFor(i => item.CommissionAmount)</td>
+                                                    
+                                                    </tr>
                                                     }
-                                                </tbody>*@
+                                                </tbody>
                                             </table>
                                         </div>
                                     </div>
@@ -124,7 +130,7 @@
     <script type="text/javascript">
         $(function () {
             $('#pendingAmount').parent().addClass('active');
-            $('.pagination ul li a').attr('href', '#');
+          //  $('.pagination ul li a').attr('href', '#');
 
             $(document).ready(function () {
                 $('#accordion').accordion();
@@ -140,7 +146,7 @@
                 }
 
                 $('.accordion-section-title').click(function (e) {
-
+                    debugger
                     // Grab current anchor value
                     var currentAttrValue = $(this).attr('href');
 

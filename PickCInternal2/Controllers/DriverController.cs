@@ -35,7 +35,8 @@ namespace PickC.Internal2.Controllers
                 driverLookupDTO = await new DriverService(AUTHTOKEN, p_mobileNo).LookUpDataAsync(),
                 driver = new Driver()
             };
-
+            driverVm.driver.DateofIssue = DateTime.Now;
+            driverVm.driver.DateofReturn = DateTime.Now;
             return View(driverVm);
         }
         [HttpGet]

@@ -121,6 +121,24 @@ namespace PickCApi.Areas.Operation.Controllers
                 return InternalServerError(ex);
             }
         }
+        [HttpGet]
+        [Route("PendingDriverCommisionDetails")]
+        public IHttpActionResult getPendingDriverCommission()
+        {
+            try
+            {
+                var result = new SummaryBO().getDriverCommision();
+                if (result != null)
+                    return Ok(result);
+                else
+                    return NotFound();
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
+           
+        }
     }
 
     public class RSAObject

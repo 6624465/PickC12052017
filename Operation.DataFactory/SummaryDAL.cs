@@ -41,5 +41,9 @@ namespace Operation.DataFactory
             payment.driverCommissiondetails  = db.ExecuteSprocAccessor(DBRoutine.DRIVERCOMMISSION, MapBuilder<DriverCommissionDetails>.BuildAllProperties(),datefrom, dateto).ToList();
             return payment;
         }
+        public  List<DriverPendingCommission> getDriverCommision()
+        {
+            return db.ExecuteSprocAccessor(DBRoutine.DRIVERCOMMISIONPENDINGTOPICKC, MapBuilder<DriverPendingCommission>.BuildAllProperties()).ToList();
+        }
     }
 }

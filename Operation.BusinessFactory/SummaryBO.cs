@@ -29,5 +29,9 @@ namespace Operation.BusinessFactory
         {
             return summaryDAL.getPaymentDetails(datefrom, dateto);
         }
+        public List<DriverPendingCommission> getDriverCommision()
+        {
+            return summaryDAL.getDriverCommision();
+        }
     }
 }

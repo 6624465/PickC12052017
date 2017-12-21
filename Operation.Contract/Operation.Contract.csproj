@@ -55,6 +55,7 @@
     <Compile Include="NearTrucksInRange.cs" />
     <Compile Include="OperatorLogIn.cs" />
     <Compile Include="OperatorMonitor.cs" />
+    <Compile Include="PendingCommission.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Summary.cs" />
     <Compile Include="Trip.cs" />

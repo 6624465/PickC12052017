@@ -20,5 +20,9 @@ namespace Master.Contract
         public DateTime CreatedOn { get; set; }
         public string ModifiedBy { get; set; }
         public DateTime ModifiedOn { get; set; }
+        //public string Registration  { get; set; }
+        //public string InsuranceDocument { get; set; }
+        //public string PollutionCheckDocument { get; set; }
+        //public string Others{ get; set; }
     }
 }

@@ -220,12 +220,11 @@ namespace PickC.Internal2.Controllers
             return View("PaymentHistory",data);
         }
         [HttpGet]
-        public ActionResult PendingAmount()
+        public async Task<ActionResult> PendingAmount()
         {
-            //PendingAmountDTO data = new PendingAmountDTO();
-            //data.pendingCommissiontoPickC=new List<PendingCommissionToPickC>
-
-            return View();
+            PendingCommission pending = new PendingCommission();
+            pending.driverPendingCommision = await new PaymentService(AUTHTOKEN, p_mobileNo).driverpendingAmountDetails();
+            return View(pending);
         }
         [HttpPost]
         public ActionResult PendingAmounts(PendingAmountDTO pendingAmountDTO)

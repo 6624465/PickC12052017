@@ -18,5 +18,10 @@ namespace Master.Contract
         public string ModifiedBy { get; set; }
         public DateTime ModifiedOn { get; set; }
         public bool Status { get; set; }
+        //public string DriverPhoto { get; set; }
+        //public string LicenseNo { get; set; }
+        //public string PAN { get; set; }
+        //public string AADHAR { get; set; }
+        //public string AddressProof { get; set; }
     }
 }
