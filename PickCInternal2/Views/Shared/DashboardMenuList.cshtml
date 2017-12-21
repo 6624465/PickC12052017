@@ -36,30 +36,30 @@
             Pending Amount
         </a>
     </li>
-    @*<li>
-        <a href="#tab7" data-toggle="tab" onclick="driverlist();" id="driverList">
-            <i class="fa fa-list-alt" aria-hidden="true"></i>
-            Driver List
-        </a>
-    </li>*@
     <li>
-        <a href="#tab8" data-toggle="tab" onclick="driverdetails();" id="driverDetails">
+        <a href="#tab7" data-toggle="tab" onclick="driverdetails();" id="driverDetails">
             <i class="fa fa-car" aria-hidden="true"></i>
                 Driver Details
-</a>
+           </a>
+    </li>
+    <li> 
+        <a href="#tab8" data-toggle="tab" onclick="driverrevoke();" id="driverRevoke">
+            <i class="fa fa-ban" aria-hidden="true"></i>
+                Driver Revoke
+        </a>
     </li>
 </ul>
 <script src="@Url.Content("~/Scripts/jquery.validate.js")"></script>
 <script type="text/javascript">
-           function redirect() {
+            function redirect() {
             window.location = "@Url.Content("~/Dashboard/GetDriversList")";
             }
-           function CurrentBookingredirect()
-           {
+            function CurrentBookingredirect()
+            {
              window.location = "@Url.Content("~/Dashboard/CurrentBookings")";
             }
-    function History() {
-        debugger
+            function History()
+            {
             window.location = "@Url.Content("~/Dashboard/BookingHistory")";
             }
             function userapp()
@@ -81,5 +81,9 @@
             function driverdetails()
             {
             window.location = "@Url.Content("~/Driver/Add")";
+            }
+            function driverrevoke()
+            {
+            window.location = "@Url.Content("~/Dashboard/DriverRevoke")";
             }
 </script>

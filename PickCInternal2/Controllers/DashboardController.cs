@@ -222,6 +222,9 @@ namespace PickC.Internal2.Controllers
         [HttpGet]
         public ActionResult PendingAmount()
         {
+            //PendingAmountDTO data = new PendingAmountDTO();
+            //data.pendingCommissiontoPickC=new List<PendingCommissionToPickC>
+
             return View();
         }
         [HttpPost]
@@ -248,6 +251,12 @@ namespace PickC.Internal2.Controllers
             string operatorDetails = await new DriverService(AUTHTOKEN, p_mobileNo).IsOperatorValid(operatorId);
             int i = Convert.ToInt32(operatorDetails);
             return Json(i, JsonRequestBehavior.AllowGet);
+        }
+        
+        [HttpGet]
+        public ActionResult DriverRevoke()
+        {
+            return View();
         }
     }
 }
