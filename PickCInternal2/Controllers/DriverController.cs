@@ -50,9 +50,9 @@ namespace PickC.Internal2.Controllers
             {
                 driverLookupDTO = await taskDriverLookupDTO,
                 driver = await taskDriver
-
             };
-
+            driverVm.driver.DateofIssue = DateTime.Now;
+            driverVm.driver.DateofReturn = DateTime.Now;
             return View(driverVm);
         }
 

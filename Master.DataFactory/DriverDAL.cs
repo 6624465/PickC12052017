@@ -95,6 +95,10 @@ namespace Master.DataFactory
                 db.AddInParameter(savecommand, "Nationality", System.Data.DbType.String, driver.Nationality ?? "Indian");
                 //db.AddInParameter(savecommand, "DeviceID", System.Data.DbType.String, driver.DeviceID);
                 db.AddOutParameter(savecommand, "NewDocumentNo", System.Data.DbType.String,50);
+                db.AddInParameter(savecommand, "MobileMake", System.Data.DbType.String, driver.MobileMake);
+                db.AddInParameter(savecommand, "ModelNo", System.Data.DbType.String, driver.ModelNo);
+                db.AddInParameter(savecommand, "DateofIssue", System.Data.DbType.DateTime, driver.DateofIssue);
+                db.AddInParameter(savecommand, "DateofReturn", System.Data.DbType.DateTime, driver.DateofReturn);
                 db.AddInParameter(savecommand, "OperatorID", System.Data.DbType.String, driver.OperatorID);
 
                 result = db.ExecuteNonQuery(savecommand, transaction);
