@@ -50,6 +50,7 @@
     <Compile Include="BankDetailsDAL.cs" />
     <Compile Include="CustomerDAL.cs" />
     <Compile Include="DBRoutine.cs" />
+    <Compile Include="DriverAttachementDAL.cs" />
     <Compile Include="DriverDAL.cs" />
     <Compile Include="LookUpDAL.cs" />
     <Compile Include="ManufacturerDAL.cs" />

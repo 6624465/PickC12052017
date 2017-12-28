@@ -10,6 +10,7 @@ using Master.Contract;
 using PickC.Services;
 using PickC.Services.DTO;
 using PickC.Internal2.ViewModals;
+using System.IO;
 
 namespace PickC.Internal2.Controllers
 {
@@ -60,6 +61,53 @@ namespace PickC.Internal2.Controllers
         [HttpPost]
         public async Task<ActionResult> SaveDriver(Driver driver)
         {
+            driver.driverAttachment = new List<DriverAttachment>();
+            var lookupId = "";
+            foreach (string file in Request.Files)
+            {
+                var fileContent = Request.Files[file];
+                if (fileContent.ContentLength > 0)
+                {
+                    if(file== "fphoto")
+                    {
+                        lookupId = "1385";
+                    }
+                    if (file == "flicense")
+                    {
+                        lookupId = "1386";
+                    }
+                    if (file == "fpan")
+                    {
+                        lookupId = "1387";
+                    }
+                    if (file == "fadhaar")
+                    {
+                        lookupId = "1388";
+                    }
+                    if (file == "faddressProof")
+                    {
+                        lookupId = "1389";
+                    }
+                    if (file == "fothers")
+                    {
+                        lookupId = "1390";
+                    }
+                    string mapPath = Server.MapPath("~/DriverAttachments/");
+                    if (!Directory.Exists(mapPath))
+                    {
+                        Directory.CreateDirectory(mapPath);
+                    }
+                    fileContent.SaveAs(mapPath + fileContent.FileName);
+
+                    DriverAttachment attachment = new DriverAttachment()
+                    {
+                        ImagePath = fileContent.FileName,
+                        LookupCode = lookupId
+                    };
+
+                    driver.driverAttachment.Add(attachment);
+                }
+            }
             var result = await new DriverService(AUTHTOKEN, p_mobileNo).SaveDriverAsync(driver);
             return RedirectToAction("Driver", "Driver");
         }

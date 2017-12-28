@@ -17,7 +17,7 @@
     </div>
     <h3>Driver Details</h3>
 </section>
-@using (Html.BeginForm("SaveDriver", "Driver", FormMethod.Post, new { id = "frmDriverAdd", name = "frmDriverAdd" }))
+@using (Html.BeginForm("SaveDriver", "Driver", FormMethod.Post, new { id = "frmDriverAdd", name = "frmDriverAdd", enctype = "multipart/form-data" }))
 {
     <section class="content">
         <div class="row">
@@ -317,7 +317,7 @@
                                 <label>PHOTO</label>
                             </div>
                             <div class="col-md-3">
-                                <input type="file" id="" name="" value="" />
+                                <input type="file" id="fphoto" name="fphoto" value="1385" />
                             </div>
                         </div>
                         <div class="row">
@@ -325,7 +325,7 @@
                                 <label>LICENSE NO</label>
                             </div>
                             <div class="col-md-3">
-                                <input type="file" id="" name="" value="" />
+                                <input type="file" id="flicense" name="flicense" value="1386" />
                             </div>
                         </div>
                         <div class="row">
@@ -333,7 +333,7 @@
                                 <label>PAN</label>
                             </div>
                             <div class="col-md-3">
-                                <input type="file" id="" name="" value="" />
+                                <input type="file" id="fpan" name="fpan" value="1387" />
                             </div>
                         </div>
                         <div class="row">
@@ -341,7 +341,7 @@
                                 <label>AADHAR</label>
                             </div>
                             <div class="col-md-3">
-                                <input type="file" id="" name="" value="" />
+                                <input type="file" id="fadhaar" name="fadhaar" value="1388" />
                             </div>
                         </div>
                         <div class="row">
@@ -349,7 +349,7 @@
                                 <label>Address Proof</label>
                             </div>
                             <div class="col-md-3">
-                                <input type="file" id="" name="" value="" />
+                                <input type="file" id="faddressProof" name="faddressProof" value="1389" />
                             </div>
                         </div>
                         <div class="row">
@@ -357,7 +357,7 @@
                                 <label>Others</label>
                             </div>
                             <div class="col-md-3">
-                                <input type="file" id="" name="" value=""  multiple="multiple"/>
+                                <input type="file" id="fothers" name="fothers" value="1390"  multiple="multiple"/>
                             </div>
                         </div>
                         

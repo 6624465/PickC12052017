@@ -88,6 +88,7 @@ function btnSaveVehicle() {
 
         $('#' + baseID + 'Tonnage').val($('#operatorVehicle_Tonnage').val());
         $('#' + 'operatorVehicle_Tonnage_span_' + gIndex).text($('#operatorVehicle_Tonnage').val());
+
     } else {
         debugger;
         var index = ($('#trBodyVehicle tr').length);

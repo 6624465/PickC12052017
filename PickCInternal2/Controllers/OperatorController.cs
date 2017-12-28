@@ -82,6 +82,7 @@ namespace PickCInternal2.Controllers
                     OPerator.operatorAttachment.Add(attachment);
                 }
             }
+           
             //foreach (string file in Request.Files)
             //{
             //    var fileContent = Request.Files[file];
