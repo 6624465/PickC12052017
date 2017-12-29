@@ -20,17 +20,12 @@
                                 </div>
                             </div>
         <div class="row" style="margin:15px 0 0px -30px;">
-
                 <div class="col-md-12">
                     <div class="col-md-6">
-                    <div class="accordion">
-                        <div class="accordion-section">
-                            <a class="accordion-section-title btn btn-default btn-sm btn-them" href="#accordion-1">User Pending Cancellation Charges</a>
-                            <div id="accordion-1" class="accordion-section-content">
-                                <div class="box-body">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <table id="Accordian_userpending" class="table table-hover table-bordered">
+                                            <h2>User Pending Cancellation Charges</h2>
+                                            <table id="Table_userpending" class="table table-hover table-bordered">
                                                 <thead>
                                                     <tr>
                                                         <th>Booking No.</th>
@@ -43,7 +38,7 @@
                                                         <th>Cancellation Amount</th>
                                                     </tr>
                                                 </thead>
-                                                    @*<tbody>
+                                                    @*@<tbody>
                                                             @foreach(var item in )
                                                     {
                                                         <tr>
@@ -62,20 +57,11 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                    </div>
                     <div class="col-md-6">
-
-                    <div class="accordion">
-                        <div class="accordion-section">
-                            <a class="accordion-section-title btn btn-default btn-sm btn-them" href="#accordion-2">Driver Commission amount pending to Pick-C</a>
-                            <div id="accordion-2" class="accordion-section-content">
-                                <div class="box-body">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <table id="Accordian_drivercommission" class="table table-hover table-bordered">
+                         <div class="row">
+                             <div class="col-md-12">
+                                 <h2>Driver Commission amount pending to Pick-C</h2>
+                                            <table id="Table_drivercommission" class="table table-hover table-bordered">
                                                 <thead>
                                                     <tr>
                                                         <th>Driver Id</th>
@@ -111,14 +97,6 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-
-          </div>
-       </div>
-        
-        
-
     }
 </section>
 @section secscripts{
@@ -133,38 +111,10 @@
           //  $('.pagination ul li a').attr('href', '#');
 
             $(document).ready(function () {
-                $('#accordion').accordion();
-                $('#Accordian_userpending').dataTable();
-                $('#Accordian_drivercommission').dataTable();
+                $('#Table_userpending').dataTable();
+                $('#Table_drivercommission').dataTable();
             });
-            $(document).ready(function () {
-
-                function close_accordion_section() {
-
-                    $('.accordion .accordion-section-title').removeClass('active');
-                    $('.accordion .accordion-section-content').slideUp(300).removeClass('open');
-                }
-
-                $('.accordion-section-title').click(function (e) {
-                    debugger
-                    // Grab current anchor value
-                    var currentAttrValue = $(this).attr('href');
-
-                    if ($(e.target).is('.active')) {
-                      //  close_accordion_section();
-                    } else {
-                      //  close_accordion_section();
-
-                        // Add active class to section title
-                        $(this).addClass('active');
-                        // Open up the hidden content panel
-                        $('.accordion ' + currentAttrValue).
-                            slideDown(300).addClass('open');
-                    }
-
-                });
-            });
-
+           
             $(function () {
                 $('#pendingAmount').parent().addClass('active');
             });
@@ -183,46 +133,4 @@
     </script>
 }
 
-<style>
-    .accordion, .accordion * {
-        -webkit-box-sizing: border-box;
-        -moz-box-sizing: border-box;
-        box-sizing: border-box;
-    }
-
-    .accordion {
-        overflow: hidden;
-        box-shadow: 0px 1px 3px rgba(0,0,0,0.25);
-        border-radius: 3px;
-        background: #f7f7f7;
-    }
-
-    .accordion-section-title {
-        width: 100%;
-        padding: 15px;
-        display: inline-block;
-        border-bottom: 1px solid #1a1a1a;
-        background: #333;
-        transition: all linear 0.15s;
-        margin: 0 0 30px 0;
-        font-size: 1.200em;
-        text-shadow: 0px 1px 0px #1a1a1a;
-        color: yellow;
-    }
-
-        .accordion-section-title:active, .accordion-section-title:hover, .accordion-section-title:focus {
-            background-color: rgb(236, 236, 58);
-            text-decoration: none;
-        }
-
-    .accordion-section:last-child .accordion-section-title {
-        border-bottom: none;
-    }
-
-
-    .accordion-section-content {
-        padding: 15px;
-        display: none;
-    }
-</style>
 
