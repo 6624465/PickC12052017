@@ -342,11 +342,11 @@ new { @class = "form-control" })
                                                                                         @Html.HiddenFor(x => Model.OPerator.OperatorVehicle[i].VehicleRegistrationNo, new { @class = "vehicleNoCss" })
                                                                                     </td>
                                                                                     <td>
-                                                                                        <span id="operatorVehicle_VehicleType_span_@i">@Model.OPerator.OperatorVehicle[i].VehicleType</span>
+                                                                                        <span id="operatorVehicle_VehicleType_span_@i">@Model.OPerator.OperatorVehicle[i].VehicleTypeDescription</span>
                                                                                         @Html.HiddenFor(x => Model.OPerator.OperatorVehicle[i].VehicleType)
                                                                                     </td>
                                                                                     <td>
-                                                                                        <span id="operatorVehicle_VehicleCategory_span_@i">@Model.OPerator.OperatorVehicle[i].VehicleCategory</span>
+                                                                                        <span id="operatorVehicle_VehicleCategory_span_@i">@Model.OPerator.OperatorVehicle[i].VehicleCategoryDescription</span>
                                                                                         @Html.HiddenFor(x => Model.OPerator.OperatorVehicle[i].VehicleCategory)
                                                                                     </td>
                                                                                     <td>
@@ -381,8 +381,8 @@ new { @class = "form-control" })
                                                             @*<button class="btn btn-box-tool" type="button" onclick="bankDetails()">Add</button>*@
                                                             @*<button type="button" class="btn btn-box-tool" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus" aria-hidden="true"></i></button>*@
                                                             <button class="btn btn-default btn-sm btn-them " type="button" onclick='location.href="@Url.Content("~/Driver/Add")"'>Add Driver</button>
-                                                            <button class="btn btn-default btn-sm btn-them " type="button" onclick="">Add</button>
-                                                            <button class="btn btn-box-tool" type="button" onclick="AddDriver('-1')"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                                                            <button class="btn btn-default btn-sm btn-them " type="button" onclick="AddDriver('-1')">Add</button>
+                                                            @*<button class="btn btn-box-tool" type="button" onclick="AddDriver('-1')"><i class="fa fa-plus" aria-hidden="true"></i></button>*@
                                                         </div>
                                                     </div>
                                                     <div class="box-body">
@@ -646,7 +646,7 @@ new { @class = "form-control" })
                             <label>Registration (RC)</label>
                         </div>
                         <div class="col-md-3">
-                            <input type="file" id="registration" name="registration" value="" />
+                            <input type="file" id="registration" name="registration" value="1391" />
                         </div>
                     </div>
                     <div class="row">
@@ -654,7 +654,7 @@ new { @class = "form-control" })
                             <label>Insurance</label>
                         </div>
                         <div class="col-md-3">
-                            <input type="file" id="Insurance" name="Insurance" value="" />
+                            <input type="file" id="Insurance" name="Insurance" value="1392" />
                         </div>
                     </div>
                     <div class="row">
@@ -662,7 +662,7 @@ new { @class = "form-control" })
                             <label>Pollution Check</label>
                         </div>
                         <div class="col-md-3">
-                            <input type="file" id="pollutioncheck" name="pollutioncheck" value="" />
+                            <input type="file" id="pollutioncheck" name="pollutioncheck" value="1393" />
                         </div>
                     </div>
                     <div class="row">
@@ -670,7 +670,7 @@ new { @class = "form-control" })
                             <label>Others</label>
                        </div>
                         <div class="col-md-3">
-                            <input type="file" id="others" name="others" value="" multiple="multiple"/>
+                            <input type="file" id="others" name="others" value="1394" multiple="multiple"/>
                         </div>
                     </div>
                     <div class="modal-footer">

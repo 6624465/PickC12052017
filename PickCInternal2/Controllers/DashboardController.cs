@@ -137,10 +137,13 @@ namespace PickC.Internal2.Controllers
         {
             ViewBag.totalBookings = await new UserService(AUTHTOKEN, p_mobileNo).GetBookingsCount();
             ViewBag.totalRegistered = await new UserService(AUTHTOKEN, p_mobileNo).GetRegisteredCount();
+          
             //var CustomerList = await new UserService(AUTHTOKEN, p_mobileNo).GetRegisteredButNotBookedList();
             var userData = new UserData();
-            userData.dateFrom = DateTime.Now;
+            DateTime dateTime = DateTime.Now;
+            userData.dateFrom = new DateTime(dateTime.Year, dateTime.Month, 1);
             userData.dateto = DateTime.Now;
+            userData.userBookingList = await new UserService(AUTHTOKEN, p_mobileNo).searchBookingTripsAsync(userData);
             return View("UserApp", userData);
         }
         [HttpGet]

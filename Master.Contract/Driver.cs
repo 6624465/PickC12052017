@@ -93,9 +93,16 @@ namespace Master.Contract
         public DateTime DateofIssue { get; set; }
         public DateTime DateofReturn { get; set; }
         public List<BankDetails> BankDetails { get; set; }
-        
-    }
+        public List<DriverAttachment> driverAttachment { get; set; }
 
+    }
+    public class DriverAttachment : IContract
+    {
+        public string AttachmentId { get; set; }
+        public string DriverID { get; set; }
+        public string LookupCode { get; set; }
+        public string ImagePath { get; set; }
+    }
     public class DriverAttachmentListStatus
     {
         public string DriverID { get; set; }

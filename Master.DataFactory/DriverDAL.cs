@@ -93,20 +93,31 @@ namespace Master.DataFactory
                 db.AddInParameter(savecommand, "CreatedBy", System.Data.DbType.String, driver.CreatedBy);
                 db.AddInParameter(savecommand, "ModifiedBy", System.Data.DbType.String, driver.ModifiedBy);
                 db.AddInParameter(savecommand, "Nationality", System.Data.DbType.String, driver.Nationality ?? "Indian");
+                db.AddInParameter(savecommand, "OperatorID", System.Data.DbType.String, driver.OperatorID);
                 //db.AddInParameter(savecommand, "DeviceID", System.Data.DbType.String, driver.DeviceID);
-                db.AddOutParameter(savecommand, "NewDocumentNo", System.Data.DbType.String,50);
+     
                 db.AddInParameter(savecommand, "MobileMake", System.Data.DbType.String, driver.MobileMake);
                 db.AddInParameter(savecommand, "ModelNo", System.Data.DbType.String, driver.ModelNo);
                 db.AddInParameter(savecommand, "DateofIssue", System.Data.DbType.DateTime, driver.DateofIssue);
                 db.AddInParameter(savecommand, "DateofReturn", System.Data.DbType.DateTime, driver.DateofReturn);
-                db.AddInParameter(savecommand, "OperatorID", System.Data.DbType.String, driver.OperatorID);
+                db.AddOutParameter(savecommand, "NewDocumentNo", System.Data.DbType.String, 50);
+
 
                 result = db.ExecuteNonQuery(savecommand, transaction);
                 
                 if (result > 0)
                 {
                     var newDocumentNo = savecommand.Parameters["@NewDocumentNo"].Value.ToString();
-                   // var newDocumentNo = db.GetParameterValue(savecommand, "NewDocumentNo").ToString();
+                    // var newDocumentNo = db.GetParameterValue(savecommand, "NewDocumentNo").ToString();
+                    if (driver.driverAttachment != null && driver.driverAttachment.Count > 0)
+                    {
+                        foreach (var driverAttachment in driver.driverAttachment)
+                        {
+                            driverAttachment.DriverID = driver.OperatorID;
+                            driverAttachment.AttachmentId = driver.OperatorID + driverAttachment.LookupCode;
+                        }
+                        result = new DriverAttachementDAL().SaveList(driver.driverAttachment, transaction) == true ? 1 : 0;
+                    }
                     if (driver.AddressList != null && driver.AddressList.Count > 0)
                     {
                         foreach (var addressItem in driver.AddressList)
