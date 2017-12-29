@@ -34,6 +34,7 @@ namespace Master.Contract
         public DateTime? OTPVerifiedDate { get; set; }
 
     }
+   
 }
 
 
