@@ -13,11 +13,11 @@
 @using (Html.BeginForm("SaveDriver", "Driver", FormMethod.Post, new { id = "frmDriverAdd", name = "frmDriverAdd" }))
 {
     <section class="content">
-        <div class="row">
+        @*<div class="row">
             <div class="col-xs-12">
                 @{ Html.RenderPartial("DashboardMenuList"); }
             </div>
-        </div>
+        </div>*@
         <div class="row" style="margin:5px 0 0 -15px;">
             <div class="col-xs-12">
                 <div class="box">
@@ -368,7 +368,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                    <button type="button" onclick="btnSaveAddress();" class="btn btn-primary">Save changes</button>
+                    <button type="button" onclick="btnSaveAddress();" class="btn btn-primary">Save</button>
                 </div>
             </div>
         </form>
