@@ -128,7 +128,23 @@ function btnSavedriver() {
     gIndex = -1;
 }
 function AddDriver(index) {
+
     gIndex = -1;
     $('#operatorDriverList_DriverName, #operatorDriverList_DriverLicenseNo, #operatorDriverList_DriverMobileNo, #operatorDriverList_VehicleNo').val('');
     $('#DriverModal').modal('show');
+    var vehicles = $('.vehicleNoCss');
+    var newVehicleArr = new Array();
+
+    if (vehicles.length > 0) {
+        $.each(vehicles, function (index, item) {
+            //OPerator_OperatorVehicle_-1__VehicleRegistrationNo 
+            var vehicle = $('#OPerator_OperatorVehicle_' + index + '__VehicleRegistrationNo').val();
+            newVehicleArr.push(vehicle);
+        });
+    }
+    $.each(newVehicleArr, function (key, value) {
+        $('#operatorDriverList_VehicleNo')
+             .append($('<option class="new">', { value: value })
+             .text(value));
+    });
 }

@@ -49,7 +49,7 @@
                                 <div class="form-group">
                                     <label>Date To</label>
                                     <div class="input-group dtCss">
-                                        @Html.TextBoxFor(x => x.bookings.DateTo, new { @class = "form-control", })
+                                        @Html.TextBoxFor(x => x.bookings.DateTo, new { @id = "endDate", @class = "form-control", })
                                         <span class="input-group-btn">
                                             <button type="button" class="btn btn-default"><i class="fa fa-calendar" aria-hidden="true"></i></button>
                                         </span>
@@ -173,6 +173,15 @@
                         required: true
                     }
                 }
+            });
+            $('#endDate').blur(function () {
+                debugger
+                var startD = $('#startDate').val();
+                var endD = $('#endDate').val();
+                if(startD !='' && endD!='')
+                    if (startD > endD) {
+                        alert("DateTo should be greater than DateFrom");
+                    }
             });
             $(function () {
                 debugger;
