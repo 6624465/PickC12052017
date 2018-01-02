@@ -1,4 +1,23 @@
-﻿$(function () {
+﻿//$(function () {
+//    $('#frmBank').validate({
+//        rules: {
+//            txtBankName: {
+//                required: true
+//            },
+//            txtBranch: {
+//                required: true
+//            },
+//            txtAccNumber: {
+//                required: true
+//            },
+//            txtAccType: {
+//                required: true
+//            }
+//        }
+//    });
+//});
+$(function () {
+    debugger
     $('#frmBank').validate({
         rules: {
             txtBankName: {
@@ -38,6 +57,7 @@ function DeleteBankDetails(index) {
     $('#txtAccType').val('');
 }
 function btnSaveBank() {
+   debugger
     if (!$('#frmBank').valid())
         return;  
 
