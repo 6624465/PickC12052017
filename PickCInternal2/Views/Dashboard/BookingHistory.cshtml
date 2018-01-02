@@ -178,8 +178,8 @@
                 debugger
                 var startD = $('#startDate').val();
                 var endD = $('#endDate').val();
-                if(startD !='' && endD!='')
-                    if (startD > endD) {
+                if (startD != '' && endD != '')
+                    if (startD >= endD) {
                         alert("DateTo should be greater than DateFrom");
                     }
             });
