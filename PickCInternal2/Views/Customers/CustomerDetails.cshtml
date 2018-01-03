@@ -54,18 +54,22 @@
                                         <label>Total Bookings</label>
                                         @Html.TextBoxFor(x => x.TotalBookings, new { @class = "form-control", @readonly = "readonly" })
                                     </div>
+                                    <div class="modal-footer">
+                                        <button class="btn btn-primary btn-sm " type="button" onclick="location.href='@Url.Action("Index","Customers")'"> <i class="fa fa-backward"></i>&nbsp;Back</button>
+                                    </div>    
                                 </div>
-                            </div>
-                        </div>
+                              </div>
+                          </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-@section secscripts{
-    <script src="@Url.Content("~/Scripts/jquery.validate.js")"></script>
-    <script src="@Url.Content("~/Scripts/moment.js")"></script>
-    <script src="@Url.Content("~/Scripts/bootstrap-datetimepicker.js")"></script>
-}
+
+    @section secscripts{
+        <script src="@Url.Content("~/Scripts/jquery.validate.js")"></script>
+        <script src="@Url.Content("~/Scripts/moment.js")"></script>
+        <script src="@Url.Content("~/Scripts/bootstrap-datetimepicker.js")"></script>
+    }
 
