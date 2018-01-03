@@ -25,8 +25,12 @@ namespace PickC.Internal2.Controllers
         }
         public async Task<ActionResult> CustomerDetails(string MobileNo)
         {
-            var customerdetails = await new CustomerService(AUTHTOKEN, p_mobileNo).GetCustomerDetailsAsync(MobileNo);
-            return View(customerdetails);
+            var customerInfo = new CustomerInfo();
+            customerInfo = await new CustomerService(AUTHTOKEN, p_mobileNo).GetCustomerDetailsAsync(MobileNo);
+            if (customerInfo != null)
+                return View(customerInfo);
+            else
+                return RedirectToAction("Index");
         }
     }
 }

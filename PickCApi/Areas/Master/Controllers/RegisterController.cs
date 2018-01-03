@@ -666,11 +666,11 @@ namespace PickCApi.Areas.Master.Controllers
         {
             try
             {
-            var result = new CustomerBO().GetCustomersDetails(MobileNo);
-            if (result != null)
-                return Ok(result);
-            else
-                return NotFound();
+                var result = new CustomerBO().GetCustomersDetails(MobileNo);
+                if (result != null)
+                    return Ok(result);
+                else
+                    return NotFound();
             }
             catch (Exception ex)
             {
