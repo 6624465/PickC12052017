@@ -142,10 +142,10 @@ namespace PickCApi.Areas.Operation.Controllers
                     else
                     {
                         var CancelBooking = new BookingBO().DeleteBooking(new Booking { BookingNo = booking.BookingNo });
-                        if (CancelBooking == true)
-                            return Ok(new { Status = UTILITY.NotifyCustomer });
+                        if (CancelBooking)
+                            return Ok(new { bookingNo="",message = UTILITY.NotifyCustomer, });
                         else
-                            return Ok(new { Status = UTILITY.NotifyCustomerFail });
+                            return Ok(new { bookingNo = "",message = UTILITY.NotifyCustomerFail });
                     }
                 }
                 else
