@@ -1,4 +1,6 @@
-﻿@model Master.Contract.CustomersDetails
+﻿@model PickC.Services.DTO.CustomerInfo
+@using PickC.Internal2.HtmlHelpers
+
 @{
     ViewBag.Title = "CustomerDetails";
 }
@@ -61,14 +63,6 @@
         </div>
     </div>
 </div>
-
-
-
-
-
-
-
-
 @section secscripts{
     <script src="@Url.Content("~/Scripts/jquery.validate.js")"></script>
     <script src="@Url.Content("~/Scripts/moment.js")"></script>

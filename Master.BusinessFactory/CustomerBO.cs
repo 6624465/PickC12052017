@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Master.Contract;
 using Master.DataFactory;
 using Operation.Contract;
+using PickC.Services.DTO;
 
 namespace Master.BusinessFactory
 {
@@ -75,7 +76,7 @@ namespace Master.BusinessFactory
 
             return customerDAL.SaveContactUs(contactUs);
         }
-        public CustomersDetails GetCustomersDetails(string MobileNo)
+        public CustomerInfo GetCustomersDetails(string MobileNo)
         {
             return customerDAL.GetCustomersDetails(MobileNo);
         }

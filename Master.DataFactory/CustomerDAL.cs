@@ -9,7 +9,7 @@ using Microsoft.Practices.EnterpriseLibrary.Data;
 using Microsoft.Practices.EnterpriseLibrary.Data.Sql;
 using Master.Contract;
 using Master.DataFactory;
-
+using PickC.Services.DTO;
 namespace Master.DataFactory
 {
     public class CustomerDAL
@@ -378,9 +378,9 @@ namespace Master.DataFactory
 
         }
 
-        public CustomersDetails GetCustomersDetails(string MobileNo)
+        public CustomerInfo GetCustomersDetails(string MobileNo)
         {
-            return db.ExecuteSprocAccessor(DBRoutine.CUSTOMERSELECTBYMOBILENO, MapBuilder<CustomersDetails>.BuildAllProperties(), MobileNo).FirstOrDefault();
+            return db.ExecuteSprocAccessor(DBRoutine.CUSTOMERSELECTBYMOBILENO, MapBuilder<CustomerInfo>.BuildAllProperties(), MobileNo).FirstOrDefault();
         }
     }
 }
