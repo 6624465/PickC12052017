@@ -23,5 +23,10 @@ namespace PickC.Internal2.Controllers
 
             return View(customerlist);
         }
+        public async Task<ActionResult> CustomerDetails(string MobileNo)
+        {
+            var customerdetails = await new CustomerService(AUTHTOKEN, p_mobileNo).GetCustomerDetailsAsync(MobileNo);
+            return View(customerdetails);
+        }
     }
 }

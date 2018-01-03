@@ -378,5 +378,9 @@ namespace Master.DataFactory
 
         }
 
+        public CustomersDetails GetCustomersDetails(string MobileNo)
+        {
+            return db.ExecuteSprocAccessor(DBRoutine.CUSTOMERSELECTBYMOBILENO, MapBuilder<CustomersDetails>.BuildAllProperties(), MobileNo).FirstOrDefault();
+        }
     }
 }

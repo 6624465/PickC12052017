@@ -659,7 +659,27 @@ namespace PickCApi.Areas.Master.Controllers
             }
             return result;
         }
+
+        [HttpGet]
+        [Route("GetCustomerDetails/{MobileNo}")]
+        public IHttpActionResult GetCustomersDetails(string MobileNo)
+        {
+            try
+            {
+            var result = new CustomerBO().GetCustomersDetails(MobileNo);
+            if (result != null)
+                return Ok(result);
+            else
+                return NotFound();
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
+        }
     }
+
+
 
 }
 

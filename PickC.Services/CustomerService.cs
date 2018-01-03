@@ -157,5 +157,18 @@ namespace PickC.Services
                  await client.ExecuteTaskAsync(request));
 
         }
+        public async Task<CustomerDetails> GetCustomerDetailsAsync(string MobileNo)
+        {
+            IRestClient client = new RestClient(ApiBaseUrl);
+            var request = new RestRequest();
+            request.Method = Method.GET;
+            request.Resource = "master/customer/GetCustomerDetails";
+             request.AddParameter("MobileNo", MobileNo, ParameterType.UrlSegment);
+            request.AddJsonBody(MobileNo);
+            return ServiceResponse<CustomerDetails>(
+                 await client.ExecuteTaskAsync<CustomerDetails>(request));
+
+        }
+        
     }
 }

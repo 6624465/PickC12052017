@@ -47,7 +47,8 @@
                                 grid.Column("OperatorID", "Operator ID"),
                                 grid.Column("OperatorName", "Operator Name"),
                                 grid.Column("PhoneNo", "Phone No"),
-                                grid.Column("", "#Edit", format: @<text><a href="@Url.Content("~/Operator/Edit?OperatorID=" + item.OperatorID)"><i class="fa fa-pencil" aria-hidden="true"></i></a></text>)
+                                grid.Column("", "#Edit", format: 
+                                @<text><a href="@Url.Content("~/Operator/Edit?OperatorID=" + item.OperatorID)"><i class="fa fa-pencil" aria-hidden="true"></i></a></text>)
                             ),
                             htmlAttributes: new { id = "grid" })
                             </div>

@@ -75,5 +75,9 @@ namespace Master.BusinessFactory
 
             return customerDAL.SaveContactUs(contactUs);
         }
+        public CustomersDetails GetCustomersDetails(string MobileNo)
+        {
+            return customerDAL.GetCustomersDetails(MobileNo);
+        }
     }
 }

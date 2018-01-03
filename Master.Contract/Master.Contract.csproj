@@ -47,6 +47,7 @@
     <Compile Include="Customer.cs" />
     <Compile Include="CustomerBillDetails.cs" />
     <Compile Include="CustomerPassword.cs" />
+    <Compile Include="CustomersDetails.cs" />
     <Compile Include="Driver.cs" />
     <Compile Include="DriverDetails.cs" />
     <Compile Include="DriverEarningPaymentType.cs" />
