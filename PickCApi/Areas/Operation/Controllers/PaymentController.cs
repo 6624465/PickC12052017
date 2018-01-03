@@ -55,10 +55,17 @@ namespace PickCApi.Areas.Operation.Controllers
                 string vParams = "access_code=" + obj.access_code + "&" + "order_id=" + obj.order_id;
                 string queryUrl = "https://secure.ccavenue.com/transaction/getRSAKey";
                 var encStr = postPaymentRequestToGateway(queryUrl, vParams);
-                return Ok(new
+                if (encStr != null && encStr != "")
                 {
-                    RSAKey = encStr
-                });
+                    return Ok(new
+                    {
+                        RSAKey = encStr
+                    });
+                }
+                else
+                {
+                    return Ok(new { RSAKey = "" });
+                }
             }
             else
             {
