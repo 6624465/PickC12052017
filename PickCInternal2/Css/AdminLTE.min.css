@@ -110,6 +110,23 @@ body {
 .fixed .content-wrapper, .fixed .right-side {
     padding-top: 50px;
 }
+@media (max-width:1366px) {
+    .dr-list{
+        max-height: 500px !important;
+    }
+    #map{
+        max-height:500px !important;
+    }
+}
+@media (min-width:1367px) {
+
+    .dr-list{
+        max-height: 1100px !important;
+    }
+    #map{
+        max-height:1100px !important;
+    }
+}
 
 @media (max-width:767px) {
     .fixed .content-wrapper, .fixed .right-side {
@@ -2209,7 +2226,6 @@ a {
 .progress-description, .info-box-text {
     display: block;
     font-size: 14px;
-    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
@@ -5235,7 +5251,7 @@ table.text-center, table.text-center td, table.text-center th {
 }
 
 .dr-list {
-    height: 465px;
+    max-height: 500px;
     overflow-y: auto;
     padding-right: 15px;
 }

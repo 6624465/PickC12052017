@@ -25,35 +25,37 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <h2>User Pending Cancellation Charges</h2>
-                                            <table id="Table_userpending" class="table table-hover table-bordered">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Booking No.</th>
-                                                        <th>Booking Date</th>
-                                                        <th>Vehicle Type</th>
-                                                        <th>Vehicle No.</th>
-                                                        <th>Location From</th>
-                                                        <th>Location To</th>
-                                                        <th>Cancellation Remarks</th>
-                                                        <th>Cancellation Amount</th>
-                                                    </tr>
-                                                </thead>
-                                                    @*@<tbody>
-                                                            @foreach(var item in )
-                                                    {
+                                            <div class="table-responsive">
+                                                <table id="Table_userpending" class="table table-hover table-bordered">
+                                                    <thead>
                                                         <tr>
-                                                            <td>@Html.DisplayFor(i=>item.BookingNo)</td>
-                                                            <td>@Html.DisplayFor(i => item.BookingDate)</td>
-                                                            <td>@Html.DisplayFor(i => item.VehicleType)</td>
-                                                            <td>@Html.DisplayFor(i => item.VehicleNo)</td>
-                                                            <td>@Html.DisplayFor(i => item.LocationFrom)</td>
-                                                            <td>@Html.DisplayFor(i => item.LocationTo)</td>
-                                                            <td>@Html.DisplayFor(i => item.CancellationRemarks)</td>
-                                                            <td>@Html.DisplayFor(i=>item.CancellationAmount)</td>
+                                                            <th>Booking No.</th>
+                                                            <th>Booking Date</th>
+                                                            <th>Vehicle Type</th>
+                                                            <th>Vehicle No.</th>
+                                                            <th>Location From</th>
+                                                            <th>Location To</th>
+                                                            <th>Cancellation Remarks</th>
+                                                            <th>Cancellation Amount</th>
                                                         </tr>
-                                                    }
-                                                </tbody>*@
-                                            </table>
+                                                    </thead>
+                                                    @*@<tbody>
+                            @foreach(var item in )
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(i=>item.BookingNo)</td>
+                            <td>@Html.DisplayFor(i => item.BookingDate)</td>
+                            <td>@Html.DisplayFor(i => item.VehicleType)</td>
+                            <td>@Html.DisplayFor(i => item.VehicleNo)</td>
+                            <td>@Html.DisplayFor(i => item.LocationFrom)</td>
+                            <td>@Html.DisplayFor(i => item.LocationTo)</td>
+                            <td>@Html.DisplayFor(i => item.CancellationRemarks)</td>
+                            <td>@Html.DisplayFor(i=>item.CancellationAmount)</td>
+                        </tr>
+                    }
+                </tbody>*@
+                                                </table>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -61,38 +63,41 @@
                          <div class="row">
                              <div class="col-md-12">
                                  <h2>Driver Commission amount pending to Pick-C</h2>
-                                            <table id="Table_drivercommission" class="table table-hover table-bordered">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Driver Id</th>
-                                                        <th>Driver Name</th>
-                                                        <th>Vehicle No.</th>
-                                                        <th>Booking No.</th>
-                                                        <th>Booking Date</th>
-                                                        <th>Trip Amount</th>
-                                                        <th>Payment Type</th>
-                                                        <th>Commission Amount</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    @foreach (var item in Model.driverPendingCommision)
-                                                    {
-                                                    <tr>
-                                                   
-                                                        <td>@Html.DisplayFor(i => item.DriverId)</td>
-                                                        <td>@Html.DisplayFor(i => item.DriverName)</td>
-                                                        <td>@Html.DisplayFor(i => item.VehicleNo)</td>
-                                                        <td>@Html.DisplayFor(i => item.BookingNo)</td>
-                                                        <td>@Html.DisplayFor(i => item.BookingDate)</td>
-                                                        <td>@Html.DisplayFor(i => item.TripAmount)</td>
-                                                        <td>@Html.DisplayFor(i => item.PaymentType)</td>
-                                                        <td>@Html.DisplayFor(i => item.CommissionAmount)</td>
-                                                    
-                                                    </tr>
-                                                    }
-                                                </tbody>
-                                            </table>
-                                        </div>
+                                 <div class="table-responsive">
+                                     <table id="Table_drivercommission" class="table table-hover table-bordered">
+                                         <thead>
+                                             <tr>
+                                                 <th>Driver Id</th>
+                                                 <th>Driver Name</th>
+                                                 <th>Vehicle No.</th>
+                                                 <th>Booking No.</th>
+                                                 <th>Booking Date</th>
+                                                 <th>Trip Amount</th>
+                                                 <th>Payment Type</th>
+                                                 <th>Commission Amount</th>
+                                             </tr>
+                                         </thead>
+                                         <tbody>
+                                             @foreach (var item in Model.driverPendingCommision)
+                                             {
+                                                 <tr>
+
+                                                     <td>@Html.DisplayFor(i => item.DriverId)</td>
+                                                     <td>@Html.DisplayFor(i => item.DriverName)</td>
+                                                     <td>@Html.DisplayFor(i => item.VehicleNo)</td>
+                                                     <td>@Html.DisplayFor(i => item.BookingNo)</td>
+                                                     <td>@Html.DisplayFor(i => item.BookingDate)</td>
+                                                     <td>@Html.DisplayFor(i => item.TripAmount)</td>
+                                                     <td>@Html.DisplayFor(i => item.PaymentType)</td>
+                                                     <td>@Html.DisplayFor(i => item.CommissionAmount)</td>
+
+                                                 </tr>
+                                             }
+                                         </tbody>
+                                     </table>
+                                     </div>
+                                 </div>
+
                                     </div>
                                 </div>
                             </div>

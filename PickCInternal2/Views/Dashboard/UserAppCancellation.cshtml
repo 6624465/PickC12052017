@@ -24,33 +24,35 @@
                     <div class="row">
                         <div class="col-md-12">
                             <h2>Cancelled By Customer</h2>
-                            <div class="col-md-6">
-                                <table id="customer_cancellation" class="table table-hover table-bordered">
-                                    <thead>
-                                        <tr>
-                                            <th>Customer Name</th>
-                                            <th>Mobile No.</th>
-                                            <th>Booking No.</th>
-                                            <th>Booking Date</th>
-                                            <th>Reason For Cancellation</th>
-                                            <th>Status</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach (var item in Model.customerCancellation)
-                                        {
+                            
+                                <div class="table-responsive">
+                                    <table id="customer_cancellation" class="table table-hover table-bordered">
+                                        <thead>
                                             <tr>
-                                                <td>@Html.DisplayFor(i => item.CustomerName)</td>
-                                                <td>@Html.DisplayFor(i => item.MobileNo)</td>
-                                                <td>@Html.DisplayFor(i => item.BookingNo)</td>
-                                                <td>@Html.DisplayFor(i => item.BookingDate)</td>
-                                                <td>@Html.DisplayFor(i => item.Reason)</td>
-                                                <td>@Html.DisplayFor(i => item.Status)</td>
+                                                <th>Customer Name</th>
+                                                <th>Mobile No.</th>
+                                                <th>Booking No.</th>
+                                                <th>Booking Date</th>
+                                                <th>Reason For Cancellation</th>
+                                                <th>Status</th>
                                             </tr>
-                                        }
-                                    </tbody>
-                                </table>
-                            </div>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var item in Model.customerCancellation)
+                                            {
+                                                <tr>
+                                                    <td>@Html.DisplayFor(i => item.CustomerName)</td>
+                                                    <td>@Html.DisplayFor(i => item.MobileNo)</td>
+                                                    <td>@Html.DisplayFor(i => item.BookingNo)</td>
+                                                    <td>@Html.DisplayFor(i => item.BookingDate)</td>
+                                                    <td>@Html.DisplayFor(i => item.Reason)</td>
+                                                    <td>@Html.DisplayFor(i => item.Status)</td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -58,30 +60,32 @@
                 <div class="col-md-6">
                     <div class="row">
                         <div class="col-md-12">
-                            <table id="driver_cancellation" class="table table-hover table-bordered">
-                                <thead>
-                                    <tr>
-                                        <th>Booking No.</th>
-                                        <th>Driver Name</th>
-                                        <th>Truck No.</th>
-                                        <th>Mobile No.</th>
-                                        <th>Cancellation Remarks</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach (var item in Model.driverCancellation)
-                                    {
+                            <div class="table-responsive">
+                                <table id="driver_cancellation" class="table table-hover table-bordered">
+                                    <thead>
                                         <tr>
-                                            <td>@Html.DisplayFor(i => item.BookingNo)</td>
-                                            <td>@Html.DisplayFor(i => item.DriverName)</td>
-                                            <td>@Html.DisplayFor(i => item.TruckNo)</td>
-                                            <td>@Html.DisplayFor(i => item.MobileNo)</td>
-                                            <td>@Html.DisplayFor(i => item.Remarks)</td>
+                                            <th>Booking No.</th>
+                                            <th>Driver Name</th>
+                                            <th>Truck No.</th>
+                                            <th>Mobile No.</th>
+                                            <th>Cancellation Remarks</th>
                                         </tr>
-                                    }
-                                </tbody>
-                            </table>
-                        </div>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model.driverCancellation)
+                                        {
+                                            <tr>
+                                                <td>@Html.DisplayFor(i => item.BookingNo)</td>
+                                                <td>@Html.DisplayFor(i => item.DriverName)</td>
+                                                <td>@Html.DisplayFor(i => item.TruckNo)</td>
+                                                <td>@Html.DisplayFor(i => item.MobileNo)</td>
+                                                <td>@Html.DisplayFor(i => item.Remarks)</td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                            </div>
                     </div>
                 </div>
             </div>

@@ -18,10 +18,7 @@
         </div>*@
     <div class="row">
         <div class="col-xs-12">
-
             <div class="tab-main-content">
-
-
                 <div class="box">
                     <div class="box-header">
                         <h3 class="box-title">Operators List</h3>
@@ -47,7 +44,7 @@
                                 grid.Column("OperatorID", "Operator ID"),
                                 grid.Column("OperatorName", "Operator Name"),
                                 grid.Column("PhoneNo", "Phone No"),
-                                grid.Column("", "#Edit", format: 
+                                grid.Column("Edit", "#Edit", format: 
                                 @<text><a href="@Url.Content("~/Operator/Edit?OperatorID=" + item.OperatorID)"><i class="fa fa-pencil" aria-hidden="true"></i></a></text>)
                             ),
                             htmlAttributes: new { id = "grid" })
