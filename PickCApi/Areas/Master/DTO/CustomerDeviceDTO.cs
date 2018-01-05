@@ -7,7 +7,7 @@ namespace PickCApi.Areas.Master.DTO
 {
     public class CustomerDeviceDTO
     {
-        public string mobileNo { get; set; }
-        public string deviceId { get; set; }
+        public string MobileNo { get; set; }
+        public string DeviceId { get; set; }
     }
 }

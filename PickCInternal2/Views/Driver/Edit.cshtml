@@ -48,7 +48,7 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Driver ID</label>
-                                    @Html.TextBoxFor(x => x.driver.DriverID, new { @class = "form-control", placeholder = "Driver ID", @readonly = "readonly" })
+                                    @Html.TextBoxFor(x => x.driver.DriverId, new { @class = "form-control", placeholder = "Driver ID", @readonly = "readonly" })
                                 </div>
                             </div>
                             <div class="col-md-4">
@@ -116,7 +116,7 @@
                                 <div class="form-group">
                                     <label>Gender</label>
                                     @Html.DropDownListFor(x => x.driver.Gender,
-                                     new SelectList(Model.driverLookupDTO.genderOptions, "LookupID", "LookupDescription"),
+                                     new SelectList(Model.driverLookupDTO.genderOptions, "LookupId", "LookupDescription"),
                                      "Select Gender",
                                      new { @class = "form-control" })
                                 </div>
@@ -125,7 +125,7 @@
                                 <div class="form-group">
                                     <label>Maritial Status</label>
                                     @Html.DropDownListFor(x => x.driver.MaritialStatus,
-                                     new SelectList(Model.driverLookupDTO.maritalOptions, "LookupID", "LookupDescription"),
+                                     new SelectList(Model.driverLookupDTO.maritalOptions, "LookupId", "LookupDescription"),
                                      "Select Maritial Status",
                                      new { @class = "form-control" })
                                 </div>

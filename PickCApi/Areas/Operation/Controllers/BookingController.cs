@@ -38,24 +38,24 @@ namespace PickCApi.Areas.Operation.Controllers
                 return InternalServerError(ex);
             }
         }
-        [HttpGet]
-        [Route("BookingHistoryListbyCustomerMobileNo/{MobileNo}")]
-        public IHttpActionResult BookingHistoryListbyCustomerMobileNo(string MobileNo)
-        {
-            try
-            {
-                var bookingList = new BookingBO().GetBookingHistoryList().Where(x => x.CustomerID == MobileNo);
-                if (bookingList != null)
-                    return Ok(bookingList);
-                else
-                    return NotFound();
-            }
-            catch (Exception ex)
-            {
+        //[HttpGet]
+        //[Route("bookingHistoryListbyCustomerMobileNo/{MobileNo}")]
+        //public IHttpActionResult BookingHistoryListbyCustomerMobileNo(string MobileNo)
+        //{
+        //    try
+        //    {
+        //        var bookingList = new BookingBO().GetBookingHistoryList().Where(x => x.CustomerID == MobileNo);
+        //        if (bookingList != null)
+        //            return Ok(bookingList);
+        //        else
+        //            return NotFound();
+        //    }
+        //    catch (Exception ex)
+        //    {
 
-                return InternalServerError(ex);
-            }
-        }
+        //        return InternalServerError(ex);
+        //    }
+        //}
         [HttpGet]
         [Route("list/customerbyname/{status?}")]
 
@@ -110,143 +110,143 @@ namespace PickCApi.Areas.Operation.Controllers
             }
         }
 
-        [HttpPost]
-        [Route("save")]
-        public IHttpActionResult SaveBooking(Booking booking)
-        {
-            try
-            {
-                var result = new BookingBO().SaveBooking(booking);
-                if (result)
-                {
-                    Booking bookings = new BookingBO().GetBooking(new Booking
-                    {
-                        BookingNo = booking.BookingNo
-                    });
-                    var driverList = new BookingBO().GetNearTrucksDeviceID(bookings.BookingNo,
-                        UTILITY.radius,
-                        bookings.VehicleType,
-                        bookings.VehicleGroup,
-                        bookings.Latitude,
-                        bookings.Longitude);//UTILITY.radius
-                    if (driverList.Count > 0)
-                    {
-                        PushNotification(driverList.Select(x => x.DeviceID).ToList<string>(),
-                            booking.BookingNo, UTILITY.NotifyNewBooking);
-                        return Ok(new
-                        {
-                            bookingNo = booking.BookingNo,
-                            message = UTILITY.SUCCESSMSG
-                        });
-                    }
-                    else
-                    {
-                        var CancelBooking = new BookingBO().DeleteBooking(new Booking { BookingNo = booking.BookingNo });
-                        if (CancelBooking)
-                            return Ok(new { bookingNo="",message = UTILITY.NotifyCustomer, });
-                        else
-                            return Ok(new { bookingNo = "",message = UTILITY.NotifyCustomerFail });
-                    }
-                }
-                else
-                    return BadRequest();
-            }
-            catch (Exception ex)
-            {
-                return InternalServerError(ex);
-            }
-        }
+        //[HttpPost]
+        //[Route("save")]
+        //public IHttpActionResult SaveBooking(Booking booking)
+        //{
+        //    try
+        //    {
+        //        var result = new BookingBO().SaveBooking(booking);
+        //        if (result)
+        //        {
+        //            Booking bookings = new BookingBO().GetBooking(new Booking
+        //            {
+        //                BookingNo = booking.BookingNo
+        //            });
+        //            var driverList = new BookingBO().GetNearTrucksDeviceID(bookings.BookingNo,
+        //                UTILITY.radius,
+        //                bookings.VehicleType,
+        //                bookings.VehicleGroup,
+        //                bookings.Latitude,
+        //                bookings.Longitude);//UTILITY.radius
+        //            if (driverList.Count > 0)
+        //            {
+        //                PushNotification(driverList.Select(x => x.DeviceID).ToList<string>(),
+        //                    booking.BookingNo, UTILITY.NotifyNewBooking);
+        //                return Ok(new
+        //                {
+        //                    bookingNo = booking.BookingNo,
+        //                    message = UTILITY.SUCCESSMSG
+        //                });
+        //            }
+        //            else
+        //            {
+        //                var CancelBooking = new BookingBO().DeleteBooking(new Booking { BookingNo = booking.BookingNo });
+        //                if (CancelBooking)
+        //                    return Ok(new { bookingNo="",message = UTILITY.NotifyCustomer, });
+        //                else
+        //                    return Ok(new { bookingNo = "",message = UTILITY.NotifyCustomerFail });
+        //            }
+        //        }
+        //        else
+        //            return BadRequest();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return InternalServerError(ex);
+        //    }
+        //}
 
-        [HttpGet]
-        [Route("isconfirm/{bookingNo}")]
-        public IHttpActionResult IsConfirmBooking(string bookingNo)
-        {
-            try
-            {
-                var booking = new BookingBO().GetBooking(new Booking
-                {
-                    BookingNo = bookingNo
-                });
+        //[HttpGet]
+        //[Route("isConfirm/{bookingNo}")]
+        //public IHttpActionResult IsConfirmBooking(string bookingNo)
+        //{
+        //    try
+        //    {
+        //        var booking = new BookingBO().GetBooking(new Booking
+        //        {
+        //            BookingNo = bookingNo
+        //        });
 
-                var driverInfo = new Driver();
-                var driverActivity = new DriverActivity();
-                if (booking.IsConfirm)
-                {
-                    driverInfo = new DriverBO().GetDriver(new Driver { DriverID = booking.DriverID });
-                    driverActivity = new DriverActivityBO().GetDriverActivityByDriverID(new DriverActivity { DriverID = booking.DriverID });
-                }
+        //        var driverInfo = new Driver();
+        //        var driverActivity = new DriverActivity();
+        //        if (booking.IsConfirm)
+        //        {
+        //            driverInfo = new DriverBO().GetDriver(new Driver { DriverID = booking.DriverID });
+        //            driverActivity = new DriverActivityBO().GetDriverActivityByDriverID(new DriverActivity { DriverID = booking.DriverID });
+        //        }
 
-                if (booking != null)
-                    return Ok(new
-                    {
-                        isConfirm = booking.IsConfirm,
-                        driverId = driverInfo.DriverID ?? "",
-                        vehicleNo = driverInfo.VehicleNo ?? "",
-                        driverName = driverInfo.DriverName ?? "",
-                        driverImage = "",
-                        MobileNo = driverInfo.MobileNo ?? "",
-                        latitude = driverActivity.CurrentLat,
-                        longitude = driverActivity.CurrentLong,
-                        OTP = booking.OTP,
-                        VehicleType = booking.VehicleType
-                    });
-                else
-                    return NotFound();
-            }
-            catch (Exception ex)
-            {
-                return InternalServerError(ex);
-            }
-        }
+        //        if (booking != null)
+        //            return Ok(new
+        //            {
+        //                isConfirm = booking.IsConfirm,
+        //                driverId = driverInfo.DriverID ?? "",
+        //                vehicleNo = driverInfo.VehicleNo ?? "",
+        //                driverName = driverInfo.DriverName ?? "",
+        //                driverImage = "",
+        //                MobileNo = driverInfo.MobileNo ?? "",
+        //                latitude = driverActivity.CurrentLat,
+        //                longitude = driverActivity.CurrentLong,
+        //                OTP = booking.OTP,
+        //                VehicleType = booking.VehicleType
+        //            });
+        //        else
+        //            return NotFound();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return InternalServerError(ex);
+        //    }
+        //}
 
-        [HttpGet]
-        [Route("{bookingNo}")]
-        public IHttpActionResult BookingByBookingNo(string bookingNo)
-        {
-            try
-            {
-                var booking = new BookingBO().GetBooking(new Booking
-                {
-                    BookingNo = bookingNo
-                });
+        //[HttpGet]
+        //[Route("{bookingNo}")]
+        //public IHttpActionResult BookingByBookingNo(string bookingNo)
+        //{
+        //    try
+        //    {
+        //        var booking = new BookingBO().GetBooking(new Booking
+        //        {
+        //            BookingNo = bookingNo
+        //        });
 
-                if (booking != null)
-                    return Ok(booking);
-                else
-                    return NotFound();
-            }
-            catch (Exception ex)
-            {
-                return InternalServerError(ex);
-            }
-        }
+        //        if (booking != null)
+        //            return Ok(booking);
+        //        else
+        //            return NotFound();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return InternalServerError(ex);
+        //    }
+        //}
 
-        [HttpPost]
-        [Route("delete")]
-        public IHttpActionResult DeleteByBookingNo(DeleteBookingDTO deleteBookingDTO)
-        {
-            try
-            {
-                var result = new BookingBO().DeleteBooking(new Booking { BookingNo = deleteBookingDTO.bookingNo });
-                if (result)
-                {
-                    string GetDriverDeviceIDByBookingNo = new BookingBO().GetDriverDeviceIDByBookingNo(deleteBookingDTO.bookingNo);
-                    if (!string.IsNullOrWhiteSpace(GetDriverDeviceIDByBookingNo))
-                    {
-                        PushNotification(GetDriverDeviceIDByBookingNo, deleteBookingDTO.bookingNo, UTILITY.NotifyBookingCancelledByUser);
-                        return Ok(UTILITY.DELETEMSG);
-                    }
-                    else
-                        return Ok(UTILITY.DELETEMSG);
-                }
-                else
-                    return NotFound();
-            }
-            catch (Exception ex)
-            {
-                return InternalServerError(ex);
-            }
-        }
+        //[HttpPost]
+        //[Route("delete")]
+        //public IHttpActionResult DeleteByBookingNo(DeleteBookingDTO deleteBookingDTO)
+        //{
+        //    try
+        //    {
+        //        var result = new BookingBO().DeleteBooking(new Booking { BookingNo = deleteBookingDTO.BookingNo });
+        //        if (result)
+        //        {
+        //            string GetDriverDeviceIDByBookingNo = new BookingBO().GetDriverDeviceIDByBookingNo(deleteBookingDTO.BookingNo);
+        //            if (!string.IsNullOrWhiteSpace(GetDriverDeviceIDByBookingNo))
+        //            {
+        //                PushNotification(GetDriverDeviceIDByBookingNo, deleteBookingDTO.BookingNo, UTILITY.NotifyBookingCancelledByUser);
+        //                return Ok(UTILITY.DELETEMSG);
+        //            }
+        //            else
+        //                return Ok(UTILITY.DELETEMSG);
+        //        }
+        //        else
+        //            return NotFound();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return InternalServerError(ex);
+        //    }
+        //}
 
         /* only for driver */
         [HttpGet]
@@ -388,25 +388,25 @@ namespace PickCApi.Areas.Operation.Controllers
             }
         }
 
-        [HttpGet]
-        [Route("drivergeoposition/{driverID}")]
-        public IHttpActionResult GetDriverGeoPosition(string driverID)
-        {
-            try
-            {
-                var driverActivity = new DriverActivityBO().GetDriverActivityByDriverID(new DriverActivity { DriverID = driverID });
+        //[HttpGet]
+        //[Route("drivergeOposition/{driverId}")]
+        //public IHttpActionResult GetDriverGeoPosition(string driverID)
+        //{
+        //    try
+        //    {
+        //        var driverActivity = new DriverActivityBO().GetDriverActivityByDriverID(new DriverActivity { DriverID = driverID });
 
-                return Ok(new
-                {
-                    CurrentLat = driverActivity.CurrentLat,
-                    CurrentLong = driverActivity.CurrentLong
-                });
-            }
-            catch (Exception ex)
-            {
-                return InternalServerError(ex);
-            }
-        }
+        //        return Ok(new
+        //        {
+        //            CurrentLat = driverActivity.CurrentLat,
+        //            CurrentLong = driverActivity.CurrentLong
+        //        });
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return InternalServerError(ex);
+        //    }
+        //}
 
         [HttpGet]
         [Route("DriverReceivedConfirm/{BookingNo}")]

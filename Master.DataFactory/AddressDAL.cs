@@ -59,7 +59,7 @@ namespace Master.DataFactory
 
                 var savecommand = db.GetStoredProcCommand(DBRoutine.SAVEADDRESS);
                 db.AddInParameter(savecommand, "AddressId", System.Data.DbType.Int32, address.AddressId);
-                db.AddInParameter(savecommand, "AddressLinkID", System.Data.DbType.String, address.AddressLinkID ?? "");
+                db.AddInParameter(savecommand, "AddressLinkID", System.Data.DbType.String, address.AddressLinkId ?? "");
                 db.AddInParameter(savecommand, "SeqNo", System.Data.DbType.Int16, address.SeqNo);
                 db.AddInParameter(savecommand, "AddressType", System.Data.DbType.String, address.AddressType ?? "");
                 db.AddInParameter(savecommand, "Address1", System.Data.DbType.String, address.Address1 ?? "");

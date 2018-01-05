@@ -87,7 +87,7 @@ namespace PickCApi.Areas.Operation.Controllers
             {
                 var driverActivity = new DriverActivity
                 {
-                    DriverID = HeaderValueByKey("DRIVERID"),
+                    DriverId = HeaderValueByKey("DRIVERID"),
                     TokenNo = HeaderValueByKey("AUTH_TOKEN"),
                     Latitude = Convert.ToDecimal(HeaderValueByKey("LATITUDE")),
                     Longitude = Convert.ToDecimal(HeaderValueByKey("LONGITUDE")),
@@ -137,7 +137,7 @@ namespace PickCApi.Areas.Operation.Controllers
             {
                 var driverActivity = new DriverActivity
                 {
-                    DriverID = HeaderValueByKey("DRIVERID"),
+                    DriverId = HeaderValueByKey("DRIVERID"),
                     TokenNo = HeaderValueByKey("AUTH_TOKEN"),
                     Latitude = Convert.ToDecimal(HeaderValueByKey("LATITUDE")),
                     Longitude = Convert.ToDecimal(HeaderValueByKey("LONGITUDE")),
@@ -151,7 +151,7 @@ namespace PickCApi.Areas.Operation.Controllers
                     driverActivityObj = new DriverActivityBO().GetDriverActivity(new DriverActivity
                     {
                         TokenNo = HeaderValueByKey("AUTH_TOKEN"),
-                        DriverID = HeaderValueByKey("DRIVERID")
+                        DriverId = HeaderValueByKey("DRIVERID")
                     });
 
                     var frmLatLong = driverActivityObj.CurrentLat.ToString() + "," + driverActivityObj.CurrentLong.ToString();
@@ -199,7 +199,7 @@ namespace PickCApi.Areas.Operation.Controllers
         {
             try
             {
-                var Driver = new DriverBO().GetDriver(new Driver { DriverID = DriverID });
+                var Driver = new DriverBO().GetDriver(new Driver { DriverId = DriverID });
                 string driverPassword = Driver.Password;
                 if (driverPassword != "" && driverPassword == password)
                 {
@@ -218,7 +218,7 @@ namespace PickCApi.Areas.Operation.Controllers
         public IHttpActionResult ForgotpasswordForDriver(string DriverID)
         {
             bool result = false;
-            var driver = new DriverBO().GetDriver(new Driver { DriverID = DriverID });
+            var driver = new DriverBO().GetDriver(new Driver { DriverId = DriverID });
             if (driver != null)
             {
                 result = SendDriverPassword(driver.MobileNo, driver.Password);
@@ -232,28 +232,28 @@ namespace PickCApi.Areas.Operation.Controllers
                 return NotFound();
         }
         /* only for user */
-        [HttpPost]
-        [Route("user")]
-        [ApiAuthFilter]
-        public IHttpActionResult GetTrucksInRange(TrucksInRangeDTO trucksInRangeDTO)
-        {
-            try
-            {
-                var trucks = new BookingBO().GetTrucksInRange(
-                    HeaderValueByKey("MOBILENO"),
-                    trucksInRangeDTO.latitude,
-                    trucksInRangeDTO.longitude,
-                    UTILITY.radius, trucksInRangeDTO.vehicleGroup, trucksInRangeDTO.vehicleType);
-                if (trucks != null)
-                    return Ok(trucks);
-                else
-                    return Ok(new List<NearTrucksInRange>());
-            }
-            catch (Exception ex)
-            {
-                return InternalServerError(ex);
-            }
-        }
+        //[HttpPost]
+        //[Route("user")]
+        //[ApiAuthFilter]
+        //public IHttpActionResult GetTrucksInRange(TrucksInRangeDTO trucksInRangeDTO)
+        //{
+        //    try
+        //    {
+        //        var trucks = new BookingBO().GetTrucksInRange(
+        //            HeaderValueByKey("MOBILENO"),
+        //            trucksInRangeDTO.Latitude,
+        //            trucksInRangeDTO.Longitude,
+        //            UTILITY.radius, trucksInRangeDTO.VehicleGroup, trucksInRangeDTO.VehicleType);
+        //        if (trucks != null)
+        //            return Ok(trucks);
+        //        else
+        //            return Ok(new List<NearTrucksInRange>());
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return InternalServerError(ex);
+        //    }
+        //}
         /* only for user */
 
         [HttpGet]
@@ -271,7 +271,7 @@ namespace PickCApi.Areas.Operation.Controllers
                     if (result)
                     {
                         PushNotification(new BookingBO().GetCustomerDeviceIDByBookingNo(BookingNo), BookingNo, UTILITY.NotifySuccess);
-                        SendOTP(bookingObj.CustomerID, CustomerOTP);
+                        SendOTP(bookingObj.CustomerId, CustomerOTP);
                         var booking = new BookingBO().GetBooking(new Booking
                         {
                             BookingNo = BookingNo
@@ -289,7 +289,7 @@ namespace PickCApi.Areas.Operation.Controllers
                             if (driverItem != null)
                                 driverList.Remove(driverItem);
 
-                            PushNotification(driverList.Select(x => x.DeviceID).ToList<string>(),
+                            PushNotification(driverList.Select(x => x.DeviceId).ToList<string>(),
                                 booking.BookingNo, UTILITY.NotifyBookingAcceptedByOtherDriver);
                         }
                     }
@@ -302,8 +302,8 @@ namespace PickCApi.Areas.Operation.Controllers
                 }
                 else
                 {
-                    var driver = new DriverBO().GetDriver(new Driver { DriverID = HeaderValueByKey("DRIVERID") });
-                    PushNotification(driver.DeviceID,
+                    var driver = new DriverBO().GetDriver(new Driver { DriverId = HeaderValueByKey("DRIVERID") });
+                    PushNotification(driver.DeviceId,
                                 BookingNo, UTILITY.NotifyBookingCancelledByUser);
 
                     return Ok(UTILITY.NotifyBookingCancelledByUser);
@@ -314,7 +314,7 @@ namespace PickCApi.Areas.Operation.Controllers
                 if (ex.Message == "Booking is Already Confirmed by Other Driver!")
                 {
                     var bookingInfo = new BookingBO().GetBooking(new Booking { BookingNo = BookingNo });
-                    if (bookingInfo.DriverID == HeaderValueByKey("DRIVERID"))
+                    if (bookingInfo.DriverId == HeaderValueByKey("DRIVERID"))
                         return Ok("Booking is Already Confirmed by you..!");
                     else
                         return Ok("Booking is Already Confirmed by Other Driver..!");

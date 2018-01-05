@@ -11,7 +11,7 @@ namespace Master.Contract
         public Driver() { }
 
 
-        public string DriverID { get; set; }
+        public string DriverId { get; set; }
 
 
         public string DriverName { get; set; }
@@ -78,7 +78,7 @@ namespace Master.Contract
 
         public string VerifiedBy { get; set; }
 
-        public string DeviceID { get; set; }
+        public string DeviceId { get; set; }
 
 
         public DateTime VerifiedOn { get; set; }

@@ -41,7 +41,7 @@ namespace PickCApi.Areas.Master.Controllers
             {
                 var DRIVERID = HttpContext.Current.Request.Headers["DRIVERID"];
                 var driverBO = new DriverBO();
-                var driverObj = driverBO.GetDriver(new Driver {DriverID= DRIVERID });
+                var driverObj = driverBO.GetDriver(new Driver {DriverId= DRIVERID });
                 if (driverObj != null)
                 {
                     driverObj.DriverName = driver.DriverName;
@@ -71,7 +71,7 @@ namespace PickCApi.Areas.Master.Controllers
             {
                 var driverBO = new DriverBO();
                 var DRIVERID = HttpContext.Current.Request.Headers["DRIVERID"];
-                var driverObj = driverBO.GetDriver(new Driver { DriverID = DRIVERID });
+                var driverObj = driverBO.GetDriver(new Driver { DriverId = DRIVERID });
                 if (driverObj != null)
                 {
                     return Ok(driverObj);

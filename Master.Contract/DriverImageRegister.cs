@@ -9,7 +9,7 @@ namespace Master.Contract
    public class DriverImageRegister:IContract
     {
         public DriverImageRegister() { }
-        public String DriverID { get; set; }
+        public String DriverId { get; set; }
         public string DriverName { get; set; }
         public string MobileNo { get; set; }
         public string CreatedBy { get; set; }

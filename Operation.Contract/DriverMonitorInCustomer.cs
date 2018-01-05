@@ -10,7 +10,7 @@ public    class DriverMonitorInCustomer :IContract
     {
         public DriverMonitorInCustomer() { }
 
-        public string DriverID { get; set; }
+        public string DriverId { get; set; }
         public decimal CurrentLat { get; set; }
         public decimal CurrentLong { get; set; }
     }

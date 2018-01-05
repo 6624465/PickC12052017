@@ -66,7 +66,7 @@ namespace PickCApi.Areas.Operation.Controllers
                     var customerObj = new CustomerBO().GetCustomer(new Customer { MobileNo = trip.CustomerMobile });
                     var driverActivity = new DriverActivity
                     {
-                        DriverID = HeaderValueByKey("DRIVERID"),
+                        DriverId = HeaderValueByKey("DRIVERID"),
                         TokenNo = HeaderValueByKey("AUTH_TOKEN"),
                         Latitude = Convert.ToDecimal(HeaderValueByKey("LATITUDE")),
                         Longitude = Convert.ToDecimal(HeaderValueByKey("LONGITUDE")),
@@ -76,7 +76,7 @@ namespace PickCApi.Areas.Operation.Controllers
 
                     new DriverActivityBO().DriverActivityUpdate(driverActivity);
 
-                    PushNotification(customerObj.DeviceID, "", UTILITY.NotifyTripStart);
+                    PushNotification(customerObj.DeviceId, "", UTILITY.NotifyTripStart);
                     return Ok(new
                     {
                         tripID = trip.TripID,
@@ -98,21 +98,21 @@ namespace PickCApi.Areas.Operation.Controllers
         {
             try
             {
-                var tripInfo = new TripBO().GetTrip(new Trip { TripID = tripEndDTO.TripID });
+                var tripInfo = new TripBO().GetTrip(new Trip { TripID = tripEndDTO.TripId });
                 string frmLatLong = tripInfo.Latitude + "," + tripInfo.Longitude.ToString();
                 string toLatLong = tripEndDTO.TripEndLat + "," + tripEndDTO.TripEndLong.ToString();
                 decimal distance = GetTravelTimeBetweenTwoLocations(frmLatLong, toLatLong).distance;
                 tripEndDTO.Token = HeaderValueByKey("AUTH_TOKEN");
-                tripEndDTO.DriverID = HeaderValueByKey("DRIVERID");
+                tripEndDTO.DriverId = HeaderValueByKey("DRIVERID");
                 var result = new TripBO().EndTrip(tripEndDTO,distance);
                 if (result)
                 {
-                     tripInfo = new TripBO().GetTrip(new Trip { TripID = tripEndDTO.TripID });                    
+                     tripInfo = new TripBO().GetTrip(new Trip { TripID = tripEndDTO.TripId });                    
                     var customerObj = new CustomerBO().GetCustomer(new Customer { MobileNo = tripInfo.CustomerMobile });
-                    PushNotification(customerObj.DeviceID, "", UTILITY.NotifyTripEnd);
+                    PushNotification(customerObj.DeviceId, "", UTILITY.NotifyTripEnd);
                     return Ok(new
                     {
-                        tripID = tripEndDTO.TripID,
+                        tripID = tripEndDTO.TripId,
                         message = UTILITY.SUCCESSMSG
                     });
                 }
@@ -161,23 +161,23 @@ namespace PickCApi.Areas.Operation.Controllers
             }
         }
 
-        [HttpGet]
-        [Route("customer/isintrip")]
-        public IHttpActionResult IsCustomerInTrip()
-        {
-            try
-            {
-                var trip = new TripBO().CustomerCurrentTrip(HeaderValueByKey("MOBILENO"));
-                return Ok(new {
-                    isintrip = trip != null ? true : false,
-                    bookingno = (trip != null ? trip.BookingNo : "")
-                });
-            }
-            catch (Exception ex)
-            {
-                return InternalServerError(ex);
-            }
-        }
+        //[HttpGet]
+        //[Route("customer/isInTrip")]
+        //public IHttpActionResult IsCustomerInTrip()
+        //{
+        //    try
+        //    {
+        //        var trip = new TripBO().CustomerCurrentTrip(HeaderValueByKey("MOBILENO"));
+        //        return Ok(new {
+        //            isintrip = trip != null ? true : false,
+        //            bookingno = (trip != null ? trip.BookingNo : "")
+        //        });
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return InternalServerError(ex);
+        //    }
+        //}
 
         [HttpGet]
         [Route("driver/isintrip")]

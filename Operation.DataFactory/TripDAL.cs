@@ -126,8 +126,8 @@ namespace Operation.DataFactory
 
                 var savecommand = db.GetStoredProcCommand(DBRoutine.TRIPEND);
                 db.AddInParameter(savecommand, "TokenNo", System.Data.DbType.String, tripEndDTO.Token);
-                db.AddInParameter(savecommand, "TripID", System.Data.DbType.String, tripEndDTO.TripID);
-                db.AddInParameter(savecommand, "DriverID", System.Data.DbType.String, tripEndDTO.DriverID);
+                db.AddInParameter(savecommand, "TripID", System.Data.DbType.String, tripEndDTO.TripId);
+                db.AddInParameter(savecommand, "DriverID", System.Data.DbType.String, tripEndDTO.DriverId);
                 db.AddInParameter(savecommand, "EndTime", System.Data.DbType.DateTime, tripEndDTO.EndTime);
                 db.AddInParameter(savecommand, "TripEndLat", System.Data.DbType.Decimal, tripEndDTO.TripEndLat);
                 db.AddInParameter(savecommand, "TripEndLong", System.Data.DbType.Decimal, tripEndDTO.TripEndLong);

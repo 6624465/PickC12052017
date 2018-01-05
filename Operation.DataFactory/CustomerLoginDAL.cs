@@ -45,6 +45,7 @@ namespace Operation.DataFactory
             currentTransaction = parentTransaction;
             return true;
         }
+     
 
         public bool AuthUser<T>(T item) where T : IContract
         {

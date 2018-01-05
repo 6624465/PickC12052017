@@ -58,7 +58,7 @@ namespace Master.DataFactory
             {
                 var savecommand = db.GetStoredProcCommand(DBRoutine.SAVELOOKUP);
 
-                db.AddInParameter(savecommand, "LookupID", System.Data.DbType.Int16, lookup.LookupID);
+                db.AddInParameter(savecommand, "LookupId", System.Data.DbType.Int16, lookup.LookupId);
                 db.AddInParameter(savecommand, "LookupCode", System.Data.DbType.String, lookup.LookupCode);
                 db.AddInParameter(savecommand, "LookupDescription", System.Data.DbType.String, lookup.LookupDescription);
                 db.AddInParameter(savecommand, "LookupCategory", System.Data.DbType.String, lookup.LookupCategory);
@@ -100,7 +100,7 @@ namespace Master.DataFactory
                 var deleteCommand = db.GetStoredProcCommand(DBRoutine.DELETELOOKUP);
 
 
-                db.AddInParameter(deleteCommand, "LookupID", System.Data.DbType.Int16, lookup.LookupID);
+                db.AddInParameter(deleteCommand, "LookupId", System.Data.DbType.Int16, lookup.LookupId);
 
                 result = Convert.ToBoolean(db.ExecuteNonQuery(deleteCommand, transaction));
 
@@ -128,7 +128,7 @@ namespace Master.DataFactory
 
             var Item = db.ExecuteSprocAccessor(DBRoutine.SELECTLOOKUP,
                                                     MapBuilder<LookUp>.BuildAllProperties(),
-                                                    ((LookUp)lookupItem).LookupID).FirstOrDefault();
+                                                    ((LookUp)lookupItem).LookupId).FirstOrDefault();
             return Item;
         }
 

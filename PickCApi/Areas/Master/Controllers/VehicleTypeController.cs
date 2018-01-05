@@ -15,24 +15,24 @@ namespace PickCApi.Areas.Master.Controllers
     //[ApiAuthFilter]
     public class VehicleTypeController : ApiController
     {
-        [HttpGet]
-        [Route("list")]
-        public IHttpActionResult GetVehicleTypeList()
-        {
-            try
-            {
-                var typelist = new LookUpBO().GetVehicleTypeList();
-                if (typelist != null)
-                    return Ok(typelist);
-                else
-                    return NotFound();
+        //[HttpGet]
+        //[Route("list")]
+        //public IHttpActionResult GetVehicleTypeList()
+        //{
+        //    try
+        //    {
+        //        var typelist = new LookUpBO().GetVehicleTypeList();
+        //        if (typelist != null)
+        //            return Ok(typelist);
+        //        else
+        //            return NotFound();
 
-            }
-            catch (Exception ex)
-            {
-                return InternalServerError(ex);
-            }
-        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return InternalServerError(ex);
+        //    }
+        //}
 
     }
 }

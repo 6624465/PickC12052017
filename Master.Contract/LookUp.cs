@@ -11,7 +11,7 @@ namespace Master.Contract
         public LookUp() { }
 
 
-        public Int16 LookupID { get; set; }
+        public Int16 LookupId { get; set; }
 
 
         public string LookupCode { get; set; }

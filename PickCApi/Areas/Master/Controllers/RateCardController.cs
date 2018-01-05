@@ -15,24 +15,24 @@ namespace PickCApi.Areas.Master.Controllers
     //[ApiAuthFilter]
     public class RateCardController : ApiController
     {
-        [HttpGet]
-        [Route("list")]
-        public IHttpActionResult GetRateCardList()
-        {
-            try
-            {
-                var rateCardList = new RateCardBO().GetList();
+        //[HttpGet]
+        //[Route("list")]
+        //public IHttpActionResult GetRateCardList()
+        //{
+        //    try
+        //    {
+        //        var rateCardList = new RateCardBO().GetList();
 
-                if (rateCardList != null)
-                    return Ok(rateCardList);
-                else
-                    return NotFound();
-            }
-            catch (Exception ex)
-            {
-                return InternalServerError(ex);
-            }
-        }
+        //        if (rateCardList != null)
+        //            return Ok(rateCardList);
+        //        else
+        //            return NotFound();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return InternalServerError(ex);
+        //    }
+        //}
         [HttpGet]
         [Route("{VehicleType}/{VehicleCategory}")]
         public IHttpActionResult GetRateCardValues(Int16 VehicleType, Int16 VehicleCategory)

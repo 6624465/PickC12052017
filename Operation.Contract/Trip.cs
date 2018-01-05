@@ -77,12 +77,12 @@ namespace Operation.Contract
 
     public class TripEndDTO
     {
-        public string TripID { get; set; }
+        public string TripId { get; set; }
         public DateTime EndTime { get; set; }
         public decimal TripEndLat { get; set; }
         public decimal TripEndLong { get; set; }
         public string Token { get; set; }
-        public string DriverID { get; set; }
+        public string DriverId { get; set; }
         public string CustomerMobile { get; set; }
         //public decimal? DistanceTravelled { get; set; }
 

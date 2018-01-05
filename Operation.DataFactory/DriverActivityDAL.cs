@@ -58,7 +58,7 @@ namespace Operation.DataFactory
                 var authcmd = db.GetStoredProcCommand(DBRoutine.AUTHENTICATEDRIVER);
 
                 db.AddInParameter(authcmd, "TokenNo", System.Data.DbType.String, driveractivity.TokenNo);
-                db.AddInParameter(authcmd, "DriverID", System.Data.DbType.String, driveractivity.DriverID);
+                db.AddInParameter(authcmd, "DriverID", System.Data.DbType.String, driveractivity.DriverId);
                 db.AddInParameter(authcmd, "Latitude", System.Data.DbType.String, driveractivity.Latitude);
                 db.AddInParameter(authcmd, "Longitude", System.Data.DbType.String, driveractivity.Longitude);
 
@@ -108,7 +108,7 @@ namespace Operation.DataFactory
 
                 var savecommand = db.GetStoredProcCommand(DBRoutine.SAVEDRIVERACTIVITY);
                 db.AddInParameter(savecommand, "TokenNo", System.Data.DbType.String, driveractivity.TokenNo);
-                db.AddInParameter(savecommand, "DriverID", System.Data.DbType.String, driveractivity.DriverID);
+                db.AddInParameter(savecommand, "DriverID", System.Data.DbType.String, driveractivity.DriverId);
                 db.AddInParameter(savecommand, "IsLogIn", System.Data.DbType.Boolean, driveractivity.IsLogIn);
                 db.AddInParameter(savecommand, "LoginDate", System.Data.DbType.DateTime, driveractivity.LoginDate);
                 db.AddInParameter(savecommand, "LogoutDate", System.Data.DbType.DateTime, driveractivity.LogoutDate);
@@ -204,7 +204,7 @@ namespace Operation.DataFactory
             var item = ((DriverMonitorInCustomer)lookupItem);
             var driverMonitorInCustomer = db.ExecuteSprocAccessor(DBRoutine.SELECTDRIVERMONITORINCUSTOMER,
                                                     MapBuilder<DriverMonitorInCustomer>.BuildAllProperties(),
-                                                    item.DriverID).FirstOrDefault();
+                                                    item.DriverId).FirstOrDefault();
 
             if (driverMonitorInCustomer == null) return null;
 
@@ -231,7 +231,7 @@ namespace Operation.DataFactory
                 var deleteCommand = db.GetStoredProcCommand(DBRoutine.DELETEDRIVERACTIVITY);
 
                 db.AddInParameter(deleteCommand, "TokenNo", System.Data.DbType.String, driveractivity.TokenNo);
-                db.AddInParameter(deleteCommand, "DriverID", System.Data.DbType.String, driveractivity.DriverID);
+                db.AddInParameter(deleteCommand, "DriverID", System.Data.DbType.String, driveractivity.DriverId);
 
                 result = Convert.ToBoolean(db.ExecuteNonQuery(deleteCommand, transaction));
 
@@ -256,7 +256,7 @@ namespace Operation.DataFactory
         //    var item = ((DriverMonitorInCustomer)lookupItem);
         //    var driverMonitorInCustomer = db.ExecuteSprocAccessor(DBRoutine.SELECTDRIVERMONITORINCUSTOMER,
         //                                            MapBuilder<DriverMonitorInCustomer>.BuildAllProperties(),
-        //                                            item.DriverID).FirstOrDefault();
+        //                                            item.DriverId).FirstOrDefault();
 
         //    if (driverMonitorInCustomer == null) return null;
 
@@ -269,7 +269,7 @@ namespace Operation.DataFactory
 
             var driveractivityItem = db.ExecuteSprocAccessor(DBRoutine.SELECTDRIVERACTIVITY,
                                                     MapBuilder<DriverActivity>.BuildAllProperties(),
-                                                    item.TokenNo, item.DriverID).FirstOrDefault();
+                                                    item.TokenNo, item.DriverId).FirstOrDefault();
 
             if (driveractivityItem == null) return null;
 
@@ -282,7 +282,7 @@ namespace Operation.DataFactory
 
             var driveractivityItem = db.ExecuteSprocAccessor(DBRoutine.SELECTDRIVERACTIVITYBYDRIVERID,
                                                     MapBuilder<DriverActivity>.BuildAllProperties(),
-                                                    item.DriverID).FirstOrDefault();
+                                                    item.DriverId).FirstOrDefault();
 
             if (driveractivityItem == null) return null;
 
@@ -359,7 +359,7 @@ namespace Operation.DataFactory
 
                 var savecommand = db.GetStoredProcCommand(DBRoutine.UPDATEDRIVERDUTYSTATUS);
                 db.AddInParameter(savecommand, "TokenNo", System.Data.DbType.String, driveractivity.TokenNo);
-                db.AddInParameter(savecommand, "DriverID", System.Data.DbType.String, driveractivity.DriverID);
+                db.AddInParameter(savecommand, "DriverID", System.Data.DbType.String, driveractivity.DriverId);
                 db.AddInParameter(savecommand, "Password", System.Data.DbType.String, null);
                 db.AddInParameter(savecommand, "IsOnDuty", System.Data.DbType.Boolean, driveractivity.IsOnDuty);
                 db.AddInParameter(savecommand, "IsLogIn", System.Data.DbType.String, driveractivity.IsLogIn);

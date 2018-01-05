@@ -113,7 +113,7 @@
                                             <div class="form-group">
                                                 <label>Gender</label>
                                                 @Html.DropDownListFor(x => x.OPerator.Gender,
-new SelectList(Model.operatorLookupDTO.genderOptions, "LookupID", "LookupDescription"),
+new SelectList(Model.operatorLookupDTO.genderOptions, "LookupId", "LookupDescription"),
 "Select Gender",
 new { @class = "form-control" })
                                             </div>
@@ -122,7 +122,7 @@ new { @class = "form-control" })
                                             <div class="form-group">
                                                 <label>Maritial Status</label>
                                                 @Html.DropDownListFor(x => x.OPerator.MaritialStatus,
-new SelectList(Model.operatorLookupDTO.maritalOptions, "LookupID", "LookupDescription"),
+new SelectList(Model.operatorLookupDTO.maritalOptions, "LookupId", "LookupDescription"),
 "Select Maritial Status",
 new { @class = "form-control" })
                                             </div>
@@ -825,7 +825,7 @@ new { @class = "form-control" })
                         success: function (data) {
                             var html = '';
                             $.each(data.attachments, function (key, val) {
-                                html += "<option value='" + val.LookupID + "'>" + val.LookupDescription + "</option>";
+                                html += "<option value='" + val.LookupId + "'>" + val.LookupDescription + "</option>";
                             });
 
                             $('#ddlAttachment').html(html);

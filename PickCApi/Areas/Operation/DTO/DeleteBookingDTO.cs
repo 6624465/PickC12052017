@@ -7,7 +7,7 @@ namespace PickCApi.Areas.Operation.DTO
 {
     public class DeleteBookingDTO
     {
-        public string bookingNo { get; set; }
-        public string remarks { get; set; }
+        public string BookingNo { get; set; }
+        public string Remarks { get; set; }
     }
 }

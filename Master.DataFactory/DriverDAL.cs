@@ -75,7 +75,7 @@ namespace Master.DataFactory
             {
 
                 var savecommand = db.GetStoredProcCommand(DBRoutine.SAVEDRIVER);
-                db.AddInParameter(savecommand, "DriverID", System.Data.DbType.String, driver.DriverID);
+                db.AddInParameter(savecommand, "DriverID", System.Data.DbType.String, driver.DriverId);
                 db.AddInParameter(savecommand, "DriverName", System.Data.DbType.String, driver.DriverName);
                 db.AddInParameter(savecommand, "Password", System.Data.DbType.String, driver.Password);
                 db.AddInParameter(savecommand, "VehicleNo", System.Data.DbType.String, "");
@@ -122,7 +122,7 @@ namespace Master.DataFactory
                     {
                         foreach (var addressItem in driver.AddressList)
                         {
-                            addressItem.AddressLinkID = newDocumentNo;
+                            addressItem.AddressLinkId = newDocumentNo;
                         }
 
 
@@ -257,7 +257,7 @@ namespace Master.DataFactory
             try
             {
                 var deleteCommand = db.GetStoredProcCommand(DBRoutine.DELETEDRIVER);
-                db.AddInParameter(deleteCommand, "DriverID", System.Data.DbType.String, driver.DriverID);
+                db.AddInParameter(deleteCommand, "DriverID", System.Data.DbType.String, driver.DriverId);
 
                 result = Convert.ToBoolean(db.ExecuteNonQuery(deleteCommand, transaction));
 
@@ -287,12 +287,12 @@ namespace Master.DataFactory
                                                     MapBuilder<Driver>
                                                     .MapAllProperties()
                                                     .DoNotMap(x => x.Nationality).Build(),
-                                                    item.DriverID).FirstOrDefault();
+                                                    item.DriverId).FirstOrDefault();
 
             if (driverItem == null) return null;
 
 
-            driverItem.AddressList = new AddressDAL().GetList(driverItem.DriverID);
+            driverItem.AddressList = new AddressDAL().GetList(driverItem.DriverId);
 
             return driverItem;
         }
@@ -302,7 +302,7 @@ namespace Master.DataFactory
 
             DriverRating driverItem = db.ExecuteSprocAccessor(DBRoutine.SELECTDRIVERAVERAGERATING,
                                                     MapBuilder<DriverRating>
-                                                    .MapAllProperties().Build(),item.DriverID).FirstOrDefault();
+                                                    .MapAllProperties().Build(),item.DriverId).FirstOrDefault();
 
             if (driverItem == null) return null;
                return driverItem;
@@ -568,8 +568,8 @@ namespace Master.DataFactory
 
                 var savecommand = db.GetStoredProcCommand(DBRoutine.SAVEDRIVERRATING);
                 db.AddInParameter(savecommand, "BookingNo", System.Data.DbType.String, driverRating.BookingNo);
-                db.AddInParameter(savecommand, "DriverID", System.Data.DbType.String, driverRating.DriverID);
-                db.AddInParameter(savecommand, "Rating", System.Data.DbType.String, driverRating.Rating);
+                db.AddInParameter(savecommand, "DriverID", System.Data.DbType.String, driverRating.DriverId);
+                db.AddInParameter(savecommand, "Rating", System.Data.DbType.Int32, driverRating.Rating);
                 db.AddInParameter(savecommand, "Remarks", System.Data.DbType.String, driverRating.Remarks);
 
                 result = db.ExecuteNonQuery(savecommand, transaction);

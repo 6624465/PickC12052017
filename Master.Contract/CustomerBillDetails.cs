@@ -10,7 +10,7 @@ namespace Master.Contract
     {
         public string BookingNo { get; set; }
         public string TotalAmount { get; set; }
-        public string DriverID { get; set; }
+        public string DriverId { get; set; }
 
     }
 }

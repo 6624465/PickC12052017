@@ -20,9 +20,9 @@ namespace Master.Contract
 		public string Name { get; set; }
 
 
-		public string EmailID { get; set; }
+		public string EmailId { get; set; }
 
-        public string DeviceID { get; set; }
+        public string DeviceId { get; set; }
 
 
 

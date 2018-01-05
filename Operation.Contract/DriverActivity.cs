@@ -12,7 +12,7 @@ namespace Operation.Contract
 
         public string TokenNo { get; set; }
 
-        public string DriverID { get; set; }
+        public string DriverId { get; set; }
 
         public bool IsLogIn { get; set; }
 

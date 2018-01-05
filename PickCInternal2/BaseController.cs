@@ -33,7 +33,7 @@ namespace PickC.Internal2
             get
             {
                 var obj = (Customer)HttpContext.Session["SSN_CUSTOMER"];
-                return obj.EmailID;
+                return obj.EmailId;
             }
         }
     }

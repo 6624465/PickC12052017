@@ -114,7 +114,7 @@ namespace PickCApi.Areas.Master.Controllers
                 {
                     OPerator.AddressList.ForEach(x =>
                     {
-                        x.AddressLinkID = OPerator.OperatorID;
+                        x.AddressLinkId = OPerator.OperatorID;
                         x.AddressType = "Operator";
                         x.CreatedBy = UTILITY.DEFAULTUSER;
                         x.CreatedOn = DateTime.Now;

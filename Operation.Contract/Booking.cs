@@ -18,7 +18,7 @@ namespace Operation.Contract
         public DateTime BookingDate { get; set; }
 
 
-        public string CustomerID { get; set; }
+        public string CustomerId { get; set; }
 
         public string CustomerName { get; set; }
 
@@ -51,7 +51,7 @@ namespace Operation.Contract
         public DateTime ConfirmDate { get; set; }
 
 
-        public string DriverID { get; set; }
+        public string DriverId { get; set; }
 
 
         public string VehicleNo { get; set; }

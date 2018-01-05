@@ -7,11 +7,11 @@ namespace PickCApi.Areas.Operation.DTO
 {
     public class TrucksInRangeDTO
     {
-        public decimal latitude { get; set; }
-        public decimal longitude { get; set; }
+        public decimal Latitude { get; set; }
+        public decimal Longitude { get; set; }
 
-        public short vehicleType { get; set; }
+        public short VehicleType { get; set; }
 
-        public short vehicleGroup { get; set; }
+        public short VehicleGroup { get; set; }
     }
 }

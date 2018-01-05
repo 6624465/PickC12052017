@@ -118,7 +118,7 @@ namespace Master.DataFactory
                         //    addressItem.AddressLinkID = operatorItem.OperatorID;
                         //}
                         operatorItem.AddressList.ForEach(x =>
-                        { x.AddressLinkID= operatorItem.OperatorID;
+                        { x.AddressLinkId= operatorItem.OperatorID;
                             result = new AddressDAL().Save(x, transaction) == true ? 1 : 0;
                         });
                     }

@@ -14,7 +14,7 @@ namespace Master.Contract
 		public Int32  AddressId { get; set; }
 
 
-		public string AddressLinkID { get; set; }
+		public string AddressLinkId { get; set; }
 
 
 		public Int16  SeqNo { get; set; }

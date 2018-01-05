@@ -57,7 +57,7 @@ namespace PickCApi.Core
                 {
                     var result = new DriverActivityBO().AuthenticateDriver(new DriverActivity {
                         TokenNo = AUTH_TOKEN,
-                        DriverID = DRIVERID,
+                        DriverId = DRIVERID,
                         Latitude = Convert.ToDecimal(LATITUDE),
                         Longitude = Convert.ToDecimal(LONGITUDE)
                     });

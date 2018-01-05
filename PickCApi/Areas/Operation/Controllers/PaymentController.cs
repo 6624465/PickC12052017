@@ -45,33 +45,33 @@ namespace PickCApi.Areas.Operation.Controllers
             }
         }
 
-        [HttpPost]
-        [Route("getRSAKey")]
-        public IHttpActionResult getRSAKey(RSAObject obj)
-        {
-            var CCAVENUE_ACCESS_CODE = ConfigurationManager.AppSettings["CCAVENUE_ACCESS_CODE"];
-            if(CCAVENUE_ACCESS_CODE == obj.access_code)
-            {
-                string vParams = "access_code=" + obj.access_code + "&" + "order_id=" + obj.order_id;
-                string queryUrl = "https://secure.ccavenue.com/transaction/getRSAKey";
-                var encStr = postPaymentRequestToGateway(queryUrl, vParams);
-                if (encStr != null && encStr != "")
-                {
-                    return Ok(new
-                    {
-                        RSAKey = encStr
-                    });
-                }
-                else
-                {
-                    return Ok(new { RSAKey = "" });
-                }
-            }
-            else
-            {
-                return Unauthorized();
-            }            
-        }
+        //[HttpPost]
+        //[Route("getRSAKey")]
+        //public IHttpActionResult getRSAKey(RSAObject obj)
+        //{
+        //    var CCAVENUE_ACCESS_CODE = ConfigurationManager.AppSettings["CCAVENUE_ACCESS_CODE"];
+        //    if(CCAVENUE_ACCESS_CODE == obj.access_code)
+        //    {
+        //        string vParams = "access_code=" + obj.access_code + "&" + "order_id=" + obj.order_id;
+        //        string queryUrl = "https://secure.ccavenue.com/transaction/getRSAKey";
+        //        var encStr = postPaymentRequestToGateway(queryUrl, vParams);
+        //        if (encStr != null && encStr != "")
+        //        {
+        //            return Ok(new
+        //            {
+        //                RSAKey = encStr
+        //            });
+        //        }
+        //        else
+        //        {
+        //            return Ok(new { RSAKey = "" });
+        //        }
+        //    }
+        //    else
+        //    {
+        //        return Unauthorized();
+        //    }            
+        //}
 
         [HttpGet]
         [Route("ccavenue/cancel/{mobile}")]

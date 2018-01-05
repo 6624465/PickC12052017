@@ -9,7 +9,7 @@ namespace PickCApi
     {
         public static string SUCCESSMESSAGE = "Success"; //krishna & Srinath
         public static string FAILEDMESSAGE = "Failed"; //krishna & Srinath
-        public static string SUCCESSMSG = "SAVED SUCSSFULLY";
+        public static string SUCCESSMSG = "SAVED SUCESSFULLY";
         public static string DELETEMSG = "DELETED SUCSSFULLY";
         public static string FAILEDAUTH = "MOBILENO OR AUTH TOKEN IS MISSING";
         public static string INVALID = "INVALID MOBILENO OR AUTH TOKEN";
@@ -51,6 +51,13 @@ namespace PickCApi
         public static string MESSAGESENT = "Message Sent to Driver";
         public static string ACCEPTREQUEST = "Accepted request by driver";
         public static string REJECTREQUEST = "Rejected request by driver";
+        public static string UPDATESUCCESSMSG = "UPDATED  SUCESSFULLY";
+        public static string UPDATEFAILUREMSG = "UPDATION FAILED";
+        public static string LOGIN = "USER LOGGEDIN SUCCESSFULLY";
+        public static string SUCCESSTATUS = "True";
+        public static string FAILURESTATUS = "False";
+        public static bool  FAIL = false;
+        public static bool SUCCESS = true;
 
 
     }

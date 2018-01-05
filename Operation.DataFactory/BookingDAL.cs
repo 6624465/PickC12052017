@@ -80,7 +80,7 @@ namespace Operation.DataFactory
                 var savecommand = db.GetStoredProcCommand(DBRoutine.SAVEBOOKING);
                 db.AddInParameter(savecommand, "BookingNo", System.Data.DbType.String, booking.BookingNo);
                 db.AddInParameter(savecommand, "BookingDate", System.Data.DbType.DateTime, booking.BookingDate);
-                db.AddInParameter(savecommand, "CustomerID", System.Data.DbType.String, booking.CustomerID);
+                db.AddInParameter(savecommand, "CustomerID", System.Data.DbType.String, booking.CustomerId);
                 db.AddInParameter(savecommand, "RequiredDate", System.Data.DbType.DateTime, booking.RequiredDate);
                 db.AddInParameter(savecommand, "LocationFrom", System.Data.DbType.String, booking.LocationFrom);
                 db.AddInParameter(savecommand, "LocationTo", System.Data.DbType.String, booking.LocationTo);

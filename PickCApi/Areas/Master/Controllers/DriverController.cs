@@ -67,7 +67,7 @@ namespace PickCApi.Areas.Master.Controllers
                 {
                     driver.AddressList.ForEach(x =>
                     {
-                        x.AddressLinkID = driver.DriverID;
+                        x.AddressLinkId = driver.DriverId;
                         x.AddressType = "DRIVER";
                         x.CreatedBy = UTILITY.DEFAULTUSER;
                         x.CreatedOn = DateTime.Now;
@@ -94,7 +94,7 @@ namespace PickCApi.Areas.Master.Controllers
         {
             try
             {
-                var result = new DriverBO().DeleteDriver(new Driver { DriverID = driverID });
+                var result = new DriverBO().DeleteDriver(new Driver { DriverId = driverID });
                 if (result)
                     return Ok(UTILITY.DELETEMSG);
                 else
@@ -133,7 +133,7 @@ namespace PickCApi.Areas.Master.Controllers
         {
             try
             {
-                var driver = new DriverBO().GetDriver(new Driver { DriverID = driverID });
+                var driver = new DriverBO().GetDriver(new Driver { DriverId = driverID });
                 if (driver != null)
                     return Ok(driver);
                 else

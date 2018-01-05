@@ -61,7 +61,7 @@ namespace Master.DataFactory
                 db.AddInParameter(savecommand, "MobileNo", System.Data.DbType.String, customer.MobileNo);
                 db.AddInParameter(savecommand, "Password", System.Data.DbType.String, customer.Password);
                 db.AddInParameter(savecommand, "Name", System.Data.DbType.String, customer.Name);
-                db.AddInParameter(savecommand, "EmailID", System.Data.DbType.String, customer.EmailID);
+                db.AddInParameter(savecommand, "EmailID", System.Data.DbType.String, customer.EmailId);
                 db.AddInParameter(savecommand, "OTP", System.Data.DbType.String, customer.OTP);
                 db.AddInParameter(savecommand, "IsOTPVerified", System.Data.DbType.Boolean, customer.IsOTPVerified);
                 db.AddInParameter(savecommand, "OTPSendDate", System.Data.DbType.DateTime, customer.OTPSendDate);
@@ -110,7 +110,7 @@ namespace Master.DataFactory
             {
 
                 var savecommand = db.GetStoredProcCommand(DBRoutine.SAVEDRIVERIMAGEREGISTER);
-                db.AddInParameter(savecommand, "DriverID", System.Data.DbType.String, driverImageRegister.DriverID);
+                db.AddInParameter(savecommand, "DriverID", System.Data.DbType.String, driverImageRegister.DriverId);
                 db.AddInParameter(savecommand, "DriverName", System.Data.DbType.String, driverImageRegister.DriverName);
                 db.AddInParameter(savecommand, "MobileNo", System.Data.DbType.String, driverImageRegister.MobileNo);
                 db.AddInParameter(savecommand, "CreatedBy", System.Data.DbType.String, driverImageRegister.CreatedBy?? "ADMIN");
